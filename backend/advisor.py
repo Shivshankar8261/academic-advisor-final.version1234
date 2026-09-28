@@ -50,6 +50,31 @@ NOT_IN_DOCUMENTS = AdvisorResponse(
     insufficient_information=True, conflict_detected=False)
 
 
+WELCOME = ("Welcome to the **Vidyashilp University AI Academic Advisor**! 👋\n\n"
+           "I answer questions from the Student Handbook, the SOP, the semester spread structures and the minor "
+           "course lists. You can ask me things like:\n"
+           "- *How many minors are offered for the 2025 batch?*\n"
+           "- *What are the courses in semester 3 for the 2024 batch?*\n"
+           "- *What is the minimum attendance requirement?*\n\n"
+           "Pick your profile at the top for answers about your own progress.")
+# Whole-message small talk only: "hi, how many minors?" still goes through retrieval.
+SMALL_TALK = [
+    (r"(hi+|hey+|hello+|hii+|namaste|good (morning|afternoon|evening)|greetings|yo)( there)?( advisor)?",
+     WELCOME),
+    (r"(thanks?|thank you|thank u|thx|ty)( (so|very) much)?( a lot)?", "You're welcome! Ask me anything else about "
+     "your courses, minors or academic rules."),
+    (r"(bye|goodbye|see you|see ya|good night)", "Goodbye, and all the best with your studies at Vidyashilp "
+     "University! 🎓"),
+    (r"(ok(ay)?|cool|great|nice|got it|alright)", "Glad that helped. What else would you like to know?"),
+    (r"(who|what) are you|what can you do|help", WELCOME),
+]
+
+
+def small_talk(message: str) -> str | None:
+    m = re.sub(r"[\s!.?,:)(]+$", "", message.strip().lower())
+    return next((reply for rx, reply in SMALL_TALK if re.fullmatch(rx, m)), None)
+
+
 @lru_cache
 def load_profiles() -> dict[str, dict]:
     return {p["student_id"]: p for p in json.loads(STUDENT_PROFILES.read_text())}
@@ -173,6 +198,13 @@ def answer(message: str, strategy: str = "rag_structured", student_id: str | Non
     start = time.perf_counter()
     chunks: list[dict] = []
     retrieval_s = 0.0
+
+    reply = small_talk(message)
+    if reply:  # greetings / thanks: no retrieval, no LLM, no "not in documents" warning
+        result = AdvisorResponse(answer=reply, confidence="high", grounded=False, sources=[],
+                                 needs_clarification=False, clarifying_question=None,
+                                 insufficient_information=False, conflict_detected=False)
+        return _response(result, strategy, "small-talk", start, retrieval_s, chunks)
 
     if strategy == "baseline":
         convo = "".join(f"{t['role']}: {t['content']}\n" for t in history[-6:])

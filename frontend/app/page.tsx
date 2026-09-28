@@ -110,6 +110,7 @@ function AdvisorAvatar() {
 
 const AssistantMessage = memo(function AssistantMessage({ reply }: { reply: AdvisorReply }) {
   const conf = CONFIDENCE_STYLE[reply.confidence] ?? CONFIDENCE_STYLE.low;
+  const smallTalk = reply.provider === "small-talk"; // greetings: no badges or sources
   return (
     <div className="flex max-w-full gap-3 sm:max-w-[88%]">
       <AdvisorAvatar />
@@ -143,6 +144,8 @@ const AssistantMessage = memo(function AssistantMessage({ reply }: { reply: Advi
           </div>
         )}
 
+        {!smallTalk && (
+        <>
         <div className="mt-4 flex flex-wrap items-center gap-1.5 text-xs">
           <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-medium ring-1 ${conf.pill}`}>
             <span className={`h-1.5 w-1.5 rounded-full ${conf.dot}`} />
@@ -199,6 +202,8 @@ const AssistantMessage = memo(function AssistantMessage({ reply }: { reply: Advi
             </ul>
           )}
         </details>
+        </>
+        )}
       </div>
     </div>
   );

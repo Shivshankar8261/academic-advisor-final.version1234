@@ -183,6 +183,39 @@ def minor_summary(minor: str, batches: list[str]) -> list[dict]:
         return chunks
 
 
+def minors_overview(batches: list[str]) -> list[dict]:
+    """Every minor per batch with its course count and credits - for questions about minors in general
+    ("how many minor courses", "which minors are offered") that name no specific minor."""
+    with _db() as con:
+        rows = con.execute("SELECT * FROM courses WHERE kind='minor' AND choice_of IS NULL "
+                           "ORDER BY batch, minor, source_row").fetchall()
+    if batches:
+        rows = [r for r in rows if r["batch"] in batches]
+    if not rows:
+        return []
+    lines = ["EXACT OVERVIEW of all minors (computed from the spreadsheet, do not recount). The student did not "
+             "name a minor, so give the per-batch overview below; answer for every batch listed unless they named "
+             "one, and offer to list the courses of a specific minor:"]
+    total = 0
+    for batch in sorted({r["batch"] for r in rows}):
+        parts = []
+        for minor in sorted({r["minor"] for r in rows if r["batch"] == batch}):
+            mr = [r for r in rows if r["batch"] == batch and r["minor"] == minor]
+            if any(r["code_status"] == "not_offered" for r in mr):
+                parts.append(f"{minor} (not offered - 'No Students')")
+                continue
+            courses = [r for r in mr if r["code_status"] not in ("placeholder", "not_offered")]
+            ph = [r for r in mr if r["code_status"] == "placeholder"]
+            total += len(courses)
+            parts.append(f"{minor}: {len(courses)} course(s), {_num(sum(r['credits'] or 0 for r in courses))} "
+                         f"credits" + (f" + {_num(sum(r['credits'] or 0 for r in ph))} credits TBA/TBD" if ph else ""))
+        offered = sum("not offered" not in p for p in parts)
+        lines.append(f"- {batch} batch: {offered} minor(s) - " + "; ".join(parts))
+    lines.append(f"Total course entries across the batches above: {total}.")
+    tabs = ", ".join(sorted({r["source_tab"] for r in rows}))
+    return [_chunk("\n".join(lines), MINOR_FILE, f"tabs {tabs}, all minors")]
+
+
 def course_lookup(codes: list[str], batches: list[str]) -> list[dict]:
     """Semester, credits, basket/minor and normalised prerequisites of specific courses, per batch."""
     chunks = []
@@ -399,6 +432,9 @@ def route(question: str, profile: dict | None = None) -> list[dict]:
         return course_lookup(codes, batches)
     if minor_q and not re.search(r"credits? (needed|required)|basket", low):
         return minor_summary(minor, batches)
+    if not minor and re.search(r"\bminors?\b", low) and not re.search(r"credit|basket", low) and (
+            LIST_WORDS.search(low) or re.search(r"\b(which|what|available|offered|options?)\b", low)):
+        return minors_overview(batches)
     wanted = [(names, label) for rx, names, label in BASKET_ALIASES if re.search(rx, low)]
     if wanted and re.search(r"credit", low):
         return basket_credits(wanted[:2], batches)
