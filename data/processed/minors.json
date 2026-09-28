@@ -1,0 +1,2153 @@
+[
+ {
+  "minor": "Law",
+  "batch": "2023",
+  "course_code": "LAWM305",
+  "title": "Regulating platform and Gig workers",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 3
+ },
+ {
+  "minor": "Law",
+  "batch": "2023",
+  "course_code": "LAWE200",
+  "title": "Moral Philosophy and Justice",
+  "credits": 2,
+  "semester": 6,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 4
+ },
+ {
+  "minor": "Law",
+  "batch": "2023",
+  "course_code": "LAWC410",
+  "title": "Introduction to Alternative Dispute Resolution Methods",
+  "credits": 3,
+  "semester": 6,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 5
+ },
+ {
+  "minor": "Law",
+  "batch": "2023",
+  "course_code": "LAWB210",
+  "title": "Criminology and Victimology",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 6
+ },
+ {
+  "minor": "Law",
+  "batch": "2023",
+  "course_code": "LAWM306",
+  "title": "Law Relating to start-ups",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 7
+ },
+ {
+  "minor": "Law",
+  "batch": "2023",
+  "course_code": "LAWE301",
+  "title": "Intellectual Property Rights",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 8
+ },
+ {
+  "minor": "Law",
+  "batch": "2023",
+  "course_code": "DON\u2019T KNOW",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 5,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 9
+ },
+ {
+  "minor": "Law",
+  "batch": "2024",
+  "course_code": "LAWP100",
+  "title": "Political Science I",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 11
+ },
+ {
+  "minor": "Law",
+  "batch": "2024",
+  "course_code": "LAWS301",
+  "title": "Legal Methods",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 12
+ },
+ {
+  "minor": "Law",
+  "batch": "2024",
+  "course_code": "LAWM301",
+  "title": "Constitution for Citizens",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 13
+ },
+ {
+  "minor": "Law",
+  "batch": "2024",
+  "course_code": "LAWM302",
+  "title": "Basics of International Law",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 14
+ },
+ {
+  "minor": "Law",
+  "batch": "2024",
+  "course_code": "TBA",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 10,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 15
+ },
+ {
+  "minor": "Law",
+  "batch": "2025",
+  "course_code": "LAWS301",
+  "title": "Legal Methods",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 17
+ },
+ {
+  "minor": "Law",
+  "batch": "2025",
+  "course_code": "LAWP101",
+  "title": "Introduction to Political science",
+  "credits": 4,
+  "semester": 2,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 18
+ },
+ {
+  "minor": "Law",
+  "batch": "2025",
+  "course_code": "TBA",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 17,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 19
+ },
+ {
+  "minor": "Law",
+  "batch": "2026",
+  "course_code": "TBA",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 24,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Law Minor",
+  "source_row": 21
+ },
+ {
+  "minor": "Design",
+  "batch": "2022",
+  "course_code": "CDES105",
+  "title": "Appreciating and Deconstructing Art and Media",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 2
+ },
+ {
+  "minor": "Design",
+  "batch": "2022",
+  "course_code": "CDES203",
+  "title": "Motion Graphic Design",
+  "credits": 2,
+  "semester": 5,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 3
+ },
+ {
+  "minor": "Design",
+  "batch": "2022",
+  "course_code": "CDES504",
+  "title": "Environment Design and Communication",
+  "credits": 2,
+  "semester": 5,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 4
+ },
+ {
+  "minor": "Design",
+  "batch": "2022",
+  "course_code": "CDES704",
+  "title": "Integrative Studio VI- Exhibition/Museum",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 5
+ },
+ {
+  "minor": "Design",
+  "batch": "2022",
+  "course_code": "CDES402",
+  "title": "Interaction Design- UI UX",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 6
+ },
+ {
+  "minor": "Design",
+  "batch": "2022",
+  "course_code": "CDES216",
+  "title": "Drawing and Moving Images",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 7
+ },
+ {
+  "minor": "Design",
+  "batch": "2022",
+  "course_code": "CDES712",
+  "title": "Designing Futures",
+  "credits": 3,
+  "semester": 7,
+  "prerequisites_raw": "(CDES402-Interaction Design- UI UX), (CDES504- Environment Design and Communication)",
+  "prerequisites": [
+   "CDES402",
+   "CDES504"
+  ],
+  "source_tab": "Design Minor",
+  "source_row": 8
+ },
+ {
+  "minor": "Design",
+  "batch": "2022",
+  "course_code": "DON\u2019T KNOW",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 4,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 9
+ },
+ {
+  "minor": "Design",
+  "batch": "2023",
+  "course_code": "CDES105",
+  "title": "Appreciating and Deconstructing Art and Media",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 11
+ },
+ {
+  "minor": "Design",
+  "batch": "2023",
+  "course_code": "CDES702",
+  "title": "Integrative Studio II- Sensemaking, Visualization",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 12
+ },
+ {
+  "minor": "Design",
+  "batch": "2023",
+  "course_code": "CDES221",
+  "title": "Information Architecture and Design",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 13
+ },
+ {
+  "minor": "Design",
+  "batch": "2023",
+  "course_code": "CDES219",
+  "title": "Elements of Sound",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 14
+ },
+ {
+  "minor": "Design",
+  "batch": "2023",
+  "course_code": "CDES301",
+  "title": "Sketch to Story",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 15
+ },
+ {
+  "minor": "Design",
+  "batch": "2023",
+  "course_code": "CDES312",
+  "title": "Designing Futures",
+  "credits": 5,
+  "semester": 7,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 16
+ },
+ {
+  "minor": "Design",
+  "batch": "2024",
+  "course_code": "CDES217",
+  "title": "Making with Reframed Media",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 18
+ },
+ {
+  "minor": "Design",
+  "batch": "2024",
+  "course_code": "CDES218",
+  "title": "Frames and Frequencies",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 19
+ },
+ {
+  "minor": "Design",
+  "batch": "2024",
+  "course_code": "CDES221",
+  "title": "Information Architecture and Design",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 20
+ },
+ {
+  "minor": "Design",
+  "batch": "2024",
+  "course_code": "CDES227",
+  "title": "Drawing and Moving Image",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 21
+ },
+ {
+  "minor": "Design",
+  "batch": "2024",
+  "course_code": "TBD",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 8,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 22
+ },
+ {
+  "minor": "Design",
+  "batch": "2025",
+  "course_code": "CDES217",
+  "title": "Making with Reframed Media",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "NIL",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 25
+ },
+ {
+  "minor": "Design",
+  "batch": "2025",
+  "course_code": "TBD",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 20,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 26
+ },
+ {
+  "minor": "Design",
+  "batch": "2026",
+  "course_code": "TBD",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 24,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Design Minor",
+  "source_row": 28
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2022",
+  "course_code": "PSYC201",
+  "title": "Biological Psychology",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 2
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2022",
+  "course_code": "PSYC202",
+  "title": "Cognitive Psychology",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 3
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2022",
+  "course_code": "PSYC255",
+  "title": "Psychopathology",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 4
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2022",
+  "course_code": "PSYC241",
+  "title": "Social Psychology",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 5
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2022",
+  "course_code": "PSYC204",
+  "title": "Developmental Psychology",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 6
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2022",
+  "course_code": "PSYC303",
+  "title": "Psychological Testing and Measurement",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "PSYC101, PSYC202, MATH131",
+  "prerequisites": [
+   "PSYC101",
+   "PSYC202",
+   "MATH131"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 7
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2023",
+  "course_code": "PSYC201",
+  "title": "Biological Psychology",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 9
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2023",
+  "course_code": "PSYC202",
+  "title": "Cognitive Psychology",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 10
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2023",
+  "course_code": "PSYC104",
+  "title": "Lifespan Development I",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 11
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2023",
+  "course_code": "PSYC241",
+  "title": "Social Psychology",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 12
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2023",
+  "course_code": "PSYC306",
+  "title": "Health Psychology",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "PSYC101, PSYC201",
+  "prerequisites": [
+   "PSYC101",
+   "PSYC201"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 13
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2023",
+  "course_code": "PSYC255",
+  "title": "Psychopathology",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 14
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2024",
+  "course_code": "PSYC201/ PSYC103",
+  "title": "Biological Psychology/ Foundations of Psychology I",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 16
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2024",
+  "course_code": "PSYC202",
+  "title": "Cognitive Psychology",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 17
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2024",
+  "course_code": "PSYC241",
+  "title": "Social Psychology",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 18
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2024",
+  "course_code": "PSYC306",
+  "title": "Health Psychology",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "PSYC101, PSYC201",
+  "prerequisites": [
+   "PSYC101",
+   "PSYC201"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 19
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2024",
+  "course_code": "PSYC104",
+  "title": "Lifespan Development I",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 20
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2024",
+  "course_code": "PSYC255",
+  "title": "Psychopathology",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 21
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2025",
+  "course_code": "PSYC201/ PSYC103",
+  "title": "Biological Psychology/ Foundations of Psychology I",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 23
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2025",
+  "course_code": "PSYC202",
+  "title": "Cognitive Psychology",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 24
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2025",
+  "course_code": "PSYC241",
+  "title": "Social Psychology",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 25
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2025",
+  "course_code": "PSYC306",
+  "title": "Health Psychology",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "PSYC101, PSYC201",
+  "prerequisites": [
+   "PSYC101",
+   "PSYC201"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 26
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2025",
+  "course_code": "PSYC104",
+  "title": "Lifespan Development I",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 27
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2025",
+  "course_code": "PSYC255",
+  "title": "Psychopathology",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 28
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2026",
+  "course_code": "PSYC201/ PSYC103",
+  "title": "Biological Psychology/ Foundations of Psychology I",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 30
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2026",
+  "course_code": "PSYC202",
+  "title": "Cognitive Psychology",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 31
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2026",
+  "course_code": "PSYC241",
+  "title": "Social Psychology",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "PSYC101",
+  "prerequisites": [
+   "PSYC101"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 32
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2026",
+  "course_code": "PSYC306",
+  "title": "Health Psychology",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "PSYC101, PSYC201",
+  "prerequisites": [
+   "PSYC101",
+   "PSYC201"
+  ],
+  "source_tab": "Psychology",
+  "source_row": 33
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2026",
+  "course_code": "PSYC104",
+  "title": "Lifespan Development I",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 34
+ },
+ {
+  "minor": "Psychology",
+  "batch": "2026",
+  "course_code": "PSYC255",
+  "title": "Psychopathology",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Psychology",
+  "source_row": 35
+ },
+ {
+  "minor": "Economics",
+  "batch": "2022",
+  "course_code": "ECON201",
+  "title": "Microeconomics",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Economics",
+  "source_row": 2
+ },
+ {
+  "minor": "Economics",
+  "batch": "2022",
+  "course_code": "ECON220",
+  "title": "Behavourial Economics",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Economics",
+  "source_row": 3
+ },
+ {
+  "minor": "Economics",
+  "batch": "2022",
+  "course_code": "ECON207",
+  "title": "Macroeconomics and Applicants to Indian Economy",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Economics",
+  "source_row": 4
+ },
+ {
+  "minor": "Economics",
+  "batch": "2022",
+  "course_code": "ECON413",
+  "title": "Industrial Economics",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "ECON201, ECON202/ ECON207",
+  "prerequisites": [
+   "ECON201",
+   "ECON202",
+   "ECON207"
+  ],
+  "source_tab": "Economics",
+  "source_row": 5
+ },
+ {
+  "minor": "Economics",
+  "batch": "2022",
+  "course_code": "ECON325",
+  "title": "Public Economics",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "ECON201, ECON202/ ECON207",
+  "prerequisites": [
+   "ECON201",
+   "ECON202",
+   "ECON207"
+  ],
+  "source_tab": "Economics",
+  "source_row": 6
+ },
+ {
+  "minor": "Economics",
+  "batch": "2022",
+  "course_code": "ECON316",
+  "title": "Digital Economics",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "ECON201",
+  "prerequisites": [
+   "ECON201"
+  ],
+  "source_tab": "Economics",
+  "source_row": 7
+ },
+ {
+  "minor": "Economics",
+  "batch": "2023",
+  "course_code": "ECON201",
+  "title": "Microeconomics",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Economics",
+  "source_row": 9
+ },
+ {
+  "minor": "Economics",
+  "batch": "2023",
+  "course_code": "ECON209",
+  "title": "Macroeconomics I",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Economics",
+  "source_row": 10
+ },
+ {
+  "minor": "Economics",
+  "batch": "2023",
+  "course_code": "ECON316",
+  "title": "Digital Economics",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "ECON201",
+  "prerequisites": [
+   "ECON201"
+  ],
+  "source_tab": "Economics",
+  "source_row": 11
+ },
+ {
+  "minor": "Economics",
+  "batch": "2023",
+  "course_code": "ECON315",
+  "title": "Indian Economy",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "ECON201, ECON209",
+  "prerequisites": [
+   "ECON201",
+   "ECON209"
+  ],
+  "source_tab": "Economics",
+  "source_row": 12
+ },
+ {
+  "minor": "Economics",
+  "batch": "2023",
+  "course_code": "ECON322",
+  "title": "Economics of Health and Education",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "ECON201",
+  "prerequisites": [
+   "ECON201"
+  ],
+  "source_tab": "Economics",
+  "source_row": 13
+ },
+ {
+  "minor": "Economics",
+  "batch": "2023",
+  "course_code": "ECON301",
+  "title": "International Economics",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "ECON201, ECON202",
+  "prerequisites": [
+   "ECON201",
+   "ECON202"
+  ],
+  "source_tab": "Economics",
+  "source_row": 14
+ },
+ {
+  "minor": "Economics",
+  "batch": "2024",
+  "course_code": "-",
+  "title": "No students / minor not offered for this batch",
+  "credits": null,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Economics",
+  "source_row": 16
+ },
+ {
+  "minor": "Economics",
+  "batch": "2025",
+  "course_code": "ECON208",
+  "title": "Microeconomics I",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Economics",
+  "source_row": 18
+ },
+ {
+  "minor": "Economics",
+  "batch": "2025",
+  "course_code": "ECON209",
+  "title": "Macroeconomics I",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Economics",
+  "source_row": 19
+ },
+ {
+  "minor": "Economics",
+  "batch": "2025",
+  "course_code": "ECON316",
+  "title": "Digital Economics",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "ECON201",
+  "prerequisites": [
+   "ECON201"
+  ],
+  "source_tab": "Economics",
+  "source_row": 20
+ },
+ {
+  "minor": "Economics",
+  "batch": "2025",
+  "course_code": "ECON315",
+  "title": "Indian Economy",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "ECON201, ECON209",
+  "prerequisites": [
+   "ECON201",
+   "ECON209"
+  ],
+  "source_tab": "Economics",
+  "source_row": 21
+ },
+ {
+  "minor": "Economics",
+  "batch": "2025",
+  "course_code": "ECON346",
+  "title": "Financial Economics",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "ECON208, ECON209",
+  "prerequisites": [
+   "ECON208",
+   "ECON209"
+  ],
+  "source_tab": "Economics",
+  "source_row": 22
+ },
+ {
+  "minor": "Economics",
+  "batch": "2025",
+  "course_code": "ECON301",
+  "title": "International Economics",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "ECON201, ECON202",
+  "prerequisites": [
+   "ECON201",
+   "ECON202"
+  ],
+  "source_tab": "Economics",
+  "source_row": 23
+ },
+ {
+  "minor": "Economics",
+  "batch": "2026",
+  "course_code": "ECON208",
+  "title": "Microeconomics I",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Economics",
+  "source_row": 25
+ },
+ {
+  "minor": "Economics",
+  "batch": "2026",
+  "course_code": "ECON209",
+  "title": "Macroeconomics I",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Economics",
+  "source_row": 26
+ },
+ {
+  "minor": "Economics",
+  "batch": "2026",
+  "course_code": "ECON316",
+  "title": "Digital Economics",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "ECON201",
+  "prerequisites": [
+   "ECON201"
+  ],
+  "source_tab": "Economics",
+  "source_row": 27
+ },
+ {
+  "minor": "Economics",
+  "batch": "2026",
+  "course_code": "ECON315",
+  "title": "Indian Economy",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "ECON201, ECON209",
+  "prerequisites": [
+   "ECON201",
+   "ECON209"
+  ],
+  "source_tab": "Economics",
+  "source_row": 28
+ },
+ {
+  "minor": "Economics",
+  "batch": "2026",
+  "course_code": "ECON346",
+  "title": "Financial Economics",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "ECON208, ECON209",
+  "prerequisites": [
+   "ECON208",
+   "ECON209"
+  ],
+  "source_tab": "Economics",
+  "source_row": 29
+ },
+ {
+  "minor": "Economics",
+  "batch": "2026",
+  "course_code": "ECON301",
+  "title": "International Economics",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "ECON201, ECON202",
+  "prerequisites": [
+   "ECON201",
+   "ECON202"
+  ],
+  "source_tab": "Economics",
+  "source_row": 30
+ },
+ {
+  "minor": "Finance",
+  "batch": "2022",
+  "course_code": "Code not known (DON'T KNOW in source)",
+  "title": "Financial and Management Accounting (FAMA)",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 3
+ },
+ {
+  "minor": "Finance",
+  "batch": "2022",
+  "course_code": "FINA333",
+  "title": "Fiancial Institutions Markets and Services",
+  "credits": 3,
+  "semester": 4,
+  "prerequisites_raw": "MGMT208 Introduction to Financial Accounting",
+  "prerequisites": [
+   "MGMT208"
+  ],
+  "source_tab": "Finance",
+  "source_row": 4
+ },
+ {
+  "minor": "Finance",
+  "batch": "2022",
+  "course_code": "MGMT207",
+  "title": "Corporate Finance",
+  "credits": 3,
+  "semester": 5,
+  "prerequisites_raw": "FAMA Financial and management accounting",
+  "prerequisites": [
+   "FAMA Financial and management accounting"
+  ],
+  "source_tab": "Finance",
+  "source_row": 5
+ },
+ {
+  "minor": "Finance",
+  "batch": "2022",
+  "course_code": "MGMT209",
+  "title": "Financial Statement Anaylsis",
+  "credits": 3,
+  "semester": 6,
+  "prerequisites_raw": "FINA201 Introduction to Financial Accounting",
+  "prerequisites": [
+   "FINA201"
+  ],
+  "source_tab": "Finance",
+  "source_row": 6
+ },
+ {
+  "minor": "Finance",
+  "batch": "2022",
+  "course_code": "MGMT210",
+  "title": "Basics of INVESTMENT MANAGEMENT",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "FINA333 Financial Instituation, Markets and Services",
+  "prerequisites": [
+   "FINA333"
+  ],
+  "source_tab": "Finance",
+  "source_row": 7
+ },
+ {
+  "minor": "Finance",
+  "batch": "2022",
+  "course_code": "MGMT213",
+  "title": "Introduction To Fintech",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "FINA333 Financial Instituation, Markets and Services",
+  "prerequisites": [
+   "FINA333"
+  ],
+  "source_tab": "Finance",
+  "source_row": 8
+ },
+ {
+  "minor": "Finance",
+  "batch": "2022",
+  "course_code": "MGMT323",
+  "title": "Basics of Startup Finance",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "MGMT207 Corporate Finance",
+  "prerequisites": [
+   "MGMT207"
+  ],
+  "source_tab": "Finance",
+  "source_row": 9
+ },
+ {
+  "minor": "Finance",
+  "batch": "2022",
+  "course_code": "MGMT203",
+  "title": "Business Strategy Simulation",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "MKMT201/ MGMT207/ FINA201 Marketing Management/ Corporate Finance/ Financial and Management Accounting",
+  "prerequisites": [
+   "MKMT201",
+   "MGMT207",
+   "FINA201"
+  ],
+  "source_tab": "Finance",
+  "source_row": 10
+ },
+ {
+  "minor": "Finance",
+  "batch": "2023",
+  "course_code": "MGMT208",
+  "title": "Introduction to Financial Accounting",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 14
+ },
+ {
+  "minor": "Finance",
+  "batch": "2023",
+  "course_code": "FINA333",
+  "title": "Fiancial Institutions Markets and Services",
+  "credits": 3,
+  "semester": 4,
+  "prerequisites_raw": "MGMT208 Introduction to Financial Accounting",
+  "prerequisites": [
+   "MGMT208"
+  ],
+  "source_tab": "Finance",
+  "source_row": 15
+ },
+ {
+  "minor": "Finance",
+  "batch": "2023",
+  "course_code": "MGMT207",
+  "title": "Corporate Finance",
+  "credits": 3,
+  "semester": 5,
+  "prerequisites_raw": "MGMT208 Introduction to Financial Accounting",
+  "prerequisites": [
+   "MGMT208"
+  ],
+  "source_tab": "Finance",
+  "source_row": 16
+ },
+ {
+  "minor": "Finance",
+  "batch": "2023",
+  "course_code": "MGMT209",
+  "title": "Finacial Statement Analysis",
+  "credits": 3,
+  "semester": 6,
+  "prerequisites_raw": "MGMT208 Introduction to Financial Accounting",
+  "prerequisites": [
+   "MGMT208"
+  ],
+  "source_tab": "Finance",
+  "source_row": 17
+ },
+ {
+  "minor": "Finance",
+  "batch": "2023",
+  "course_code": "MGMT210",
+  "title": "Basics of Investment Management",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "FINA333 Fiancial Institutions Markets and Services",
+  "prerequisites": [
+   "FINA333"
+  ],
+  "source_tab": "Finance",
+  "source_row": 18
+ },
+ {
+  "minor": "Finance",
+  "batch": "2023",
+  "course_code": "MGMT323",
+  "title": "Basics of Startup Finance",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "MGMT207 Corporate Finance",
+  "prerequisites": [
+   "MGMT207"
+  ],
+  "source_tab": "Finance",
+  "source_row": 19
+ },
+ {
+  "minor": "Finance",
+  "batch": "2023",
+  "course_code": "MGMT213",
+  "title": "Introduction To Fintech",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 20
+ },
+ {
+  "minor": "Finance",
+  "batch": "2023",
+  "course_code": "MGMT307",
+  "title": "Strategy & Decision Making",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 21
+ },
+ {
+  "minor": "Finance",
+  "batch": "2024",
+  "course_code": "MGMT208",
+  "title": "Introduction to Financial Accounting",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 25
+ },
+ {
+  "minor": "Finance",
+  "batch": "2024",
+  "course_code": "FINA333",
+  "title": "Fiancial Institutions Markets and Services",
+  "credits": 3,
+  "semester": 4,
+  "prerequisites_raw": "MGMT208 Introduction to Financial Accounting",
+  "prerequisites": [
+   "MGMT208"
+  ],
+  "source_tab": "Finance",
+  "source_row": 26
+ },
+ {
+  "minor": "Finance",
+  "batch": "2024",
+  "course_code": "MGMT207",
+  "title": "Corporate Finance",
+  "credits": 3,
+  "semester": 5,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 27
+ },
+ {
+  "minor": "Finance",
+  "batch": "2024",
+  "course_code": "MGMT209",
+  "title": "Finacial Statement Analysis",
+  "credits": 3,
+  "semester": 5,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 28
+ },
+ {
+  "minor": "Finance",
+  "batch": "2024",
+  "course_code": "MGMT210",
+  "title": "Basics of Investment Management",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "FINA333 Fiancial Institutions Markets and Services",
+  "prerequisites": [
+   "FINA333"
+  ],
+  "source_tab": "Finance",
+  "source_row": 29
+ },
+ {
+  "minor": "Finance",
+  "batch": "2024",
+  "course_code": "MGMT323",
+  "title": "Basics of Startup Finance",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "MGMT207 Corporate Finance",
+  "prerequisites": [
+   "MGMT207"
+  ],
+  "source_tab": "Finance",
+  "source_row": 30
+ },
+ {
+  "minor": "Finance",
+  "batch": "2024",
+  "course_code": "MGMT213",
+  "title": "Introduction To Fintech",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 31
+ },
+ {
+  "minor": "Finance",
+  "batch": "2024",
+  "course_code": "MGMT307",
+  "title": "Strategy & Decision Making",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 32
+ },
+ {
+  "minor": "Finance",
+  "batch": "2025",
+  "course_code": "MGMT330",
+  "title": "Introduction to Financial Accounting (R )",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 36
+ },
+ {
+  "minor": "Finance",
+  "batch": "2025",
+  "course_code": "NEW (code not assigned)",
+  "title": "Financial Institutions Markets & Services with Fintech (GIVE NEW NAME)",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 37
+ },
+ {
+  "minor": "Finance",
+  "batch": "2025",
+  "course_code": "NEW (code not assigned)",
+  "title": "Corporate Finance New Name",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 38
+ },
+ {
+  "minor": "Finance",
+  "batch": "2025",
+  "course_code": "MGMT210",
+  "title": "Basics of Investment Management",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "FINA333 Fiancial Institutions Markets and Services",
+  "prerequisites": [
+   "FINA333"
+  ],
+  "source_tab": "Finance",
+  "source_row": 39
+ },
+ {
+  "minor": "Finance",
+  "batch": "2025",
+  "course_code": "MGMT213",
+  "title": "Introduction To Fintech",
+  "credits": 2,
+  "semester": 6,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 40
+ },
+ {
+  "minor": "Finance",
+  "batch": "2025",
+  "course_code": "MGMT323",
+  "title": "Basics of Startup Finance",
+  "credits": 4,
+  "semester": 7,
+  "prerequisites_raw": "MGMT207 Corporate Finance",
+  "prerequisites": [
+   "MGMT207"
+  ],
+  "source_tab": "Finance",
+  "source_row": 41
+ },
+ {
+  "minor": "Finance",
+  "batch": "2025",
+  "course_code": "TBD",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 2,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 42
+ },
+ {
+  "minor": "Finance",
+  "batch": "2026",
+  "course_code": "MGMT330",
+  "title": "Introduction to Financial Accounting (R)",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 46
+ },
+ {
+  "minor": "Finance",
+  "batch": "2026",
+  "course_code": "TBD",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 20,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Finance",
+  "source_row": 47
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2022",
+  "course_code": "Code not known (DON'T KNOW in source)",
+  "title": "Marketing Management",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 4
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2022",
+  "course_code": "MGMT302",
+  "title": "Digital and Ecommerce Marketing",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 5
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2022",
+  "course_code": "MGMT304",
+  "title": "Integrated Marketing Communications",
+  "credits": 3,
+  "semester": 5,
+  "prerequisites_raw": "MKTG201 Marketing management",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 6
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2022",
+  "course_code": "MGMT314",
+  "title": "Sales and distribution management",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "MKTG201 Marketing management",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 7
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2022",
+  "course_code": "MGMT320",
+  "title": "Marketing Analytics",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 8
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2022",
+  "course_code": "MGMT305",
+  "title": "Services Marketing",
+  "credits": 3,
+  "semester": 7,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 9
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2022",
+  "course_code": "MGMT211",
+  "title": "Brand Management",
+  "credits": 3,
+  "semester": 7,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 10
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2022",
+  "course_code": "MGMT203",
+  "title": "Business Strategy Simulation",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "MKMT201/ MGMT207/ FINA201 Marketing Management/ Corporate Finance/ Financial and Management Accounting",
+  "prerequisites": [
+   "MKMT201",
+   "MGMT207",
+   "FINA201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 11
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2023",
+  "course_code": "MKTG201",
+  "title": "Marketing Management",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 15
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2023",
+  "course_code": "MGMT302",
+  "title": "Digital and Ecommerce Marketing",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 16
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2023",
+  "course_code": "MGMT304",
+  "title": "Integrated Marketing Communications",
+  "credits": 3,
+  "semester": 5,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 17
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2023",
+  "course_code": "MGMT314",
+  "title": "Sales and Distribution Management",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 18
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2023",
+  "course_code": "MGMT305",
+  "title": "Services Marketing",
+  "credits": 3,
+  "semester": 6,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 19
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2023",
+  "course_code": "MGMT211",
+  "title": "Brand Management",
+  "credits": 3,
+  "semester": 6,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 20
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2023",
+  "course_code": "MGMT320",
+  "title": "Marketing Analytics",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 21
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2023",
+  "course_code": "MGMT307",
+  "title": "Strategy & Decision Making",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 22
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2024",
+  "course_code": "MKTG201",
+  "title": "Marketing Management",
+  "credits": 3,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 26
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2024",
+  "course_code": "MGMT302",
+  "title": "Digital and Ecommerce Marketing",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 27
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2024",
+  "course_code": "MGMT305",
+  "title": "Services Marketing",
+  "credits": 3,
+  "semester": 5,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 28
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2024",
+  "course_code": "MGMT304",
+  "title": "Integrated Marketing Communications",
+  "credits": 3,
+  "semester": 5,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 29
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2024",
+  "course_code": "MGMT314",
+  "title": "Sales and Distribution Management",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 30
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2024",
+  "course_code": "MGMT211",
+  "title": "Brand Management",
+  "credits": 3,
+  "semester": 6,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 31
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2024",
+  "course_code": "MGMT320",
+  "title": "Marketing Analytics",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 32
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2024",
+  "course_code": "MGMT307",
+  "title": "Strategy & Decision Making",
+  "credits": 2,
+  "semester": 7,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 33
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2025",
+  "course_code": "MGMT328",
+  "title": "Foundation of Marketing Management",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 37
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2025",
+  "course_code": "MGMT302",
+  "title": "Digital and Ecommerce Marketing",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 38
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2025",
+  "course_code": "MGMT304",
+  "title": "Integrated Marketing Communications",
+  "credits": 3,
+  "semester": 5,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 39
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2025",
+  "course_code": "NEW (code not assigned)",
+  "title": "Services Marketing",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "TBD",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 40
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2025",
+  "course_code": "MGMT314",
+  "title": "Sales and Distribution Management",
+  "credits": 4,
+  "semester": 6,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Marketing",
+  "source_row": 41
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2025",
+  "course_code": "TBD",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 5,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 42
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2026",
+  "course_code": "MGMT328",
+  "title": "Foundations of Marketing Management",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 46
+ },
+ {
+  "minor": "Marketing",
+  "batch": "2026",
+  "course_code": "TBD",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 20,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Marketing",
+  "source_row": 47
+ },
+ {
+  "minor": "Start-up",
+  "batch": "2024",
+  "course_code": "MGMT326",
+  "title": "Product Development",
+  "credits": 4,
+  "semester": 4,
+  "prerequisites_raw": "MKTG201 Introduction to digital business",
+  "prerequisites": [
+   "MKTG201"
+  ],
+  "source_tab": "Start-up",
+  "source_row": 3
+ },
+ {
+  "minor": "Start-up",
+  "batch": "2024",
+  "course_code": "MGMT336",
+  "title": "Design Thinking for Entrepreneurship",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Start-up",
+  "source_row": 4
+ },
+ {
+  "minor": "Start-up",
+  "batch": "2024",
+  "course_code": "TBD",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 16,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Start-up",
+  "source_row": 5
+ },
+ {
+  "minor": "Start-up",
+  "batch": "2025",
+  "course_code": "MGMT330",
+  "title": "Introduction to Financial Accounting (R )",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Start-up",
+  "source_row": 9
+ },
+ {
+  "minor": "Start-up",
+  "batch": "2025",
+  "course_code": "MGMT328",
+  "title": "Foundation of Marketing Management",
+  "credits": 4,
+  "semester": 3,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Start-up",
+  "source_row": 10
+ },
+ {
+  "minor": "Start-up",
+  "batch": "2025",
+  "course_code": "MGMT336",
+  "title": "Design Thinking for Entrepreneurship",
+  "credits": 4,
+  "semester": 5,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Start-up",
+  "source_row": 11
+ },
+ {
+  "minor": "Start-up",
+  "batch": "2025",
+  "course_code": "MGMT213",
+  "title": "Introduction To Fintech",
+  "credits": 2,
+  "semester": 6,
+  "prerequisites_raw": "Nil",
+  "prerequisites": [],
+  "source_tab": "Start-up",
+  "source_row": 12
+ },
+ {
+  "minor": "Start-up",
+  "batch": "2025",
+  "course_code": "TBD",
+  "title": "Courses not yet decided (TBA/TBD in source)",
+  "credits": 10,
+  "semester": null,
+  "prerequisites_raw": "",
+  "prerequisites": [],
+  "source_tab": "Start-up",
+  "source_row": 13
+ }
+]

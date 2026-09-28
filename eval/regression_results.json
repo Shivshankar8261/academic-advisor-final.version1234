@@ -1,0 +1,20 @@
+[
+ {
+  "id": "X03",
+  "query": "How many University Core credits does the 2026 batch need?",
+  "expected": "Conflict inside the source file: the 2026 semester spread says 24 credits, the Struct_2026_DS summary says 18.",
+  "label": "correct",
+  "source_correct": true,
+  "provider": "gemini:gemini-flash-lite-latest",
+  "answer": "For the 2026 batch, the University Core basket requires a minimum of 24 credits based on the 'Fixed Min' column of the spreadsheet tab 'Sem_Spread_DS_2026'. However, please note that there is an inconsistency in the source: the courses placed in this basket add up to only 18 credits, and the summary tab 'Struct_2026_DS' also gives 18 credits for this basket.",
+  "sources": [
+   "Semester_Spread_Structures_Sept_2026.xlsx | tab 'Sem_Spread_DS_2026', row 3 (Univ Core basket)"
+  ],
+  "flags": {
+   "insufficient_information": false,
+   "conflict_detected": true,
+   "needs_clarification": false,
+   "grounded": true
+  }
+ }
+]

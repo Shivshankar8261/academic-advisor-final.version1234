@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+backend/.venv/
+backend/.env
+# backend/chroma_db/ is committed on purpose: the deployed backend needs the vector index
+# (rebuild it with: cd backend && python extract_data.py && python ingest.py)
+
+# Node (any folder, e.g. frontend/ and docs/)
+node_modules/
+.next/
+*.tsbuildinfo
+frontend/.env.local
+
+# OS
+.DS_Store
+
+# Office lock files and iCloud conflict copies ("file 2.json")
+~$*
+* [0-9].*
+* [0-9]
+
+# never commit secrets; example files are fine
+.env
+.env.*
+!.env.example
+!.env.*.example
