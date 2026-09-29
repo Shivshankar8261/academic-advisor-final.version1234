@@ -2,7 +2,7 @@
 Step 1 of the data pipeline: convert the university's RAW documents (data/raw/)
 into clean, structured, citable files (data/processed/).
 
-    raw PDF / XLSX  ──►  extract_data.py  ──►  processed .md / .json  ──►  ingest.py  ──►  ChromaDB
+    raw PDF / XLSX  ──►  extract_data.py  ──►  processed .md / .json  ──►  ingest.py  ──►  backend/index
 
 Nothing here is synthetic: every fact comes from the four files supplied with the
 assignment. The only additions are clearly labelled:
