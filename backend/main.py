@@ -12,7 +12,7 @@ from schemas import ChatRequest, ChatResponse
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
-    # Warm-up: load the embedding model, open ChromaDB and create the LLM clients once at startup,
+    # Warm-up: load the embedding model, load the chunk index and create the LLM clients once at startup,
     # so the first student request does not pay ~5 s of model-loading latency.
     retrieve("warm up")
     llm.warm_up()

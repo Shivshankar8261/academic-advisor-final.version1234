@@ -3,8 +3,8 @@ __pycache__/
 *.pyc
 backend/.venv/
 backend/.env
-# backend/chroma_db/ is committed on purpose: the deployed backend needs the vector index
-# (rebuild it with: cd backend && python extract_data.py && python ingest.py)
+# backend/index/ and backend/models/ are committed on purpose: the deployed backend needs the vector index
+# and the embedding model (rebuild the index with: cd backend && python extract_data.py && python ingest.py)
 
 # Node (any folder, e.g. frontend/ and docs/)
 node_modules/
@@ -25,3 +25,6 @@ frontend/.env.local
 .env.*
 !.env.example
 !.env.*.example
+
+# Vercel CLI link / build output
+.vercel

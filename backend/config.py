@@ -14,9 +14,10 @@ SYNTHETIC_DIR = DATA_DIR / "synthetic"
 STUDENT_PROFILES = SYNTHETIC_DIR / "student_profiles.json"
 COURSES_DB = PROCESSED_DIR / "courses.db"   # structured store built by extract_data.py
 
-CHROMA_DIR = ROOT / "backend" / "chroma_db"
-COLLECTION = "vu_academic_docs"
+# Vector index built by ingest.py: embeddings.npy (one L2-normalised row per chunk) + chunks.json (text + metadata)
+INDEX_DIR = ROOT / "backend" / "index"
 EMBED_MODEL = "all-MiniLM-L6-v2"
+EMBED_MODEL_DIR = ROOT / "backend" / "models" / EMBED_MODEL  # official ONNX export + tokenizer (see embedder.py)
 TOP_K = int(os.getenv("TOP_K", "5"))
 # Below this cosine similarity the best document chunk is treated as "nothing relevant retrieved"
 # (calibrated: in-scope eval questions score >= 0.45, off-topic ones 0.13-0.38; see eval/README note).

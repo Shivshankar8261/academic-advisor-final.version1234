@@ -5,7 +5,7 @@ university's own documents**, cites its sources, asks a clarifying question when
 student, and says so when the documents don't contain the answer.
 
 ```
-data/raw (4 university files) ─► extract_data.py ─► data/processed (md/json) ─► ingest.py ─► ChromaDB
+data/raw (4 university files) ─► extract_data.py ─► data/processed (md/json) ─► ingest.py ─► backend/index
                                                                                               │
 Next.js chat UI ──► FastAPI /chat ──► advisor.py ──► retrieval (top-k + exact course lookup) ─┘
                                           │
@@ -35,7 +35,7 @@ pip install -r requirements.txt
 cp .env.example .env            # then put GROQ_API_KEY and GEMINI_API_KEY in .env
 python extract_data.py          # raw PDFs/XLSX -> data/processed   (already done; re-run if raw files change)
 python make_profiles.py         # synthetic profiles                 (already done)
-python ingest.py                # chunk + embed + store in ChromaDB (~30 s)
+python ingest.py                # chunk + embed (MiniLM, ONNX) -> backend/index
 uvicorn main:app --reload --port 8000
 ```
 
@@ -66,7 +66,7 @@ npm run dev                         # http://localhost:3000
   re-parsing or retries.
 - **Fallback chain** `gpt-oss-120b -> gpt-oss-20b -> gemini-flash-lite-latest -> gemini-3.5-flash-lite`, no SDK
   retries; a model that returns 429 is put on cool-down for its retry-after period and skipped instantly.
-- **Retrieval** is local (MiniLM + ChromaDB, ~30-150 ms); the embedding model, ChromaDB and API clients are warmed
+- **Retrieval** is local (MiniLM on ONNX Runtime + exact numpy search); the embedding model, index and API clients are warmed
   up at server start.
 - **Compact prompts**: profile rendered as one line per course, duplicate labels stripped, `max_tokens=1000`
   (Groq reserves max_tokens against its 8k tokens/minute free-tier budget).

@@ -1,7 +1,7 @@
 """
 Step 2 of the data pipeline: chunk the processed documents, embed them with
-sentence-transformers (all-MiniLM-L6-v2, runs locally, no API cost) and store them in a
-persistent ChromaDB collection.
+all-MiniLM-L6-v2 (ONNX, runs locally, no API cost - see embedder.py) and write the index to
+backend/index/ (embeddings.npy + chunks.json).
 
 Chunking strategy
   * Markdown documents are split on headings (## / ###), so a chunk never mixes two clauses.
@@ -16,10 +16,10 @@ Run:  python ingest.py
 import json
 import re
 
-import chromadb
-from sentence_transformers import SentenceTransformer
+import numpy as np
 
-from config import CHROMA_DIR, COLLECTION, EMBED_MODEL, PROCESSED_DIR
+import embedder
+from config import INDEX_DIR, PROCESSED_DIR
 
 MAX_CHARS = 1000
 
@@ -129,22 +129,17 @@ def build_chunks() -> list[dict]:
 
 def main():
     chunks = build_chunks()
-    model = SentenceTransformer(EMBED_MODEL, device="cpu")
-    embeddings = model.encode([c["text"] for c in chunks], show_progress_bar=True, normalize_embeddings=True)
-    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    try:
-        client.delete_collection(COLLECTION)
-    except Exception:
-        pass
-    col = client.create_collection(COLLECTION, metadata={"hnsw:space": "cosine"})
-    col.add(ids=[f"chunk-{i}" for i in range(len(chunks))], documents=[c["text"] for c in chunks],
-            embeddings=embeddings.tolist(),
-            metadatas=[{"source_file": c["source_file"], "section": c["section"], "processed_file": c["processed_file"],
-                        "course_code": c.get("course_code", ""), "pages": c.get("pages", "")} for c in chunks])
+    embeddings = embedder.encode([c["text"] for c in chunks])
+    INDEX_DIR.mkdir(exist_ok=True)
+    np.save(INDEX_DIR / "embeddings.npy", embeddings)
+    records = [{"text": c["text"], "source_file": c["source_file"], "section": c["section"],
+                "processed_file": c["processed_file"], "course_code": c.get("course_code", ""),
+                "pages": c.get("pages", "")} for c in chunks]
+    (INDEX_DIR / "chunks.json").write_text(json.dumps(records, ensure_ascii=False, indent=0))
     by_file = {}
     for c in chunks:
         by_file[c["processed_file"]] = by_file.get(c["processed_file"], 0) + 1
-    print(f"Stored {col.count()} chunks in ChromaDB at {CHROMA_DIR}: {by_file}")
+    print(f"Stored {len(chunks)} chunks in {INDEX_DIR}: {by_file}")
 
 
 if __name__ == "__main__":
