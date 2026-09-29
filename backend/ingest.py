@@ -11,15 +11,16 @@ Chunking strategy
 Every chunk carries metadata used for citations: source_file (the ORIGINAL university document)
 and section (heading path, e.g. "Academic Regulations > 7. Attendance Requirements (7.3)").
 
-Run:  python ingest.py
+Run:  python ingest.py   (re-run after extract_data.py or make_profiles.py so backend/index/data stays in sync)
 """
 import json
 import re
+import shutil
 
 import numpy as np
 
 import embedder
-from config import INDEX_DIR, PROCESSED_DIR
+from config import DATA_DIR, INDEX_DIR, PROCESSED_DIR, RUNTIME_DATA_FILES
 
 MAX_CHARS = 1000
 
@@ -136,6 +137,9 @@ def main():
                 "processed_file": c["processed_file"], "course_code": c.get("course_code", ""),
                 "pages": c.get("pages", "")} for c in chunks]
     (INDEX_DIR / "chunks.json").write_text(json.dumps(records, ensure_ascii=False, indent=0))
+    for rel in RUNTIME_DATA_FILES:  # the deployed API reads these (see config.INDEX_DIR)
+        (INDEX_DIR / "data" / rel).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(DATA_DIR / rel, INDEX_DIR / "data" / rel)
     by_file = {}
     for c in chunks:
         by_file[c["processed_file"]] = by_file.get(c["processed_file"], 0) + 1

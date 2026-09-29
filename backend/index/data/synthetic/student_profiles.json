@@ -1,0 +1,1774 @@
+[
+ {
+  "student_id": "SYN-001",
+  "programme": "B.Tech (Data Science curriculum), 2024 batch",
+  "batch": "2024",
+  "current_semester": 5,
+  "completed_credits": 91,
+  "cgpa": 5.61,
+  "minor": null,
+  "courses_completed": [
+   {
+    "code": "UCOR106",
+    "title": "Learning to Learn",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "UCOR105",
+    "title": "Communication and Leadership Skills",
+    "credits": 3,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "UCOR205",
+    "title": "Socio Cultural Perspectives on Indian Life-SPIL",
+    "credits": 3,
+    "semester": 3,
+    "grade": "B"
+   },
+   {
+    "code": "UCOR310",
+    "title": "Critical Thinking",
+    "credits": 3,
+    "semester": 4,
+    "grade": "B"
+   },
+   {
+    "code": "UCOR104",
+    "title": "Problem Solving with Design Thinking",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "UCOR701",
+    "title": "Community Engagement & Service Experience",
+    "credits": 1,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "LAWS101",
+    "title": "Fundamentals of Indian Constitution and Human Rights",
+    "credits": 2,
+    "semester": 3,
+    "grade": "B"
+   },
+   {
+    "code": "UCOR102",
+    "title": "Introduction to writing",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "MATH203",
+    "title": "Probability and Statistics",
+    "credits": 4,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "MATH201",
+    "title": "Calculus",
+    "credits": 3,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "MTSC781",
+    "title": "Sustainable Cities and Communities",
+    "credits": 3,
+    "semester": 3,
+    "grade": "B"
+   },
+   {
+    "code": "SLAD206",
+    "title": "Human Values in Work and Life",
+    "credits": 2,
+    "semester": 4,
+    "grade": "B"
+   },
+   {
+    "code": "COMP132",
+    "title": "Design Workshop",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "MTSC211",
+    "title": "Sustainable Smart Materials",
+    "credits": 3,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "MATH204",
+    "title": "Linear Algebra",
+    "credits": 3,
+    "semester": 3,
+    "grade": "B+"
+   },
+   {
+    "code": "MTSC111",
+    "title": "Materials for Smart Devices",
+    "credits": 3,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "ENGL210",
+    "title": "Academic Writing",
+    "credits": 2,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "PSYC101/ECON101",
+    "title": "Introduction to Psychology/Introduction to Economics",
+    "credits": 3,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "COMP403",
+    "title": "Cloud Computing",
+    "credits": 3,
+    "semester": 4,
+    "grade": "B"
+   },
+   {
+    "code": "DATA103",
+    "title": "Programming in Python",
+    "credits": 3,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "COMP203",
+    "title": "Analysis of Algorithms",
+    "credits": 4,
+    "semester": 3,
+    "grade": "B"
+   },
+   {
+    "code": "COMP209",
+    "title": "Databases Management",
+    "credits": 4,
+    "semester": 4,
+    "grade": "B"
+   },
+   {
+    "code": "DATA132",
+    "title": "Data visualization and Storytelling",
+    "credits": 3,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "COMP202",
+    "title": "Theoretical Computer Science",
+    "credits": 4,
+    "semester": 3,
+    "grade": "B"
+   },
+   {
+    "code": "COMP204",
+    "title": "Digital Design and Computer Organization",
+    "credits": 4,
+    "semester": 4,
+    "grade": "B"
+   },
+   {
+    "code": "COMP301",
+    "title": "Artificial Intelligence",
+    "credits": 4,
+    "semester": 4,
+    "grade": "B"
+   },
+   {
+    "code": "DATA201",
+    "title": "Foundations to Data Science",
+    "credits": 3,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "DATA202",
+    "title": "Exploratory Data Analysis",
+    "credits": 3,
+    "semester": 3,
+    "grade": "B"
+   },
+   {
+    "code": "MATH206",
+    "title": "Advanced Statistical Analysis and Research Methods with R",
+    "credits": 2,
+    "semester": 3,
+    "grade": "B"
+   },
+   {
+    "code": "OPEN-ELECTIVE",
+    "title": "Minor/Open (#1 Course)",
+    "credits": 4,
+    "semester": 3,
+    "grade": "B"
+   },
+   {
+    "code": "OPEN-ELECTIVE",
+    "title": "Minor/Open (#2 Course)",
+    "credits": 4,
+    "semester": 4,
+    "grade": "B"
+   }
+  ],
+  "courses_failed": [
+   {
+    "code": "COMP201",
+    "title": "Data Structures",
+    "credits": 4,
+    "semester": 2,
+    "grade": "F",
+    "attempts": 1
+   },
+   {
+    "code": "MATH301",
+    "title": "Optimization Techniques for Data Science",
+    "credits": 4,
+    "semester": 4,
+    "grade": "F",
+    "attempts": 1
+   }
+  ],
+  "scenario": "Failed Data Structures and Optimization Techniques; wants Machine Learning (needs MATH301)."
+ },
+ {
+  "student_id": "SYN-002",
+  "programme": "B.Tech (Data Science curriculum), 2023 batch",
+  "batch": "2023",
+  "current_semester": 7,
+  "completed_credits": 148,
+  "cgpa": 8.95,
+  "minor": null,
+  "courses_completed": [
+   {
+    "code": "UCOR103",
+    "title": "Communication Skills",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A+"
+   },
+   {
+    "code": "UCOR203",
+    "title": "Leadership and Teamwork Skills",
+    "credits": 2,
+    "semester": 2,
+    "grade": "A+"
+   },
+   {
+    "code": "UCOR205",
+    "title": "Socio Cultural Perspectives on Indian Life-SPIL",
+    "credits": 3,
+    "semester": 3,
+    "grade": "A+"
+   },
+   {
+    "code": "UCOR104",
+    "title": "Problem Solving with Design Thinking",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A+"
+   },
+   {
+    "code": "UCOR701",
+    "title": "Community Engagement & Service Experience",
+    "credits": 1,
+    "semester": 2,
+    "grade": "A+"
+   },
+   {
+    "code": "UCOR102",
+    "title": "Introduction to writing",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A+"
+   },
+   {
+    "code": "UCOR106",
+    "title": "Learning to Learn",
+    "credits": 2,
+    "semester": 2,
+    "grade": "A+"
+   },
+   {
+    "code": "UCOR201",
+    "title": "Introduction to Epistemology",
+    "credits": 2,
+    "semester": 3,
+    "grade": "A+"
+   },
+   {
+    "code": "UCOR210",
+    "title": "Critical Thinking",
+    "credits": 2,
+    "semester": 4,
+    "grade": "A+"
+   },
+   {
+    "code": "MATH202",
+    "title": "Probability Theory",
+    "credits": 3,
+    "semester": 1,
+    "grade": "A+"
+   },
+   {
+    "code": "MATH201",
+    "title": "Calculus",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A+"
+   },
+   {
+    "code": "MTSC781",
+    "title": "Sustainable Cities and Communities",
+    "credits": 3,
+    "semester": 3,
+    "grade": "A+"
+   },
+   {
+    "code": "SLAD206",
+    "title": "Human Values in Work and Life",
+    "credits": 2,
+    "semester": 4,
+    "grade": "A+"
+   },
+   {
+    "code": "LANG101",
+    "title": "Language",
+    "credits": 3,
+    "semester": 5,
+    "grade": "A+"
+   },
+   {
+    "code": "COMP132",
+    "title": "Design Workshop",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A+"
+   },
+   {
+    "code": "MTSC211",
+    "title": "Sustainable Smart Materials",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A+"
+   },
+   {
+    "code": "MATH204",
+    "title": "Linear Algebra",
+    "credits": 3,
+    "semester": 3,
+    "grade": "A+"
+   },
+   {
+    "code": "SLAD207",
+    "title": "Foundation Seminar",
+    "credits": 1,
+    "semester": 4,
+    "grade": "A+"
+   },
+   {
+    "code": "MTSC111",
+    "title": "Materials for Smart Devices",
+    "credits": 3,
+    "semester": 1,
+    "grade": "A+"
+   },
+   {
+    "code": "ENGL201",
+    "title": "Academic Writing",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A+"
+   },
+   {
+    "code": "PSYC101/ECON101",
+    "title": "Introduction to Psychology/Introduction to Economics",
+    "credits": 3,
+    "semester": 1,
+    "grade": "A+"
+   },
+   {
+    "code": "DATA131",
+    "title": "Visualizing Data for Story Telling",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A+"
+   },
+   {
+    "code": "COMP201",
+    "title": "Data Structures",
+    "credits": 4,
+    "semester": 2,
+    "grade": "A+"
+   },
+   {
+    "code": "COMP203",
+    "title": "Analysis of Algorithms",
+    "credits": 4,
+    "semester": 3,
+    "grade": "A+"
+   },
+   {
+    "code": "COMP209",
+    "title": "Databases Management",
+    "credits": 4,
+    "semester": 4,
+    "grade": "A+"
+   },
+   {
+    "code": "COMP208",
+    "title": "Networks",
+    "credits": 4,
+    "semester": 5,
+    "grade": "A"
+   },
+   {
+    "code": "COMP302",
+    "title": "Internet of Things",
+    "credits": 2,
+    "semester": 6,
+    "grade": "A+"
+   },
+   {
+    "code": "MATH205",
+    "title": "Statistics with R",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A+"
+   },
+   {
+    "code": "COMP202",
+    "title": "Theoretical Computer Science",
+    "credits": 4,
+    "semester": 3,
+    "grade": "A"
+   },
+   {
+    "code": "COMP204",
+    "title": "Digital Design and Computer Organization",
+    "credits": 4,
+    "semester": 4,
+    "grade": "A+"
+   },
+   {
+    "code": "COMP207",
+    "title": "Operating Systems",
+    "credits": 3,
+    "semester": 5,
+    "grade": "A+"
+   },
+   {
+    "code": "MATH207",
+    "title": "Research Methodology",
+    "credits": 3,
+    "semester": 3,
+    "grade": "A+"
+   },
+   {
+    "code": "COMP301",
+    "title": "Artificial Intelligence",
+    "credits": 4,
+    "semester": 4,
+    "grade": "A+"
+   },
+   {
+    "code": "COMP206",
+    "title": "Microprocessors and Computer Architecture",
+    "credits": 4,
+    "semester": 5,
+    "grade": "A+"
+   },
+   {
+    "code": "COMP205",
+    "title": "Object Oriented Programming",
+    "credits": 3,
+    "semester": 4,
+    "grade": "A+"
+   },
+   {
+    "code": "DATA201",
+    "title": "Foundations to Data Science",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A+"
+   },
+   {
+    "code": "DATA202",
+    "title": "Exploratory Data Analysis",
+    "credits": 3,
+    "semester": 3,
+    "grade": "A+"
+   },
+   {
+    "code": "MATH301",
+    "title": "Optimization Techniques for Data Science",
+    "credits": 4,
+    "semester": 4,
+    "grade": "A+"
+   },
+   {
+    "code": "DATA301",
+    "title": "Machine Learning",
+    "credits": 4,
+    "semester": 5,
+    "grade": "A+"
+   },
+   {
+    "code": "DATA302",
+    "title": "Deep Learning",
+    "credits": 4,
+    "semester": 6,
+    "grade": "A+"
+   },
+   {
+    "code": "DATA303",
+    "title": "MLOps & Model Deployment",
+    "credits": 2,
+    "semester": 6,
+    "grade": "A+"
+   },
+   {
+    "code": "MATH401/COMP401",
+    "title": "SPT-Course #1-Probabilistic Graph Models LTP: 3-0-2 /Web Framework LTP: 2-0-4",
+    "credits": 4,
+    "semester": 5,
+    "grade": "A+"
+   },
+   {
+    "code": "DATA405/DATA406",
+    "title": "SPT-Course #2-Reinforcement Learning/Big Data Framework",
+    "credits": 4,
+    "semester": 6,
+    "grade": "A+"
+   },
+   {
+    "code": "OPEN-ELECTIVE",
+    "title": "Minor/Open (#1 Course)",
+    "credits": 4,
+    "semester": 3,
+    "grade": "A+"
+   },
+   {
+    "code": "OPEN-ELECTIVE",
+    "title": "Minor/Open (#2 Course)",
+    "credits": 4,
+    "semester": 4,
+    "grade": "A+"
+   },
+   {
+    "code": "OPEN-ELECTIVE",
+    "title": "Minor/Open (#3 Course)",
+    "credits": 4,
+    "semester": 5,
+    "grade": "A+"
+   },
+   {
+    "code": "OPEN-ELECTIVE",
+    "title": "Minor/Open (#4, #5 Courses)",
+    "credits": 8,
+    "semester": 6,
+    "grade": "A+"
+   },
+   {
+    "code": "DATA801",
+    "title": "Summer Training/Internship",
+    "credits": 2,
+    "semester": 5,
+    "grade": "S"
+   }
+  ],
+  "courses_failed": [],
+  "scenario": "Final-year student close to graduation, asking about remaining credits and distinction."
+ },
+ {
+  "student_id": "SYN-003",
+  "programme": "B.Tech (Data Science curriculum), 2025 batch",
+  "batch": "2025",
+  "current_semester": 3,
+  "completed_credits": 35,
+  "cgpa": 3.06,
+  "minor": null,
+  "courses_completed": [
+   {
+    "code": "UCOR103",
+    "title": "Communication Skills",
+    "credits": 2,
+    "semester": 1,
+    "grade": "D"
+   },
+   {
+    "code": "UCOR111",
+    "title": "Environmental Studies and Sustainability",
+    "credits": 2,
+    "semester": 2,
+    "grade": "D"
+   },
+   {
+    "code": "UCOR106",
+    "title": "Learning to Learn",
+    "credits": 2,
+    "semester": 1,
+    "grade": "D"
+   },
+   {
+    "code": "LAWS101",
+    "title": "Fundamentals of Indian Constitution and Human Rights",
+    "credits": 2,
+    "semester": 2,
+    "grade": "D"
+   },
+   {
+    "code": "UCOR701",
+    "title": "Community Engagement & Service Experience",
+    "credits": 1,
+    "semester": 2,
+    "grade": "D"
+   },
+   {
+    "code": "MTSC211",
+    "title": "Sustainable Smart Materials",
+    "credits": 3,
+    "semester": 2,
+    "grade": "D"
+   },
+   {
+    "code": "MTSC111",
+    "title": "Materials for Smart Devices",
+    "credits": 3,
+    "semester": 1,
+    "grade": "D"
+   },
+   {
+    "code": "COMP132",
+    "title": "Design Workshop",
+    "credits": 2,
+    "semester": 2,
+    "grade": "D"
+   },
+   {
+    "code": "DATA103",
+    "title": "Programming in Python",
+    "credits": 3,
+    "semester": 1,
+    "grade": "D"
+   },
+   {
+    "code": "COMP204",
+    "title": "Digital Design and Computer Organization",
+    "credits": 4,
+    "semester": 1,
+    "grade": "D"
+   },
+   {
+    "code": "DATA132",
+    "title": "Data Visualization and Storytelling",
+    "credits": 3,
+    "semester": 2,
+    "grade": "D"
+   },
+   {
+    "code": "COMP209",
+    "title": "Databases Management",
+    "credits": 4,
+    "semester": 2,
+    "grade": "C"
+   },
+   {
+    "code": "MGMT101",
+    "title": "Essentials of Business Management",
+    "credits": 2,
+    "semester": 1,
+    "grade": "D"
+   },
+   {
+    "code": "PSCY102/ECON105",
+    "title": "Introduction to Psychology/Principles of Economics",
+    "credits": 2,
+    "semester": 1,
+    "grade": "D"
+   }
+  ],
+  "courses_failed": [
+   {
+    "code": "MATH208",
+    "title": "Multivariate Calculus",
+    "credits": 4,
+    "semester": 1,
+    "grade": "F",
+    "attempts": 1
+   },
+   {
+    "code": "MATH203",
+    "title": "Probability and Statistics",
+    "credits": 4,
+    "semester": 2,
+    "grade": "F",
+    "attempts": 1
+   },
+   {
+    "code": "COMP201",
+    "title": "Data Structures",
+    "credits": 4,
+    "semester": 2,
+    "grade": "F",
+    "attempts": 1
+   }
+  ],
+  "scenario": "End of year 1 with CGPA below the 4.00 needed to progress to Year 2."
+ },
+ {
+  "student_id": "SYN-004",
+  "programme": "B.Tech (Data Science curriculum), 2025 batch",
+  "batch": "2025",
+  "current_semester": 3,
+  "completed_credits": 44,
+  "cgpa": 6.55,
+  "minor": null,
+  "courses_completed": [
+   {
+    "code": "UCOR103",
+    "title": "Communication Skills",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "UCOR111",
+    "title": "Environmental Studies and Sustainability",
+    "credits": 2,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "UCOR106",
+    "title": "Learning to Learn",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "LAWS101",
+    "title": "Fundamentals of Indian Constitution and Human Rights",
+    "credits": 2,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "UCOR701",
+    "title": "Community Engagement & Service Experience",
+    "credits": 1,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "MATH208",
+    "title": "Multivariate Calculus",
+    "credits": 4,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "MATH203",
+    "title": "Probability and Statistics",
+    "credits": 4,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "MTSC211",
+    "title": "Sustainable Smart Materials",
+    "credits": 3,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "MTSC111",
+    "title": "Materials for Smart Devices",
+    "credits": 3,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "COMP132",
+    "title": "Design Workshop",
+    "credits": 2,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "DATA103",
+    "title": "Programming in Python",
+    "credits": 3,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "COMP201",
+    "title": "Data Structures",
+    "credits": 4,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "COMP204",
+    "title": "Digital Design and Computer Organization",
+    "credits": 4,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "COMP209",
+    "title": "Databases Management",
+    "credits": 4,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "MGMT101",
+    "title": "Essentials of Business Management",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "PSCY102/ECON105",
+    "title": "Introduction to Psychology/Principles of Economics",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B+"
+   }
+  ],
+  "courses_failed": [
+   {
+    "code": "DATA132",
+    "title": "Data Visualization and Storytelling",
+    "credits": 3,
+    "semester": 2,
+    "grade": "FA",
+    "attempts": 1
+   }
+  ],
+  "scenario": "Got FA (attendance shortage) in DATA132; wants to take DATA209 Advanced EDA this semester."
+ },
+ {
+  "student_id": "SYN-005",
+  "programme": "B.Tech (Data Science curriculum), 2025 batch",
+  "batch": "2025",
+  "current_semester": 3,
+  "completed_credits": 47,
+  "cgpa": 6.0,
+  "minor": null,
+  "courses_completed": [
+   {
+    "code": "UCOR103",
+    "title": "Communication Skills",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "UCOR111",
+    "title": "Environmental Studies and Sustainability",
+    "credits": 2,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "UCOR106",
+    "title": "Learning to Learn",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "LAWS101",
+    "title": "Fundamentals of Indian Constitution and Human Rights",
+    "credits": 2,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "UCOR701",
+    "title": "Community Engagement & Service Experience",
+    "credits": 1,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "MATH208",
+    "title": "Multivariate Calculus",
+    "credits": 4,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "MATH203",
+    "title": "Probability and Statistics",
+    "credits": 4,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "MTSC211",
+    "title": "Sustainable Smart Materials",
+    "credits": 3,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "MTSC111",
+    "title": "Materials for Smart Devices",
+    "credits": 3,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "COMP132",
+    "title": "Design Workshop",
+    "credits": 2,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "DATA103",
+    "title": "Programming in Python",
+    "credits": 3,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "COMP201",
+    "title": "Data Structures",
+    "credits": 4,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "COMP204",
+    "title": "Digital Design and Computer Organization",
+    "credits": 4,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "DATA132",
+    "title": "Data Visualization and Storytelling",
+    "credits": 3,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "COMP209",
+    "title": "Databases Management",
+    "credits": 4,
+    "semester": 2,
+    "grade": "B"
+   },
+   {
+    "code": "MGMT101",
+    "title": "Essentials of Business Management",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B"
+   },
+   {
+    "code": "PSCY102/ECON105",
+    "title": "Introduction to Psychology/Principles of Economics",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B"
+   }
+  ],
+  "courses_failed": [],
+  "scenario": "Wants to transfer 80 external credits (NPTEL/SWAYAM + another university).",
+  "transfer_credits_requested": {
+   "NPTEL/SWAYAM": 30,
+   "other_university_without_MoU": 50
+  }
+ },
+ {
+  "student_id": "SYN-006",
+  "programme": "B.Tech (Data Science curriculum), 2025 batch",
+  "batch": "2025",
+  "current_semester": 3,
+  "completed_credits": 47,
+  "cgpa": 8.0,
+  "minor": null,
+  "courses_completed": [
+   {
+    "code": "UCOR103",
+    "title": "Communication Skills",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "UCOR111",
+    "title": "Environmental Studies and Sustainability",
+    "credits": 2,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "UCOR106",
+    "title": "Learning to Learn",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "LAWS101",
+    "title": "Fundamentals of Indian Constitution and Human Rights",
+    "credits": 2,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "UCOR701",
+    "title": "Community Engagement & Service Experience",
+    "credits": 1,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "MATH208",
+    "title": "Multivariate Calculus",
+    "credits": 4,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "MATH203",
+    "title": "Probability and Statistics",
+    "credits": 4,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "MTSC211",
+    "title": "Sustainable Smart Materials",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "MTSC111",
+    "title": "Materials for Smart Devices",
+    "credits": 3,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "COMP132",
+    "title": "Design Workshop",
+    "credits": 2,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "DATA103",
+    "title": "Programming in Python",
+    "credits": 3,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "COMP201",
+    "title": "Data Structures",
+    "credits": 4,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "COMP204",
+    "title": "Digital Design and Computer Organization",
+    "credits": 4,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "DATA132",
+    "title": "Data Visualization and Storytelling",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "COMP209",
+    "title": "Databases Management",
+    "credits": 4,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "MGMT101",
+    "title": "Essentials of Business Management",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "PSCY102/ECON105",
+    "title": "Introduction to Psychology/Principles of Economics",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A"
+   }
+  ],
+  "courses_failed": [],
+  "scenario": "Hospitalised for 2 weeks this semester; attendance in COMP203 is 68%.",
+  "current_attendance": {
+   "COMP203": 68,
+   "MATH209": 81
+  }
+ },
+ {
+  "student_id": "SYN-007",
+  "programme": "B.Tech (Data Science curriculum)",
+  "batch": null,
+  "current_semester": null,
+  "completed_credits": null,
+  "cgpa": null,
+  "minor": null,
+  "courses_completed": null,
+  "courses_failed": null,
+  "scenario": "Incomplete record: batch, semester and course history unknown."
+ },
+ {
+  "student_id": "SYN-008",
+  "programme": "B.Tech (Data Science curriculum), 2024 batch",
+  "batch": "2024",
+  "current_semester": 5,
+  "completed_credits": 95,
+  "cgpa": 4.72,
+  "minor": null,
+  "courses_completed": [
+   {
+    "code": "UCOR106",
+    "title": "Learning to Learn",
+    "credits": 2,
+    "semester": 1,
+    "grade": "C"
+   },
+   {
+    "code": "UCOR105",
+    "title": "Communication and Leadership Skills",
+    "credits": 3,
+    "semester": 2,
+    "grade": "C"
+   },
+   {
+    "code": "UCOR205",
+    "title": "Socio Cultural Perspectives on Indian Life-SPIL",
+    "credits": 3,
+    "semester": 3,
+    "grade": "C"
+   },
+   {
+    "code": "UCOR310",
+    "title": "Critical Thinking",
+    "credits": 3,
+    "semester": 4,
+    "grade": "C"
+   },
+   {
+    "code": "UCOR104",
+    "title": "Problem Solving with Design Thinking",
+    "credits": 2,
+    "semester": 1,
+    "grade": "C"
+   },
+   {
+    "code": "UCOR701",
+    "title": "Community Engagement & Service Experience",
+    "credits": 1,
+    "semester": 2,
+    "grade": "C"
+   },
+   {
+    "code": "LAWS101",
+    "title": "Fundamentals of Indian Constitution and Human Rights",
+    "credits": 2,
+    "semester": 3,
+    "grade": "C"
+   },
+   {
+    "code": "UCOR102",
+    "title": "Introduction to writing",
+    "credits": 2,
+    "semester": 1,
+    "grade": "C"
+   },
+   {
+    "code": "MATH203",
+    "title": "Probability and Statistics",
+    "credits": 4,
+    "semester": 1,
+    "grade": "C"
+   },
+   {
+    "code": "MATH201",
+    "title": "Calculus",
+    "credits": 3,
+    "semester": 2,
+    "grade": "C"
+   },
+   {
+    "code": "MTSC781",
+    "title": "Sustainable Cities and Communities",
+    "credits": 3,
+    "semester": 3,
+    "grade": "C"
+   },
+   {
+    "code": "SLAD206",
+    "title": "Human Values in Work and Life",
+    "credits": 2,
+    "semester": 4,
+    "grade": "C"
+   },
+   {
+    "code": "COMP132",
+    "title": "Design Workshop",
+    "credits": 2,
+    "semester": 1,
+    "grade": "C"
+   },
+   {
+    "code": "MTSC211",
+    "title": "Sustainable Smart Materials",
+    "credits": 3,
+    "semester": 2,
+    "grade": "C"
+   },
+   {
+    "code": "MATH204",
+    "title": "Linear Algebra",
+    "credits": 3,
+    "semester": 3,
+    "grade": "C"
+   },
+   {
+    "code": "MTSC111",
+    "title": "Materials for Smart Devices",
+    "credits": 3,
+    "semester": 1,
+    "grade": "C"
+   },
+   {
+    "code": "ENGL210",
+    "title": "Academic Writing",
+    "credits": 2,
+    "semester": 2,
+    "grade": "C"
+   },
+   {
+    "code": "PSYC101/ECON101",
+    "title": "Introduction to Psychology/Introduction to Economics",
+    "credits": 3,
+    "semester": 1,
+    "grade": "C"
+   },
+   {
+    "code": "COMP403",
+    "title": "Cloud Computing",
+    "credits": 3,
+    "semester": 4,
+    "grade": "C"
+   },
+   {
+    "code": "DATA103",
+    "title": "Programming in Python",
+    "credits": 3,
+    "semester": 1,
+    "grade": "C"
+   },
+   {
+    "code": "COMP201",
+    "title": "Data Structures",
+    "credits": 4,
+    "semester": 2,
+    "grade": "D"
+   },
+   {
+    "code": "COMP203",
+    "title": "Analysis of Algorithms",
+    "credits": 4,
+    "semester": 3,
+    "grade": "D"
+   },
+   {
+    "code": "COMP209",
+    "title": "Databases Management",
+    "credits": 4,
+    "semester": 4,
+    "grade": "C"
+   },
+   {
+    "code": "DATA132",
+    "title": "Data visualization and Storytelling",
+    "credits": 3,
+    "semester": 2,
+    "grade": "C"
+   },
+   {
+    "code": "COMP202",
+    "title": "Theoretical Computer Science",
+    "credits": 4,
+    "semester": 3,
+    "grade": "C"
+   },
+   {
+    "code": "COMP204",
+    "title": "Digital Design and Computer Organization",
+    "credits": 4,
+    "semester": 4,
+    "grade": "C"
+   },
+   {
+    "code": "COMP301",
+    "title": "Artificial Intelligence",
+    "credits": 4,
+    "semester": 4,
+    "grade": "C"
+   },
+   {
+    "code": "DATA201",
+    "title": "Foundations to Data Science",
+    "credits": 3,
+    "semester": 2,
+    "grade": "C"
+   },
+   {
+    "code": "DATA202",
+    "title": "Exploratory Data Analysis",
+    "credits": 3,
+    "semester": 3,
+    "grade": "C"
+   },
+   {
+    "code": "MATH206",
+    "title": "Advanced Statistical Analysis and Research Methods with R",
+    "credits": 2,
+    "semester": 3,
+    "grade": "C"
+   },
+   {
+    "code": "OPEN-ELECTIVE",
+    "title": "Minor/Open (#1 Course)",
+    "credits": 4,
+    "semester": 3,
+    "grade": "C"
+   },
+   {
+    "code": "OPEN-ELECTIVE",
+    "title": "Minor/Open (#2 Course)",
+    "credits": 4,
+    "semester": 4,
+    "grade": "C"
+   }
+  ],
+  "courses_failed": [
+   {
+    "code": "MATH301",
+    "title": "Optimization Techniques for Data Science",
+    "credits": 4,
+    "semester": 4,
+    "grade": "F",
+    "attempts": 1
+   }
+  ],
+  "scenario": "CGPA just under the 5.00 needed to progress to Year 3 (Semester 5)."
+ },
+ {
+  "student_id": "SYN-009",
+  "programme": "B.Tech (Data Science curriculum), 2024 batch",
+  "batch": "2024",
+  "current_semester": 5,
+  "completed_credits": 97,
+  "cgpa": 8.0,
+  "minor": "Finance",
+  "courses_completed": [
+   {
+    "code": "UCOR106",
+    "title": "Learning to Learn",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "UCOR105",
+    "title": "Communication and Leadership Skills",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "UCOR205",
+    "title": "Socio Cultural Perspectives on Indian Life-SPIL",
+    "credits": 3,
+    "semester": 3,
+    "grade": "A"
+   },
+   {
+    "code": "UCOR310",
+    "title": "Critical Thinking",
+    "credits": 3,
+    "semester": 4,
+    "grade": "A"
+   },
+   {
+    "code": "UCOR104",
+    "title": "Problem Solving with Design Thinking",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "UCOR701",
+    "title": "Community Engagement & Service Experience",
+    "credits": 1,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "LAWS101",
+    "title": "Fundamentals of Indian Constitution and Human Rights",
+    "credits": 2,
+    "semester": 3,
+    "grade": "A"
+   },
+   {
+    "code": "UCOR102",
+    "title": "Introduction to writing",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "MATH203",
+    "title": "Probability and Statistics",
+    "credits": 4,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "MATH201",
+    "title": "Calculus",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "MTSC781",
+    "title": "Sustainable Cities and Communities",
+    "credits": 3,
+    "semester": 3,
+    "grade": "A"
+   },
+   {
+    "code": "SLAD206",
+    "title": "Human Values in Work and Life",
+    "credits": 2,
+    "semester": 4,
+    "grade": "A"
+   },
+   {
+    "code": "COMP132",
+    "title": "Design Workshop",
+    "credits": 2,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "MTSC211",
+    "title": "Sustainable Smart Materials",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "MATH204",
+    "title": "Linear Algebra",
+    "credits": 3,
+    "semester": 3,
+    "grade": "A"
+   },
+   {
+    "code": "MTSC111",
+    "title": "Materials for Smart Devices",
+    "credits": 3,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "ENGL210",
+    "title": "Academic Writing",
+    "credits": 2,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "PSYC101/ECON101",
+    "title": "Introduction to Psychology/Introduction to Economics",
+    "credits": 3,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "COMP403",
+    "title": "Cloud Computing",
+    "credits": 3,
+    "semester": 4,
+    "grade": "A"
+   },
+   {
+    "code": "DATA103",
+    "title": "Programming in Python",
+    "credits": 3,
+    "semester": 1,
+    "grade": "A"
+   },
+   {
+    "code": "COMP201",
+    "title": "Data Structures",
+    "credits": 4,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "COMP203",
+    "title": "Analysis of Algorithms",
+    "credits": 4,
+    "semester": 3,
+    "grade": "A"
+   },
+   {
+    "code": "COMP209",
+    "title": "Databases Management",
+    "credits": 4,
+    "semester": 4,
+    "grade": "A"
+   },
+   {
+    "code": "DATA132",
+    "title": "Data visualization and Storytelling",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "COMP202",
+    "title": "Theoretical Computer Science",
+    "credits": 4,
+    "semester": 3,
+    "grade": "A"
+   },
+   {
+    "code": "COMP204",
+    "title": "Digital Design and Computer Organization",
+    "credits": 4,
+    "semester": 4,
+    "grade": "A"
+   },
+   {
+    "code": "COMP301",
+    "title": "Artificial Intelligence",
+    "credits": 4,
+    "semester": 4,
+    "grade": "A"
+   },
+   {
+    "code": "DATA201",
+    "title": "Foundations to Data Science",
+    "credits": 3,
+    "semester": 2,
+    "grade": "A"
+   },
+   {
+    "code": "DATA202",
+    "title": "Exploratory Data Analysis",
+    "credits": 3,
+    "semester": 3,
+    "grade": "A"
+   },
+   {
+    "code": "MATH301",
+    "title": "Optimization Techniques for Data Science",
+    "credits": 4,
+    "semester": 4,
+    "grade": "A"
+   },
+   {
+    "code": "MATH206",
+    "title": "Advanced Statistical Analysis and Research Methods with R",
+    "credits": 2,
+    "semester": 3,
+    "grade": "A"
+   },
+   {
+    "code": "MGMT208",
+    "title": "Introduction to Financial Accounting (Finance minor)",
+    "credits": 3,
+    "semester": 3,
+    "grade": "A"
+   },
+   {
+    "code": "FINA333",
+    "title": "Fiancial Institutions Markets and Services (Finance minor)",
+    "credits": 3,
+    "semester": 4,
+    "grade": "A"
+   }
+  ],
+  "courses_failed": [],
+  "scenario": "Finance minor; asking which minor course comes next and its prerequisite."
+ },
+ {
+  "student_id": "SYN-010",
+  "programme": "B.Tech (Data Science curriculum), 2025 batch",
+  "batch": "2025",
+  "current_semester": 3,
+  "completed_credits": 47,
+  "cgpa": 7.0,
+  "minor": "Psychology",
+  "courses_completed": [
+   {
+    "code": "UCOR103",
+    "title": "Communication Skills",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "UCOR111",
+    "title": "Environmental Studies and Sustainability",
+    "credits": 2,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "UCOR106",
+    "title": "Learning to Learn",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "LAWS101",
+    "title": "Fundamentals of Indian Constitution and Human Rights",
+    "credits": 2,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "UCOR701",
+    "title": "Community Engagement & Service Experience",
+    "credits": 1,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "MATH208",
+    "title": "Multivariate Calculus",
+    "credits": 4,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "MATH203",
+    "title": "Probability and Statistics",
+    "credits": 4,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "MTSC211",
+    "title": "Sustainable Smart Materials",
+    "credits": 3,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "MTSC111",
+    "title": "Materials for Smart Devices",
+    "credits": 3,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "COMP132",
+    "title": "Design Workshop",
+    "credits": 2,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "DATA103",
+    "title": "Programming in Python",
+    "credits": 3,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "COMP201",
+    "title": "Data Structures",
+    "credits": 4,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "COMP204",
+    "title": "Digital Design and Computer Organization",
+    "credits": 4,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "DATA132",
+    "title": "Data Visualization and Storytelling",
+    "credits": 3,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "COMP209",
+    "title": "Databases Management",
+    "credits": 4,
+    "semester": 2,
+    "grade": "B+"
+   },
+   {
+    "code": "MGMT101",
+    "title": "Essentials of Business Management",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B+"
+   },
+   {
+    "code": "PSCY102/ECON105",
+    "title": "Introduction to Psychology/Principles of Economics",
+    "credits": 2,
+    "semester": 1,
+    "grade": "B+"
+   }
+  ],
+  "courses_failed": [],
+  "scenario": "Psychology minor; PSYC202 lists PSYC101 as prerequisite, which is not in the data."
+ }
+]
