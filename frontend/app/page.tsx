@@ -161,10 +161,10 @@ function speakableSentences(text: string): string[] {
 
 // Browsers don't report a voice's gender, so female voices are matched by name, Indian English first.
 // The list covers macOS/iOS, Chrome, Windows/Edge and Android voices.
-const FEMALE_VOICES = /veena|isha|heera|neerja|samantha|karen|moira|tessa|serena|victoria|fiona|zira|aria|jenny|google uk english female|google us english|female/i;
+const FEMALE_VOICES = /tara|veena|isha|heera|neerja|samantha|karen|moira|tessa|serena|victoria|fiona|zira|aria|jenny|google uk english female|google us english|female/i;
 
 function femaleVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {
-  const female = voices.filter((v) => v.lang.startsWith("en") && FEMALE_VOICES.test(v.name) && !/\bmale\b/i.test(v.name));
+  const female = voices.filter((v) => v.lang.startsWith("en") && FEMALE_VOICES.test(v.name));
   return (
     female.find((v) => v.lang === "en-IN" && v.localService) ??
     female.find((v) => v.lang === "en-IN") ??
