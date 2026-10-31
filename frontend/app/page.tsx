@@ -159,6 +159,21 @@ function speakableSentences(text: string): string[] {
   return plain.match(/[^.!?]+[.!?]*\s*/g) ?? [plain];
 }
 
+// Browsers don't report a voice's gender, so female voices are matched by name, Indian English first.
+// The list covers macOS/iOS, Chrome, Windows/Edge and Android voices.
+const FEMALE_VOICES = /veena|isha|heera|neerja|samantha|karen|moira|tessa|serena|victoria|fiona|zira|aria|jenny|google uk english female|google us english|female/i;
+
+function femaleVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {
+  const female = voices.filter((v) => v.lang.startsWith("en") && FEMALE_VOICES.test(v.name) && !/\bmale\b/i.test(v.name));
+  return (
+    female.find((v) => v.lang === "en-IN" && v.localService) ??
+    female.find((v) => v.lang === "en-IN") ??
+    female.find((v) => v.localService) ??
+    female[0] ??
+    voices.find((v) => v.lang.startsWith("en"))
+  );
+}
+
 function ReadAloud({ text }: { text: string }) {
   const [state, setState] = useState<"idle" | "loading" | "playing">("idle");
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -199,10 +214,7 @@ function ReadAloud({ text }: { text: string }) {
       cloudVoice();
       return;
     }
-    const voice =
-      voices.find((v) => v.lang === "en-IN" && v.localService) ??
-      voices.find((v) => v.lang.startsWith("en") && v.localService) ??
-      voices.find((v) => v.lang.startsWith("en"));
+    const voice = femaleVoice(voices);
     synth.cancel();
     setState("playing");
     // One utterance per sentence: speech starts at once, and Chrome cuts off single utterances longer than ~15 s.
