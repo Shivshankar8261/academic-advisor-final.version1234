@@ -169,9 +169,23 @@ function femaleVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | und
     female.find((v) => v.lang === "en-IN" && v.localService) ??
     female.find((v) => v.lang === "en-IN") ??
     female.find((v) => v.localService) ??
-    female[0] ??
-    voices.find((v) => v.lang.startsWith("en"))
+    female[0]
   );
+}
+
+// Chrome fills its voice list asynchronously: it is empty until voiceschanged fires, often on the very first click.
+function loadVoices(synth: SpeechSynthesis): Promise<SpeechSynthesisVoice[]> {
+  const now = synth.getVoices();
+  if (now.length) return Promise.resolve(now);
+  return new Promise((resolve) => {
+    const done = () => {
+      synth.removeEventListener("voiceschanged", done);
+      clearTimeout(timer);
+      resolve(synth.getVoices());
+    };
+    const timer = setTimeout(done, 1500);
+    synth.addEventListener("voiceschanged", done);
+  });
 }
 
 function ReadAloud({ text }: { text: string }) {
@@ -179,9 +193,12 @@ function ReadAloud({ text }: { text: string }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Stop speaking if this message leaves the screen (New chat).
-  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+  useEffect(() => {
+    window.speechSynthesis?.getVoices(); // starts Chrome loading its list, so the first click is ready
+    return () => window.speechSynthesis?.cancel();
+  }, []);
 
-  // The cloud voice takes up to ~30 s on a long answer, so it is only the fallback for browsers with no voices.
+  // The cloud voice takes up to ~30 s on a long answer, so it is only the fallback for devices with no female voice.
   async function cloudVoice() {
     setState("loading");
     try {
@@ -201,7 +218,7 @@ function ReadAloud({ text }: { text: string }) {
     }
   }
 
-  function toggle() {
+  async function toggle() {
     if (state === "playing") {
       audioRef.current?.pause();
       window.speechSynthesis?.cancel();
@@ -209,19 +226,23 @@ function ReadAloud({ text }: { text: string }) {
       return;
     }
     const synth = window.speechSynthesis;
-    const voices = synth?.getVoices() ?? [];
     if (!synth) {
       cloudVoice();
       return;
     }
-    const voice = femaleVoice(voices);
+    setState("loading");
+    const voice = femaleVoice(await loadVoices(synth));
+    if (!voice) {
+      cloudVoice(); // no female voice on this device: the cloud voice (Kore) is female, the system default may not be
+      return;
+    }
     synth.cancel();
     setState("playing");
     // One utterance per sentence: speech starts at once, and Chrome cuts off single utterances longer than ~15 s.
     const sentences = speakableSentences(text);
     sentences.forEach((sentence, i) => {
       const utterance = new SpeechSynthesisUtterance(sentence);
-      if (voice) utterance.voice = voice;
+      utterance.voice = voice;
       if (i === sentences.length - 1) utterance.onend = () => setState("idle");
       utterance.onerror = (e) => {
         if (e.error === "canceled" || e.error === "interrupted") return;
