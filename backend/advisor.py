@@ -11,6 +11,7 @@ Advisor orchestration: (retrieve) -> build prompt for the chosen strategy -> cal
 rag_structured (the final system) additionally:
   * routes counts / lists / credits / prerequisites / semesters to exact SQL lookups (structured.py,
     courses.db) and puts those results first in the context, labelled with file / tab / rows;
+  * returns basket and semester course tables straight from the database, with no LLM call;
   * attaches verified document conflicts (structured.KNOWN_CONFLICTS) when a question touches them;
   * adds the Progression / Award-of-Degree rules for eligibility questions from students with a profile.
 Both RAG strategies:
@@ -23,14 +24,19 @@ import re
 import time
 from functools import lru_cache
 
+import agents
+import guard
 import llm
+import multimodal
 import prompts
 import structured
 from config import MIN_RELEVANCE, PROCESSED_DIR, STUDENT_PROFILES
 from retrieval import prerequisite_records, retrieve, section_records, semester_records
-from schemas import AdvisorResponse, ChatResponse, Source
+from schemas import AdvisorResponse, ChatResponse, Source, Usage
 
-STRATEGIES = ("baseline", "structured", "rag", "rag_structured")
+STRATEGIES = ("baseline", "structured", "rag", "rag_structured", "agentic")
+DATABASE_PROVIDER = "none (exact database lookup)"
+PERSONAL_RE = re.compile(r"\b(i|my|me|am|mine|we|our)\b", re.I)
 
 # question pattern -> handbook section whose thresholds decide it (added for students with a profile)
 STANDING_RULES = [
@@ -48,6 +54,31 @@ NOT_IN_DOCUMENTS = AdvisorResponse(
            f"lists), so I can't answer it reliably. {CONTACT_HINT}",
     confidence="low", grounded=False, sources=[], needs_clarification=False, clarifying_question=None,
     insufficient_information=True, conflict_detected=False)
+
+
+WELCOME = ("Welcome to the **Vidyashilp University AI Academic Advisor**! 👋\n\n"
+           "I answer questions from the Student Handbook, the SOP, the semester spread structures and the minor "
+           "course lists. You can ask me things like:\n"
+           "- *How many minors are offered for the 2025 batch?*\n"
+           "- *What are the courses in semester 3 for the 2024 batch?*\n"
+           "- *What is the minimum attendance requirement?*\n\n"
+           "Pick your profile at the top for answers about your own progress.")
+# Whole-message small talk only: "hi, how many minors?" still goes through retrieval.
+SMALL_TALK = [
+    (r"(hi+|hey+|hello+|hii+|namaste|good (morning|afternoon|evening)|greetings|yo)( there)?( advisor)?",
+     WELCOME),
+    (r"(thanks?|thank you|thank u|thx|ty)( (so|very) much)?( a lot)?", "You're welcome! Ask me anything else about "
+     "your courses, minors or academic rules."),
+    (r"(bye|goodbye|see you|see ya|good night)", "Goodbye, and all the best with your studies at Vidyashilp "
+     "University! 🎓"),
+    (r"(ok(ay)?|cool|great|nice|got it|alright)", "Glad that helped. What else would you like to know?"),
+    (r"(who|what) are you|what can you do|help", WELCOME),
+]
+
+
+def small_talk(message: str) -> str | None:
+    m = re.sub(r"[\s!.?,:)(]+$", "", message.strip().lower())
+    return next((reply for rx, reply in SMALL_TALK if re.fullmatch(rx, m)), None)
 
 
 @lru_cache
@@ -144,7 +175,7 @@ def _enforce_grounding(result: AdvisorResponse) -> AdvisorResponse:
         sentences = re.split(r"(?<=[.!?])\s+", result.answer.strip())
         kept = [s for s in sentences if not CONTACT_ADVICE_RE.search(s) or DOCUMENTED_ROLES_RE.search(s)] \
             or sentences[:1]
-        return result.model_copy(update={"answer": f"{' '.join(kept)}\n\n{CONTACT_HINT}"})
+        return result.model_copy(update={"answer": f"{' '.join(kept)}\n\n{CONTACT_HINT}", "confidence": "low"})
     return result
 
 
@@ -164,72 +195,156 @@ def _mention_gaps(result: AdvisorResponse, chunks: list[dict]) -> AdvisorRespons
     return result.model_copy(update={"answer": f"{result.answer.rstrip()}\n\n{note}"})
 
 
+# Rules that similarity search can return only half of: the 65% relaxation ranks above the 75% minimum it relaxes.
+ALWAYS_WHOLE_SECTION = [(r"attendance|shortage", "Section III - Academic Regulations > 7")]
+
+
+def has_relevant(chunks: list[dict]) -> bool:
+    return any(c["score"] >= MIN_RELEVANCE for c in chunks)
+
+
+def gather_context(query: str, profile: dict | None, message: str) -> tuple[list[dict], list[dict]]:
+    # Exact lookups (counts, lists, credits, prerequisites, semesters) come from the SQL course store,
+    # never from similarity search; they go first in the context.
+    exact = structured.route(query, profile, message) + structured.conflict_notes(query)
+    return exact, retrieve(query)
+
+
+def assemble_chunks(exact: list[dict], retrieved: list[dict], profile: dict | None, query: str) -> list[dict]:
+    chunks = exact + retrieved
+    chunks += prerequisite_records(chunks)
+    for pattern, section in ALWAYS_WHOLE_SECTION:
+        if re.search(pattern, query, re.I):
+            seen = {c["section"] for c in chunks}
+            chunks += [c for c in section_records(section) if c["section"] not in seen]
+    sem = (profile or {}).get("current_semester")
+    if profile and profile.get("batch") and sem:  # the student's current + next semester course lists
+        seen = {c["section"] for c in chunks}
+        sems = [s for s in (sem, sem + 1) if 1 <= s <= 8]
+        chunks += [c for c in semester_records(profile["batch"], sems) if c["section"] not in seen]
+    if profile and profile.get("cgpa") is not None:
+        # "Can I register / progress / graduate?" is decided by CGPA thresholds that similarity search
+        # often misses (the question talks about registration, the rule sits under Progression).
+        for pattern, section in STANDING_RULES:
+            if re.search(pattern, query, re.I):
+                seen = {c["section"] for c in chunks}
+                chunks += [c for c in section_records(section) if c["section"] not in seen]
+    return chunks
+
+
+def finish(result: AdvisorResponse, chunks: list[dict]) -> AdvisorResponse:
+    result = _check_sources(result, chunks)
+    return _mention_gaps(_enforce_grounding(_complete_citations(result, chunks)), chunks)
+
+
 def answer(message: str, strategy: str = "rag_structured", student_id: str | None = None,
-           history: list[dict] | None = None) -> ChatResponse:
+           history: list[dict] | None = None, guarded: bool = False, session_record: dict | None = None,
+           use_classifier: bool = True) -> ChatResponse:
+    """guarded=True is the path every API request takes. The evaluation calls it with guarded=False to measure the
+    four Assignment 1 strategies on their own, and with both settings for the red-team comparison."""
     if strategy not in STRATEGIES:
         raise ValueError(f"unknown strategy {strategy}")
     history = history or []
-    profile = load_profiles().get(student_id) if student_id else None
+    if not guarded:
+        return _answer(message, strategy, student_id, history, session_record)
+    start = time.perf_counter()
+    verdict = guard.check_input(message, student_id, use_classifier)
+    notice = (f"I removed your {' and '.join(verdict.redacted)} before processing: the advisor doesn't need it."
+              if verdict.redacted else None)
+    if verdict.category:
+        return _response(_refusal(verdict.category), strategy, "none (safety layer)", start, 0.0, [],
+                         guard=verdict.category, privacy_notice=notice)
+    reply = _answer(verdict.clean, strategy, student_id, guard.clean_history(history), session_record)
+    leaked = guard.check_output(reply.answer, student_id)
+    if leaked:
+        return _response(_refusal(leaked), strategy, reply.provider, start, reply.retrieval_time_s, [],
+                         reply.usage, guard=f"output_{leaked}")
+    return reply.model_copy(update={"privacy_notice": notice,
+                                    "human_review": guard.human_review(retrieval_query(verdict.clean, history))})
+
+
+def _refusal(category: str) -> AdvisorResponse:
+    return AdvisorResponse(answer=guard.REFUSALS[category], confidence="high", grounded=False, sources=[],
+                           needs_clarification=False, clarifying_question=None, insufficient_information=False,
+                           conflict_detected=False)
+
+
+def _answer(message: str, strategy: str, student_id: str | None, history: list[dict],
+            session_record: dict | None) -> ChatResponse:
+    profile = multimodal.profile_from_record(session_record) if session_record else \
+        (load_profiles().get(student_id) if student_id else None)
     start = time.perf_counter()
     chunks: list[dict] = []
     retrieval_s = 0.0
 
+    reply = small_talk(message)
+    if reply:  # greetings / thanks: no retrieval, no LLM, no "not in documents" warning
+        result = AdvisorResponse(answer=reply, confidence="high", grounded=False, sources=[],
+                                 needs_clarification=False, clarifying_question=None,
+                                 insufficient_information=False, conflict_detected=False)
+        return _response(result, strategy, "small-talk", start, retrieval_s, chunks)
+
     if strategy == "baseline":
         convo = "".join(f"{t['role']}: {t['content']}\n" for t in history[-6:])
         _, user = prompts.baseline_prompt(f"{convo}{message}" if convo else message)
-        text, provider = llm.call_text(user)
+        text, provider, usage = llm.call_text(user)
         # The baseline cannot self-report uncertainty or sources, so these fields are fixed defaults.
         result = AdvisorResponse(answer=text, confidence="medium", grounded=False, sources=[],
                                  needs_clarification=False, clarifying_question=None,
                                  insufficient_information=False, conflict_detected=False)
     elif strategy == "structured":
         system, user = prompts.structured_prompt(message, history)
-        result, provider = llm.call_structured(system, user)
+        result, provider, usage = llm.call_structured(system, user)
     else:
         query = retrieval_query(message, history)
-        # Exact lookups (counts, lists, credits, prerequisites, semesters) come from the SQL course store,
-        # never from similarity search; they go first in the context.
-        exact = structured.route(query, profile) + structured.conflict_notes(query) \
-            if strategy == "rag_structured" else []
-        chunks = retrieve(query)
-        relevant = exact or any(c["score"] >= MIN_RELEVANCE for c in chunks)
-        if not relevant:  # nothing in the documents is about this: do not let the model answer from memory
-            retrieval_s = time.perf_counter() - start
-            return _response(NOT_IN_DOCUMENTS, strategy, "none (no relevant document found)", start, retrieval_s,
-                             chunks)
+        # Data minimisation: a general question doesn't need the student's record, so it isn't sent to the provider.
+        if profile and not PERSONAL_RE.search(query):
+            profile = None
+        if strategy == "agentic":
+            result, provider, usage, trace, chunks, attachments = agents.run(message, query, profile, history)
+            return _response(result, strategy, provider, start, sum(
+                t["ms"] for t in trace if t["agent"] == "Regulation Retrieval") / 1000, chunks, usage,
+                agent_trace=trace, attachments=attachments)
+        if strategy == "rag_structured":
+            exact, retrieved = gather_context(query, profile, message)
+            direct = next((c for c in exact if c.get("direct_answer")), None)
+            if direct:  # counts and course tables: computed from the database, the model could only add errors
+                return _response(direct_response(direct), strategy, DATABASE_PROVIDER, start,
+                                 time.perf_counter() - start, [direct], attachments=direct.get("attachments"))
+        else:
+            exact, retrieved = [], retrieve(query)
+        chunks = retrieved
+        if not exact and not has_relevant(chunks):
+            # nothing in the documents is about this: do not let the model answer from memory
+            return _response(NOT_IN_DOCUMENTS, strategy, "none (no relevant document found)", start,
+                             time.perf_counter() - start, chunks)
         if strategy == "rag":
             system, user = prompts.rag_prompt(message, history, chunks)
         else:
-            chunks = exact + chunks
-            chunks += prerequisite_records(chunks)
-            sem = (profile or {}).get("current_semester")
-            if profile and profile.get("batch") and sem:  # the student's current + next semester course lists
-                seen = {c["section"] for c in chunks}
-                sems = [s for s in (sem, sem + 1) if 1 <= s <= 8]
-                chunks += [c for c in semester_records(profile["batch"], sems) if c["section"] not in seen]
-            if profile and profile.get("cgpa") is not None:
-                # "Can I register / progress / graduate?" is decided by CGPA thresholds that similarity search
-                # often misses (the question talks about registration, the rule sits under Progression).
-                for pattern, section in STANDING_RULES:
-                    if re.search(pattern, query, re.I):
-                        seen = {c["section"] for c in chunks}
-                        chunks += [c for c in section_records(section) if c["section"] not in seen]
+            chunks = assemble_chunks(exact, retrieved, profile, query)
             system, user = prompts.rag_structured_prompt(message, history, chunks, profile, term_context())
         retrieval_s = time.perf_counter() - start
-        result, provider = llm.call_structured(system, user)
-        result = _check_sources(result, chunks)
-        result = _mention_gaps(_enforce_grounding(_complete_citations(result, chunks)), chunks)
+        result, provider, usage = llm.call_structured(system, user)
+        result = finish(result, chunks)
 
     if strategy == "structured":  # no documents in this mode, whatever the model claims
         result = result.model_copy(update={"sources": [], "grounded": False})
 
-    return _response(result, strategy, provider, start, retrieval_s, chunks)
+    return _response(result, strategy, provider, start, retrieval_s, chunks, usage)
+
+
+def direct_response(chunk: dict) -> AdvisorResponse:
+    return AdvisorResponse(answer=chunk["direct_answer"], confidence="high", grounded=True,
+                           sources=[Source(source_file=chunk["source_file"], section=chunk["section"])],
+                           needs_clarification=False, clarifying_question=None, insufficient_information=False,
+                           conflict_detected=bool(chunk.get("conflict")))
 
 
 def _response(result: AdvisorResponse, strategy: str, provider: str, start: float, retrieval_s: float,
-              chunks: list[dict]) -> ChatResponse:
+              chunks: list[dict], usage: Usage | None = None, **extra) -> ChatResponse:
     total = time.perf_counter() - start
+    extra = {k: v for k, v in extra.items() if v}
     return ChatResponse(**result.model_dump(), strategy=strategy, provider=provider,
                         response_time_s=round(total, 2), retrieval_time_s=round(retrieval_s, 3),
                         retrieved=[{"source_file": c["source_file"], "section": c["section"],
-                                    "score": c.get("score")} for c in chunks])
+                                    "score": c.get("score")} for c in chunks], usage=usage or Usage(), **extra)

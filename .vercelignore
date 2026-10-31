@@ -1,0 +1,15 @@
+# Everything the two Vercel projects (backend/, frontend/) don't need. Secrets must never be uploaded.
+.git
+**/.env
+**/.env.local
+backend/.venv
+**/__pycache__
+**/node_modules
+**/.next
+docs
+eval
+data/raw
+data/synthetic/multimodal
+/*.pdf
+/*.xlsx
+.DS_Store

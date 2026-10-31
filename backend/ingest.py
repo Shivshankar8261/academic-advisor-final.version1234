@@ -1,7 +1,7 @@
 """
 Step 2 of the data pipeline: chunk the processed documents, embed them with
-sentence-transformers (all-MiniLM-L6-v2, runs locally, no API cost) and store them in a
-persistent ChromaDB collection.
+all-MiniLM-L6-v2 (ONNX, runs locally, no API cost - see embedder.py) and write the index to
+backend/index/ (embeddings.npy + chunks.json).
 
 Chunking strategy
   * Markdown documents are split on headings (## / ###), so a chunk never mixes two clauses.
@@ -11,15 +11,16 @@ Chunking strategy
 Every chunk carries metadata used for citations: source_file (the ORIGINAL university document)
 and section (heading path, e.g. "Academic Regulations > 7. Attendance Requirements (7.3)").
 
-Run:  python ingest.py
+Run:  python ingest.py   (re-run after extract_data.py or make_profiles.py so backend/index/data stays in sync)
 """
 import json
 import re
+import shutil
 
-import chromadb
-from sentence_transformers import SentenceTransformer
+import numpy as np
 
-from config import CHROMA_DIR, COLLECTION, EMBED_MODEL, PROCESSED_DIR
+import embedder
+from config import DATA_DIR, INDEX_DIR, PROCESSED_DIR, RUNTIME_DATA_FILES
 
 MAX_CHARS = 1000
 
@@ -129,22 +130,20 @@ def build_chunks() -> list[dict]:
 
 def main():
     chunks = build_chunks()
-    model = SentenceTransformer(EMBED_MODEL, device="cpu")
-    embeddings = model.encode([c["text"] for c in chunks], show_progress_bar=True, normalize_embeddings=True)
-    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    try:
-        client.delete_collection(COLLECTION)
-    except Exception:
-        pass
-    col = client.create_collection(COLLECTION, metadata={"hnsw:space": "cosine"})
-    col.add(ids=[f"chunk-{i}" for i in range(len(chunks))], documents=[c["text"] for c in chunks],
-            embeddings=embeddings.tolist(),
-            metadatas=[{"source_file": c["source_file"], "section": c["section"], "processed_file": c["processed_file"],
-                        "course_code": c.get("course_code", ""), "pages": c.get("pages", "")} for c in chunks])
+    embeddings = embedder.encode([c["text"] for c in chunks])
+    INDEX_DIR.mkdir(exist_ok=True)
+    np.save(INDEX_DIR / "embeddings.npy", embeddings)
+    records = [{"text": c["text"], "source_file": c["source_file"], "section": c["section"],
+                "processed_file": c["processed_file"], "course_code": c.get("course_code", ""),
+                "pages": c.get("pages", "")} for c in chunks]
+    (INDEX_DIR / "chunks.json").write_text(json.dumps(records, ensure_ascii=False, indent=0))
+    for rel in RUNTIME_DATA_FILES:  # the deployed API reads these (see config.INDEX_DIR)
+        (INDEX_DIR / "data" / rel).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(DATA_DIR / rel, INDEX_DIR / "data" / rel)
     by_file = {}
     for c in chunks:
         by_file[c["processed_file"]] = by_file.get(c["processed_file"], 0) + 1
-    print(f"Stored {col.count()} chunks in ChromaDB at {CHROMA_DIR}: {by_file}")
+    print(f"Stored {len(chunks)} chunks in {INDEX_DIR}: {by_file}")
 
 
 if __name__ == "__main__":

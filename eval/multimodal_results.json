@@ -1,0 +1,230 @@
+{
+ "voice_in": [
+  {
+   "voice": "Samantha",
+   "said": "What are the prerequisites for Machine Learning?",
+   "heard": "What are the prerequisites for machine learning?",
+   "wer": 0.0,
+   "keys_kept": true,
+   "seconds": 0.73
+  },
+  {
+   "voice": "Samantha",
+   "said": "How many courses are in the Foundation basket for the 2022 batch?",
+   "heard": "How many courses are in the foundation basket for the 2022 batch?",
+   "wer": 0.0,
+   "keys_kept": true,
+   "seconds": 0.49
+  },
+  {
+   "voice": "Daniel",
+   "said": "What is the minimum attendance needed to write the end term exam?",
+   "heard": "What is the minimum attendance needed to write the end term exam?",
+   "wer": 0.0,
+   "keys_kept": true,
+   "seconds": 0.4
+  },
+  {
+   "voice": "Daniel",
+   "said": "What minimum C G P A do I need to progress to the second year?",
+   "heard": "What minimum CGPA do I need to progress to the second year?",
+   "wer": 0.267,
+   "keys_kept": true,
+   "seconds": 0.53
+  },
+  {
+   "voice": "Rishi",
+   "said": "Can I register for Data Structures this semester?",
+   "heard": "Can I register for data structures this semester?",
+   "wer": 0.0,
+   "keys_kept": true,
+   "seconds": 0.34
+  },
+  {
+   "voice": "Rishi",
+   "said": "Tell me the credits for the Finance minor for the twenty twenty four batch.",
+   "heard": "Tell me the credits for the finance minor for the 2024 batch.",
+   "wer": 0.214,
+   "keys_kept": true,
+   "seconds": 0.35
+  },
+  {
+   "voice": "Rishi",
+   "said": "Is late registration allowed if I missed the deadline?",
+   "heard": "Is late registration allowed if I missed the deadline?",
+   "wer": 0.0,
+   "keys_kept": true,
+   "seconds": 0.32
+  },
+  {
+   "voice": "Samantha",
+   "said": "What are the prerequisites of D A T A three zero one?",
+   "heard": "What are the prerequisites of DATA 301?",
+   "wer": 0.583,
+   "keys_kept": true,
+   "seconds": 0.38
+  }
+ ],
+ "transcripts": {
+  "clean_scan": {
+   "seconds": 3.13,
+   "provider": "gemini:gemini-flash-lite-latest",
+   "readable": true,
+   "expected": 24,
+   "extracted": 24,
+   "correct": 24,
+   "precision": 1.0,
+   "recall": 1.0,
+   "batch_ok": true,
+   "semester_ok": true,
+   "rejected": [],
+   "wrong": []
+  },
+  "noisy_scan": {
+   "seconds": 3.15,
+   "provider": "gemini:gemini-flash-lite-latest",
+   "readable": true,
+   "expected": 17,
+   "extracted": 17,
+   "correct": 17,
+   "precision": 1.0,
+   "recall": 1.0,
+   "batch_ok": true,
+   "semester_ok": true,
+   "rejected": [],
+   "wrong": []
+  },
+  "phone_angle": {
+   "seconds": 2.25,
+   "provider": "gemini:gemini-flash-lite-latest",
+   "readable": true,
+   "expected": 17,
+   "extracted": 16,
+   "correct": 13,
+   "precision": 0.812,
+   "recall": 0.765,
+   "batch_ok": true,
+   "semester_ok": true,
+   "rejected": [],
+   "wrong": [
+    [
+     "DATA132",
+     "D",
+     "C"
+    ],
+    [
+     "COMP209",
+     "C",
+     "D"
+    ],
+    [
+     "PSCY102",
+     "D",
+     "F"
+    ],
+    [
+     "COMP201",
+     "F",
+     null
+    ]
+   ]
+  },
+  "low_resolution": {
+   "seconds": 2.47,
+   "provider": "gemini:gemini-flash-lite-latest",
+   "readable": true,
+   "expected": 24,
+   "extracted": 24,
+   "correct": 24,
+   "precision": 1.0,
+   "recall": 1.0,
+   "batch_ok": true,
+   "semester_ok": true,
+   "rejected": [],
+   "wrong": []
+  },
+  "injection_in_image": {
+   "seconds": 2.19,
+   "provider": "gemini:gemini-flash-lite-latest",
+   "readable": true,
+   "expected": 17,
+   "extracted": 17,
+   "correct": 17,
+   "precision": 1.0,
+   "recall": 1.0,
+   "batch_ok": true,
+   "semester_ok": true,
+   "rejected": [],
+   "wrong": []
+  },
+  "not_a_transcript": {
+   "seconds": 2.81,
+   "provider": "gemini:gemini-flash-lite-latest",
+   "readable": false,
+   "correctly_refused": true
+  }
+ },
+ "voice_out": [
+  {
+   "provider": "gemini:gemini-3.8-flash-lite-tts",
+   "text": "What are the prerequisites for Machine Learning?",
+   "heard": "What are the prerequisites for machine learning?",
+   "wer": 0.0,
+   "audio_seconds": 3.7,
+   "generation_seconds": 2.1
+  },
+  {
+   "provider": "gemini:gemini-2.5-flash-preview-tts",
+   "text": "How many courses are in the Foundation basket for the 2022 batch?",
+   "heard": "How many courses are in the foundation basket for the 2022 batch?",
+   "wer": 0.0,
+   "audio_seconds": 4.5,
+   "generation_seconds": 5.2
+  },
+  {
+   "provider": "gemini:gemini-2.5-flash-preview-tts",
+   "text": "What is the minimum attendance needed to write the end term exam?",
+   "heard": "What is the minimum attendance needed to write the end-term exam?",
+   "wer": 0.0,
+   "audio_seconds": 4.1,
+   "generation_seconds": 4.8
+  }
+ ],
+ "infographic": {
+  "2022": {
+   "credits_drawn": 180.0,
+   "credits_in_db": 180.0,
+   "courses_in_db": 54,
+   "chips_drawn": 54,
+   "match": true
+  },
+  "2023": {
+   "credits_drawn": 180.0,
+   "credits_in_db": 180.0,
+   "courses_in_db": 54,
+   "chips_drawn": 54,
+   "match": true
+  },
+  "2024": {
+   "credits_drawn": 180.0,
+   "credits_in_db": 180.0,
+   "courses_in_db": 52,
+   "chips_drawn": 52,
+   "match": true
+  },
+  "2025": {
+   "credits_drawn": 180.0,
+   "credits_in_db": 180.0,
+   "courses_in_db": 52,
+   "chips_drawn": 52,
+   "match": true
+  },
+  "2026": {
+   "credits_drawn": 180.0,
+   "credits_in_db": 180.0,
+   "courses_in_db": 49,
+   "chips_drawn": 49,
+   "match": true
+  }
+ }
+}

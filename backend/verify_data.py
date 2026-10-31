@@ -13,11 +13,11 @@ import sqlite3
 import sys
 from collections import Counter, defaultdict
 
-import chromadb
 import openpyxl
 from pypdf import PdfReader
 
-from config import CHROMA_DIR, COLLECTION, COURSES_DB, RAW_DIR
+from config import COURSES_DB, RAW_DIR
+from retrieval import records
 
 SPREAD = RAW_DIR / "semester_spread_structures_sept2026.xlsx"
 MINORS = RAW_DIR / "minor_courses_btech.xlsx"
@@ -53,9 +53,8 @@ def section(title):
 # ---------------------------------------------------------------------------------------------------
 # PDFs
 # ---------------------------------------------------------------------------------------------------
-def audit_pdfs(col):
+def audit_pdfs(meta):
     section("PDF FILES")
-    meta = col.get(include=["metadatas"])["metadatas"]
     by_file = Counter(m["source_file"] for m in meta)
     for path, cited in [(HANDBOOK, "Student Handbook Aug 2026.pdf"), (SOP, "SOP_STUDENT_17082026.pdf")]:
         r = PdfReader(str(path))
@@ -302,13 +301,12 @@ def audit_minors(db):
 
 
 def main():
-    col = chromadb.PersistentClient(path=str(CHROMA_DIR)).get_collection(COLLECTION)
+    meta = records()
     db = sqlite3.connect(COURSES_DB)
-    audit_pdfs(col)
+    audit_pdfs(meta)
     audit_spread(db)
     audit_minors(db)
     section("VECTOR STORE")
-    meta = col.get(include=["metadatas"])["metadatas"]
     for f, n in Counter(m["source_file"] for m in meta).most_common():
         print(f"  {n:4} chunks  {f}")
     print(f"  structured store: {db.execute('SELECT COUNT(*) FROM courses').fetchone()[0]} course rows in "

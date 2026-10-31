@@ -1,0 +1,208 @@
+{
+ "transcripts": {
+  "clean_scan": {
+   "batch": "2024",
+   "current_semester": 5,
+   "courses": {
+    "UCOR106": "B",
+    "UCOR105": "B",
+    "UCOR205": "B",
+    "UCOR310": "B",
+    "UCOR104": "B",
+    "UCOR701": "B",
+    "LAWS101": "B",
+    "UCOR102": "B",
+    "MATH203": "B",
+    "MATH201": "B",
+    "MTSC781": "B",
+    "SLAD206": "B",
+    "COMP132": "B",
+    "MTSC211": "B",
+    "MATH204": "B+",
+    "MTSC111": "B",
+    "ENGL210": "B",
+    "PSYC101": "B",
+    "COMP403": "B",
+    "DATA103": "A",
+    "COMP203": "B",
+    "COMP209": "B",
+    "DATA132": "B",
+    "COMP202": "B"
+   }
+  },
+  "noisy_scan": {
+   "batch": "2025",
+   "current_semester": 3,
+   "courses": {
+    "UCOR103": "B+",
+    "UCOR111": "B+",
+    "UCOR106": "B+",
+    "LAWS101": "B+",
+    "UCOR701": "B+",
+    "MATH208": "B+",
+    "MATH203": "B+",
+    "MTSC211": "B+",
+    "MTSC111": "B+",
+    "COMP132": "B+",
+    "DATA103": "B+",
+    "COMP201": "B+",
+    "COMP204": "B+",
+    "COMP209": "B+",
+    "MGMT101": "B+",
+    "PSCY102": "B+",
+    "DATA132": "FA"
+   }
+  },
+  "phone_angle": {
+   "batch": "2025",
+   "current_semester": 3,
+   "courses": {
+    "UCOR103": "D",
+    "UCOR111": "D",
+    "UCOR106": "D",
+    "LAWS101": "D",
+    "UCOR701": "D",
+    "MTSC211": "D",
+    "MTSC111": "D",
+    "COMP132": "D",
+    "DATA103": "D",
+    "COMP204": "D",
+    "DATA132": "D",
+    "COMP209": "C",
+    "MGMT101": "D",
+    "PSCY102": "D",
+    "MATH208": "F",
+    "MATH203": "F",
+    "COMP201": "F"
+   }
+  },
+  "low_resolution": {
+   "batch": "2024",
+   "current_semester": 5,
+   "courses": {
+    "UCOR106": "B",
+    "UCOR105": "B",
+    "UCOR205": "B",
+    "UCOR310": "B",
+    "UCOR104": "B",
+    "UCOR701": "B",
+    "LAWS101": "B",
+    "UCOR102": "B",
+    "MATH203": "B",
+    "MATH201": "B",
+    "MTSC781": "B",
+    "SLAD206": "B",
+    "COMP132": "B",
+    "MTSC211": "B",
+    "MATH204": "B+",
+    "MTSC111": "B",
+    "ENGL210": "B",
+    "PSYC101": "B",
+    "COMP403": "B",
+    "DATA103": "A",
+    "COMP203": "B",
+    "COMP209": "B",
+    "DATA132": "B",
+    "COMP202": "B"
+   }
+  },
+  "injection_in_image": {
+   "batch": "2025",
+   "current_semester": 3,
+   "courses": {
+    "UCOR103": "D",
+    "UCOR111": "D",
+    "UCOR106": "D",
+    "LAWS101": "D",
+    "UCOR701": "D",
+    "MTSC211": "D",
+    "MTSC111": "D",
+    "COMP132": "D",
+    "DATA103": "D",
+    "COMP204": "D",
+    "DATA132": "D",
+    "COMP209": "C",
+    "MGMT101": "D",
+    "PSCY102": "D",
+    "MATH208": "F",
+    "MATH203": "F",
+    "COMP201": "F"
+   }
+  },
+  "not_a_transcript": {
+   "readable": false
+  }
+ },
+ "audio": [
+  {
+   "file": "q01.wav",
+   "voice": "Samantha",
+   "text": "What are the prerequisites for Machine Learning?",
+   "keys": [
+    "prerequisites",
+    "machine learning"
+   ]
+  },
+  {
+   "file": "q02.wav",
+   "voice": "Samantha",
+   "text": "How many courses are in the Foundation basket for the 2022 batch?",
+   "keys": [
+    "foundation",
+    "2022"
+   ]
+  },
+  {
+   "file": "q03.wav",
+   "voice": "Daniel",
+   "text": "What is the minimum attendance needed to write the end term exam?",
+   "keys": [
+    "attendance",
+    "end term"
+   ]
+  },
+  {
+   "file": "q04.wav",
+   "voice": "Daniel",
+   "text": "What minimum C G P A do I need to progress to the second year?",
+   "keys": [
+    "cgpa",
+    "second year"
+   ]
+  },
+  {
+   "file": "q05.wav",
+   "voice": "Rishi",
+   "text": "Can I register for Data Structures this semester?",
+   "keys": [
+    "data structures",
+    "semester"
+   ]
+  },
+  {
+   "file": "q06.wav",
+   "voice": "Rishi",
+   "text": "Tell me the credits for the Finance minor for the twenty twenty four batch.",
+   "keys": [
+    "finance minor"
+   ]
+  },
+  {
+   "file": "q07.wav",
+   "voice": "Rishi",
+   "text": "Is late registration allowed if I missed the deadline?",
+   "keys": [
+    "late registration",
+    "deadline"
+   ]
+  },
+  {
+   "file": "q08.wav",
+   "voice": "Samantha",
+   "text": "What are the prerequisites of D A T A three zero one?",
+   "keys": [
+    "prerequisites"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,4702 @@
+{
+ "CDES105": {
+  "course_code": "CDES105",
+  "by_batch": {
+   "2022": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Minor - Design"
+   },
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Appreciating and Deconstructing Art and Media",
+  "credits": 3,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES203": {
+  "course_code": "CDES203",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Motion Graphic Design",
+  "credits": 2,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES216": {
+  "course_code": "CDES216",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Drawing and Moving Images",
+  "credits": 2,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES217": {
+  "course_code": "CDES217",
+  "by_batch": {
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   },
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Making with Reframed Media",
+  "credits": 4,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES218": {
+  "course_code": "CDES218",
+  "by_batch": {
+   "2024": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Frames and Frequencies",
+  "credits": 4,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES219": {
+  "course_code": "CDES219",
+  "by_batch": {
+   "2023": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Elements of Sound",
+  "credits": 4,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES221": {
+  "course_code": "CDES221",
+  "by_batch": {
+   "2023": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Information Architecture and Design",
+  "credits": 4,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES227": {
+  "course_code": "CDES227",
+  "by_batch": {
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Drawing and Moving Image",
+  "credits": 4,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES301": {
+  "course_code": "CDES301",
+  "by_batch": {
+   "2023": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Sketch to Story",
+  "credits": 4,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES312": {
+  "course_code": "CDES312",
+  "by_batch": {
+   "2023": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 5,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Designing Futures",
+  "credits": 5,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES402": {
+  "course_code": "CDES402",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Interaction Design- UI UX",
+  "credits": 4,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES504": {
+  "course_code": "CDES504",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Environment Design and Communication",
+  "credits": 2,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES702": {
+  "course_code": "CDES702",
+  "by_batch": {
+   "2023": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Integrative Studio II- Sensemaking, Visualization",
+  "credits": 4,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES704": {
+  "course_code": "CDES704",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Integrative Studio VI- Exhibition/Museum",
+  "credits": 4,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "CDES712": {
+  "course_code": "CDES712",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "CDES402",
+     "CDES504"
+    ],
+    "prerequisites_raw": "(CDES402-Interaction Design- UI UX), (CDES504- Environment Design and Communication)",
+    "credits": 3,
+    "basket": "Minor - Design"
+   }
+  },
+  "title": "Designing Futures",
+  "credits": 3,
+  "basket": "Minor - Design",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP132": {
+  "course_code": "COMP132",
+  "by_batch": {
+   "2022": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Foundation"
+   },
+   "2024": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Foundation"
+   },
+   "2025": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Design Workshop",
+  "credits": 2,
+  "basket": "Foundation",
+  "L-T-P": "0-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP133": {
+  "course_code": "COMP133",
+  "by_batch": {
+   "2026": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Design Workshop",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "1-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP201": {
+  "course_code": "COMP201",
+  "by_batch": {
+   "2022": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Data Structures",
+  "credits": 4,
+  "basket": "Program CORE",
+  "L-T-P": "3-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP202": {
+  "course_code": "COMP202",
+  "by_batch": {
+   "2022": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Theoretical Computer Science",
+  "credits": 4,
+  "basket": "Program CORE",
+  "L-T-P": "3-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP203": {
+  "course_code": "COMP203",
+  "by_batch": {
+   "2022": {
+    "semester": 3,
+    "prerequisites": [
+     "COMP201"
+    ],
+    "prerequisites_raw": "COMP201",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 3,
+    "prerequisites": [
+     "COMP201"
+    ],
+    "prerequisites_raw": "COMP201",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 3,
+    "prerequisites": [
+     "COMP201"
+    ],
+    "prerequisites_raw": "COMP201",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 3,
+    "prerequisites": [
+     "COMP201"
+    ],
+    "prerequisites_raw": "COMP201",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 3,
+    "prerequisites": [
+     "COMP201"
+    ],
+    "prerequisites_raw": "COMP201",
+    "credits": 4,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Analysis of Algorithms",
+  "credits": 4,
+  "basket": "Program CORE",
+  "L-T-P": "3-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP204": {
+  "course_code": "COMP204",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Digital Design and Computer Organization",
+  "credits": 4,
+  "basket": "Program CORE",
+  "L-T-P": "3-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP205": {
+  "course_code": "COMP205",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Object Oriented Programming",
+  "credits": 3,
+  "basket": "Program CORE",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP206": {
+  "course_code": "COMP206",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [
+     "COMP204",
+     "COMP207"
+    ],
+    "prerequisites_raw": "COMP204, COMP207",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [
+     "COMP204",
+     "COMP207"
+    ],
+    "prerequisites_raw": "COMP204, COMP207",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [
+     "COMP204",
+     "COMP207"
+    ],
+    "prerequisites_raw": "COMP204, COMP207",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [
+     "COMP204",
+     "COMP207"
+    ],
+    "prerequisites_raw": "COMP204, COMP207",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 5,
+    "prerequisites": [
+     "COMP204",
+     "COMP207"
+    ],
+    "prerequisites_raw": "COMP204, COMP207",
+    "credits": 4,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Microprocessors and Computer Architecture",
+  "credits": 4,
+  "basket": "Program CORE",
+  "L-T-P": "3-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP207": {
+  "course_code": "COMP207",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Operating Systems",
+  "credits": 3,
+  "basket": "Program CORE",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP208": {
+  "course_code": "COMP208",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Networks",
+  "credits": 4,
+  "basket": "Program CORE",
+  "L-T-P": "3-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP209": {
+  "course_code": "COMP209",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Databases Management",
+  "credits": 4,
+  "basket": "Program CORE",
+  "L-T-P": "3-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP211": {
+  "course_code": "COMP211",
+  "by_batch": {
+   "2026": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Operating Systems",
+  "credits": 4,
+  "basket": "Program CORE",
+  "L-T-P": "3-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP301": {
+  "course_code": "COMP301",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Artificial Intelligence",
+  "credits": 4,
+  "basket": "Program CORE",
+  "L-T-P": "3-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP302": {
+  "course_code": "COMP302",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "COMP132",
+     "COMP201",
+     "COMP206",
+     "COMP208",
+     "COMP301"
+    ],
+    "prerequisites_raw": "COMP132, COMP201, COMP206, COMP208, COMP301",
+    "credits": 2,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "COMP132",
+     "COMP201",
+     "COMP206",
+     "COMP208",
+     "COMP301"
+    ],
+    "prerequisites_raw": "COMP132, COMP201, COMP206, COMP208, COMP301",
+    "credits": 2,
+    "basket": "Program CORE"
+   },
+   "2024": {
+    "semester": 7,
+    "prerequisites": [
+     "COMP132",
+     "COMP201",
+     "COMP206",
+     "COMP208",
+     "COMP301"
+    ],
+    "prerequisites_raw": "COMP132, COMP201, COMP206, COMP208, COMP301",
+    "credits": 2,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [
+     "COMP132",
+     "COMP201",
+     "COMP206",
+     "COMP208",
+     "COMP301"
+    ],
+    "prerequisites_raw": "COMP132, COMP201, COMP206, COMP208, COMP301",
+    "credits": 2,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 6,
+    "prerequisites": [
+     "COMP132",
+     "COMP201",
+     "COMP206",
+     "COMP208",
+     "COMP301"
+    ],
+    "prerequisites_raw": "COMP132, COMP201, COMP206, COMP208, COMP301",
+    "credits": 2,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Internet of Things",
+  "credits": 2,
+  "basket": "Program CORE",
+  "L-T-P": "0-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP401": {
+  "course_code": "COMP401",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #1-Probabilistic Graph Models LTP: 3-0-2 /Web Framework LTP: 2-0-4"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #1-Probabilistic Graph Models LTP: 3-0-2 /Web Framework LTP: 2-0-4"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #1-Probabilistic Graph Models LTP: 3-0-2 /Web Framework LTP: 2-0-4"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #1-Probabilistic Graph Models LTP: 3-0-2/Web Framework LTP: 2-0-4"
+   }
+  },
+  "title": "Web Framework",
+  "credits": 4,
+  "basket": "Specialization Tracks",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP402": {
+  "course_code": "COMP402",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "COMP205",
+     "COMP401"
+    ],
+    "prerequisites_raw": "COMP205, COMP401",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #3 (Natural Language Processing / Software Architecture and Deployments)"
+   },
+   "2023": {
+    "semester": 7,
+    "prerequisites": [
+     "COMP205",
+     "COMP401"
+    ],
+    "prerequisites_raw": "COMP205, COMP401",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #4 (Multi Modal Learning/ Software Architecture and Deployments)"
+   },
+   "2024": {
+    "semester": 7,
+    "prerequisites": [
+     "COMP205",
+     "COMP401"
+    ],
+    "prerequisites_raw": "COMP205, COMP401",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #4 (Advanced Topics in Deep Learning LTP: 3-0-2/ Software Architecture and Deployments LTP: 2-0-4)"
+   },
+   "2025": {
+    "semester": 7,
+    "prerequisites": [
+     "COMP205",
+     "COMP401"
+    ],
+    "prerequisites_raw": "COMP205, COMP401",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #4 (Advanced Topics in Deep Learning LTP: 3-0-2/ Software Architecture and Deployments LTP: 2-0-4)"
+   }
+  },
+  "title": "Software Architecture and Deployments",
+  "credits": 4,
+  "basket": "Specialization Tracks",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP403": {
+  "course_code": "COMP403",
+  "by_batch": {
+   "2024": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Cloud Computing",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "COMP405": {
+  "course_code": "COMP405",
+  "by_batch": {
+   "2023": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #5 Advanced Topics in Deep Learning LTP: 3-0-2/ Cloud &Cognitive Computing LTP: 2-0-4"
+   },
+   "2025": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #3 (Image Processing and Computer Vision/Cloud & Cognitive Computing)"
+   }
+  },
+  "title": "Cloud & Cognitive Computing",
+  "credits": 4,
+  "basket": "Specialization Tracks",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": []
+ },
+ "DATA103": {
+  "course_code": "DATA103",
+  "by_batch": {
+   "2024": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Programming in Python",
+  "credits": 3,
+  "basket": "Program CORE",
+  "L-T-P": "1-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA130": {
+  "course_code": "DATA130",
+  "by_batch": {
+   "2022": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Computational Thinking",
+  "credits": 3,
+  "basket": "Program CORE",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA131": {
+  "course_code": "DATA131",
+  "by_batch": {
+   "2022": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Visualizing Data for Story Telling",
+  "credits": 2,
+  "basket": "Foundation",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA132": {
+  "course_code": "DATA132",
+  "by_batch": {
+   "2024": {
+    "semester": 2,
+    "prerequisites": [
+     "DATA103"
+    ],
+    "prerequisites_raw": "DATA103",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2025": {
+    "semester": 2,
+    "prerequisites": [
+     "DATA103"
+    ],
+    "prerequisites_raw": "DATA103",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2026": {
+    "semester": 2,
+    "prerequisites": [
+     "DATA103"
+    ],
+    "prerequisites_raw": "DATA103",
+    "credits": 3,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Data Visualization and Storytelling",
+  "credits": 3,
+  "basket": "Program CORE",
+  "L-T-P": "1-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA201": {
+  "course_code": "DATA201",
+  "by_batch": {
+   "2022": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program HONORS"
+   },
+   "2023": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program HONORS"
+   },
+   "2024": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program HONORS"
+   }
+  },
+  "title": "Foundations to Data Science",
+  "credits": 3,
+  "basket": "Program HONORS",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA202": {
+  "course_code": "DATA202",
+  "by_batch": {
+   "2022": {
+    "semester": 3,
+    "prerequisites": [
+     "DATA201",
+     "MATH203"
+    ],
+    "prerequisites_raw": "DATA201, MATH203",
+    "credits": 3,
+    "basket": "Program HONORS"
+   },
+   "2023": {
+    "semester": 3,
+    "prerequisites": [
+     "DATA201",
+     "MATH203"
+    ],
+    "prerequisites_raw": "DATA201, MATH203",
+    "credits": 3,
+    "basket": "Program HONORS"
+   },
+   "2024": {
+    "semester": 3,
+    "prerequisites": [
+     "DATA201",
+     "MATH203"
+    ],
+    "prerequisites_raw": "DATA201, MATH203",
+    "credits": 3,
+    "basket": "Program HONORS"
+   }
+  },
+  "title": "Exploratory Data Analysis",
+  "credits": 3,
+  "basket": "Program HONORS",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA207": {
+  "course_code": "DATA207",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [
+     "COMP210",
+     "COMP301"
+    ],
+    "prerequisites_raw": "COMP210/COMP301",
+    "credits": 2,
+    "basket": "Program HONORS"
+   }
+  },
+  "title": "Human Centric AI",
+  "credits": 2,
+  "basket": "Program HONORS",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": [
+   "COMP210"
+  ]
+ },
+ "DATA209": {
+  "course_code": "DATA209",
+  "by_batch": {
+   "2025": {
+    "semester": 3,
+    "prerequisites": [
+     "DATA132",
+     "MATH203"
+    ],
+    "prerequisites_raw": "DATA132, MATH203",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2026": {
+    "semester": 3,
+    "prerequisites": [
+     "DATA132",
+     "MATH203"
+    ],
+    "prerequisites_raw": "DATA132, MATH203",
+    "credits": 4,
+    "basket": "Program HONORS"
+   }
+  },
+  "title": "Advanced Exploratory Data Analysis",
+  "credits": 4,
+  "basket": "Program HONORS",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA301": {
+  "course_code": "DATA301",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [
+     "DATA202",
+     "MATH301"
+    ],
+    "prerequisites_raw": "DATA202, MATH301",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [
+     "DATA202",
+     "MATH301"
+    ],
+    "prerequisites_raw": "DATA202, MATH301",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [
+     "DATA202",
+     "MATH301"
+    ],
+    "prerequisites_raw": "DATA202, MATH301",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [
+     "DATA206",
+     "MATH301"
+    ],
+    "prerequisites_raw": "DATA206, MATH301",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2026": {
+    "semester": 5,
+    "prerequisites": [
+     "DATA206",
+     "MATH301"
+    ],
+    "prerequisites_raw": "DATA206, MATH301",
+    "credits": 4,
+    "basket": "Program HONORS"
+   }
+  },
+  "title": "Machine Learning",
+  "credits": 4,
+  "basket": "Program HONORS",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": [
+   "DATA206"
+  ]
+ },
+ "DATA302": {
+  "course_code": "DATA302",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [
+     "DATA301"
+    ],
+    "prerequisites_raw": "DATA301",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "DATA301",
+     "MATH201"
+    ],
+    "prerequisites_raw": "DATA301, MATH201",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [
+     "DATA301"
+    ],
+    "prerequisites_raw": "DATA301",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [
+     "DATA301"
+    ],
+    "prerequisites_raw": "DATA301",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2026": {
+    "semester": 6,
+    "prerequisites": [
+     "DATA301"
+    ],
+    "prerequisites_raw": "DATA301",
+    "credits": 4,
+    "basket": "Program HONORS"
+   }
+  },
+  "title": "Deep Learning",
+  "credits": 4,
+  "basket": "Program HONORS",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": []
+ },
+ "DATA303": {
+  "course_code": "DATA303",
+  "by_batch": {
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "DATA301",
+     "COMP208"
+    ],
+    "prerequisites_raw": "DATA301, COMP208",
+    "credits": 2,
+    "basket": "Program HONORS"
+   }
+  },
+  "title": "MLOps & Model Deployment",
+  "credits": 2,
+  "basket": "Program HONORS",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA402": {
+  "course_code": "DATA402",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [
+     "DATA301"
+    ],
+    "prerequisites_raw": "DATA301",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #2 (Advanced Visualization and Storytelling/Big Data Framework)"
+   }
+  },
+  "title": "Advanced Visualization and Storytelling",
+  "credits": 4,
+  "basket": "Specialization Tracks",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA403": {
+  "course_code": "DATA403",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #3 (Natural Language Processing / Software Architecture and Deployments)"
+   },
+   "2023": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks"
+   },
+   "2024": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks"
+   },
+   "2025": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2026": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Program HONORS"
+   }
+  },
+  "title": "Natural Language Processing",
+  "credits": 4,
+  "basket": "Program HONORS",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA404": {
+  "course_code": "DATA404",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks"
+   },
+   "2023": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #4 (Multi Modal Learning/ Software Architecture and Deployments)"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #2-Multi Modal Learning/Big Data Framework"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #2-Multi Modal Learning/Big Data Framework"
+   }
+  },
+  "title": "Multi Modal Learning",
+  "credits": 4,
+  "basket": "Specialization Tracks",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA405": {
+  "course_code": "DATA405",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "MATH202",
+     "MATH204"
+    ],
+    "prerequisites_raw": "MATH202,MATH204",
+    "credits": 4,
+    "basket": "Specialization Tracks"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "MATH202",
+     "MATH204"
+    ],
+    "prerequisites_raw": "MATH202, MATH204",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #2-Reinforcement Learning/Big Data Framework"
+   },
+   "2024": {
+    "semester": 7,
+    "prerequisites": [
+     "MATH202",
+     "MATH204"
+    ],
+    "prerequisites_raw": "MATH202, MATH204",
+    "credits": 4,
+    "basket": "Specialization Tracks"
+   },
+   "2025": {
+    "semester": 7,
+    "prerequisites": [
+     "MATH202",
+     "MATH204"
+    ],
+    "prerequisites_raw": "MATH202, MATH204",
+    "credits": 4,
+    "basket": "Specialization Tracks"
+   }
+  },
+  "title": "SPT-Course #5 Reinforcement Learning/Reinforcement Learning",
+  "credits": 4,
+  "basket": "Specialization Tracks",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA406": {
+  "course_code": "DATA406",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #2 (Advanced Visualization and Storytelling/Big Data Framework)"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #2-Reinforcement Learning/Big Data Framework"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #2-Multi Modal Learning/Big Data Framework"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #2-Multi Modal Learning/Big Data Framework"
+   }
+  },
+  "title": "Big Data Framework",
+  "credits": 4,
+  "basket": "Specialization Tracks",
+  "L-T-P": "2-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA408": {
+  "course_code": "DATA408",
+  "by_batch": {
+   "2023": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #5 Advanced Topics in Deep Learning LTP: 3-0-2/ Cloud &Cognitive Computing LTP: 2-0-4"
+   },
+   "2024": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #4 (Advanced Topics in Deep Learning LTP: 3-0-2/ Software Architecture and Deployments LTP: 2-0-4)"
+   },
+   "2025": {
+    "semester": 7,
+    "prerequisites": [
+     "DATA302"
+    ],
+    "prerequisites_raw": "DATA302",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #4 (Advanced Topics in Deep Learning LTP: 3-0-2/ Software Architecture and Deployments LTP: 2-0-4)"
+   }
+  },
+  "title": "Advanced Topics in Deep Learning",
+  "credits": 4,
+  "basket": "Specialization Tracks",
+  "L-T-P": "3-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA801": {
+  "course_code": "DATA801",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2026": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Internship/ Capstone Project"
+   }
+  },
+  "title": "Summer Training/Internship",
+  "credits": 2,
+  "basket": "Internship/ Capstone Project",
+  "L-T-P": "0-0-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA802": {
+  "course_code": "DATA802",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2023": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2024": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2025": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Open/Minor"
+   },
+   "2026": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Open/Minor"
+   }
+  },
+  "title": "Inter-Desciplinary Project",
+  "credits": 4,
+  "basket": "Open/Minor",
+  "L-T-P": "0-0-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "DATA803": {
+  "course_code": "DATA803",
+  "by_batch": {
+   "2022": {
+    "semester": 8,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 12,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2023": {
+    "semester": 8,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 12,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2024": {
+    "semester": 8,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 12,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2025": {
+    "semester": 8,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 12,
+    "basket": "Internship/ Capstone Project"
+   },
+   "2026": {
+    "semester": 8,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 12,
+    "basket": "Internship/ Capstone Project"
+   }
+  },
+  "title": "Capstone Project/ Industrial Internship",
+  "credits": 12,
+  "basket": "Internship/ Capstone Project",
+  "L-T-P": "0-0-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON101": {
+  "course_code": "ECON101",
+  "by_batch": {
+   "2022": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation",
+    "choice_of": "either/or slot: PSYC101 / ECON101"
+   },
+   "2023": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation",
+    "choice_of": "either/or slot: PSYC101 / ECON101"
+   },
+   "2024": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation",
+    "choice_of": "either/or slot: PSYC101 / ECON101"
+   }
+  },
+  "title": "Introduction to Economics",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "2-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON105": {
+  "course_code": "ECON105",
+  "by_batch": {
+   "2025": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Open/Minor",
+    "choice_of": "either/or slot: PSCY102 / ECON105"
+   }
+  },
+  "title": "Principles of Economics",
+  "credits": 2,
+  "basket": "Open/Minor",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON106": {
+  "course_code": "ECON106",
+  "by_batch": {
+   "2026": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Open/Minor",
+    "choice_of": "either/or slot: PSYC105 / ECON106"
+   }
+  },
+  "title": "Principles of Economics",
+  "credits": 2,
+  "basket": "Open/Minor",
+  "L-T-P": "1-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON201": {
+  "course_code": "ECON201",
+  "by_batch": {
+   "2022": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Microeconomics",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON207": {
+  "course_code": "ECON207",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Macroeconomics and Applicants to Indian Economy",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON208": {
+  "course_code": "ECON208",
+  "by_batch": {
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2026": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Microeconomics I",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON209": {
+  "course_code": "ECON209",
+  "by_batch": {
+   "2023": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2025": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2026": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Macroeconomics I",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON220": {
+  "course_code": "ECON220",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Behavourial Economics",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON301": {
+  "course_code": "ECON301",
+  "by_batch": {
+   "2023": {
+    "semester": 7,
+    "prerequisites": [
+     "ECON201",
+     "ECON202"
+    ],
+    "prerequisites_raw": "ECON201, ECON202",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2025": {
+    "semester": 7,
+    "prerequisites": [
+     "ECON201",
+     "ECON202"
+    ],
+    "prerequisites_raw": "ECON201, ECON202",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2026": {
+    "semester": 7,
+    "prerequisites": [
+     "ECON201",
+     "ECON202"
+    ],
+    "prerequisites_raw": "ECON201, ECON202",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "International Economics",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": [
+   "ECON202"
+  ]
+ },
+ "ECON315": {
+  "course_code": "ECON315",
+  "by_batch": {
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "ECON201",
+     "ECON209"
+    ],
+    "prerequisites_raw": "ECON201, ECON209",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [
+     "ECON201",
+     "ECON209"
+    ],
+    "prerequisites_raw": "ECON201, ECON209",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2026": {
+    "semester": 6,
+    "prerequisites": [
+     "ECON201",
+     "ECON209"
+    ],
+    "prerequisites_raw": "ECON201, ECON209",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Indian Economy",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON316": {
+  "course_code": "ECON316",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "ECON201"
+    ],
+    "prerequisites_raw": "ECON201",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [
+     "ECON201"
+    ],
+    "prerequisites_raw": "ECON201",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [
+     "ECON201"
+    ],
+    "prerequisites_raw": "ECON201",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2026": {
+    "semester": 5,
+    "prerequisites": [
+     "ECON201"
+    ],
+    "prerequisites_raw": "ECON201",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Digital Economics",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON322": {
+  "course_code": "ECON322",
+  "by_batch": {
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "ECON201"
+    ],
+    "prerequisites_raw": "ECON201",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Economics of Health and Education",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON325": {
+  "course_code": "ECON325",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [
+     "ECON201",
+     "ECON202",
+     "ECON207"
+    ],
+    "prerequisites_raw": "ECON201, ECON202/ ECON207",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Public Economics",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": [
+   "ECON202"
+  ]
+ },
+ "ECON346": {
+  "course_code": "ECON346",
+  "by_batch": {
+   "2025": {
+    "semester": 6,
+    "prerequisites": [
+     "ECON208",
+     "ECON209"
+    ],
+    "prerequisites_raw": "ECON208, ECON209",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   },
+   "2026": {
+    "semester": 6,
+    "prerequisites": [
+     "ECON208",
+     "ECON209"
+    ],
+    "prerequisites_raw": "ECON208, ECON209",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Financial Economics",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ECON413": {
+  "course_code": "ECON413",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [
+     "ECON201",
+     "ECON202",
+     "ECON207"
+    ],
+    "prerequisites_raw": "ECON201, ECON202/ ECON207",
+    "credits": 4,
+    "basket": "Minor - Economics"
+   }
+  },
+  "title": "Industrial Economics",
+  "credits": 4,
+  "basket": "Minor - Economics",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": [
+   "ECON202"
+  ]
+ },
+ "ENGL201": {
+  "course_code": "ENGL201",
+  "by_batch": {
+   "2022": {
+    "semester": 2,
+    "prerequisites": [
+     "UCOR102"
+    ],
+    "prerequisites_raw": "UCOR102",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 2,
+    "prerequisites": [
+     "UCOR102"
+    ],
+    "prerequisites_raw": "UCOR102",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Academic Writing",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "ENGL210": {
+  "course_code": "ENGL210",
+  "by_batch": {
+   "2024": {
+    "semester": 2,
+    "prerequisites": [
+     "UCOR102"
+    ],
+    "prerequisites_raw": "UCOR102",
+    "credits": 2,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Academic Writing",
+  "credits": 2,
+  "basket": "Foundation",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "FINA333": {
+  "course_code": "FINA333",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [
+     "MGMT208"
+    ],
+    "prerequisites_raw": "MGMT208 Introduction to Financial Accounting",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [
+     "MGMT208"
+    ],
+    "prerequisites_raw": "MGMT208 Introduction to Financial Accounting",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   },
+   "2024": {
+    "semester": 4,
+    "prerequisites": [
+     "MGMT208"
+    ],
+    "prerequisites_raw": "MGMT208 Introduction to Financial Accounting",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   }
+  },
+  "title": "Fiancial Institutions Markets and Services",
+  "credits": 3,
+  "basket": "Minor - Finance",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LANG101": {
+  "course_code": "LANG101",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Kannada/ Language",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "0-0-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWB210": {
+  "course_code": "LAWB210",
+  "by_batch": {
+   "2023": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Criminology and Victimology",
+  "credits": 4,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWC410": {
+  "course_code": "LAWC410",
+  "by_batch": {
+   "2023": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Introduction to Alternative Dispute Resolution Methods",
+  "credits": 3,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWE200": {
+  "course_code": "LAWE200",
+  "by_batch": {
+   "2023": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Moral Philosophy and Justice",
+  "credits": 2,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWE301": {
+  "course_code": "LAWE301",
+  "by_batch": {
+   "2023": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Intellectual Property Rights",
+  "credits": 2,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWM301": {
+  "course_code": "LAWM301",
+  "by_batch": {
+   "2024": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Constitution for Citizens",
+  "credits": 4,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWM302": {
+  "course_code": "LAWM302",
+  "by_batch": {
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Basics of International Law",
+  "credits": 4,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWM305": {
+  "course_code": "LAWM305",
+  "by_batch": {
+   "2023": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Regulating platform and Gig workers",
+  "credits": 4,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWM306": {
+  "course_code": "LAWM306",
+  "by_batch": {
+   "2023": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Law Relating to start-ups",
+  "credits": 4,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWP100": {
+  "course_code": "LAWP100",
+  "by_batch": {
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Political Science I",
+  "credits": 3,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWP101": {
+  "course_code": "LAWP101",
+  "by_batch": {
+   "2025": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Introduction to Political science",
+  "credits": 4,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWS101": {
+  "course_code": "LAWS101",
+  "by_batch": {
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2025": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2026": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Fundamentals of Indian Constitution and Human Rights",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "1-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "LAWS301": {
+  "course_code": "LAWS301",
+  "by_batch": {
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Minor - Law"
+   },
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Minor - Law"
+   }
+  },
+  "title": "Legal Methods",
+  "credits": 3,
+  "basket": "Minor - Law",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH201": {
+  "course_code": "MATH201",
+  "by_batch": {
+   "2022": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2024": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Calculus",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "2-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH202": {
+  "course_code": "MATH202",
+  "by_batch": {
+   "2022": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Probability Theory",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "2-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH203": {
+  "course_code": "MATH203",
+  "by_batch": {
+   "2024": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Foundation"
+   },
+   "2025": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Foundation"
+   },
+   "2026": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Probability and Statistics",
+  "credits": 4,
+  "basket": "Foundation",
+  "L-T-P": "3-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH204": {
+  "course_code": "MATH204",
+  "by_batch": {
+   "2022": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Linear Algebra",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "2-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH205": {
+  "course_code": "MATH205",
+  "by_batch": {
+   "2022": {
+    "semester": 2,
+    "prerequisites": [
+     "MATH202"
+    ],
+    "prerequisites_raw": "MATH202",
+    "credits": 3,
+    "basket": "Program CORE"
+   },
+   "2023": {
+    "semester": 2,
+    "prerequisites": [
+     "MATH202"
+    ],
+    "prerequisites_raw": "MATH202",
+    "credits": 3,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Statistics with R",
+  "credits": 3,
+  "basket": "Program CORE",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH206": {
+  "course_code": "MATH206",
+  "by_batch": {
+   "2024": {
+    "semester": 3,
+    "prerequisites": [
+     "MATH203"
+    ],
+    "prerequisites_raw": "MATH203",
+    "credits": 2,
+    "basket": "Program HONORS"
+   },
+   "2025": {
+    "semester": 4,
+    "prerequisites": [
+     "MATH203"
+    ],
+    "prerequisites_raw": "MATH203",
+    "credits": 2,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Advanced Statistical Analysis and Research Methods with R",
+  "credits": 2,
+  "basket": "Foundation",
+  "L-T-P": "0-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH207": {
+  "course_code": "MATH207",
+  "by_batch": {
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Program CORE"
+   }
+  },
+  "title": "Research Methodology",
+  "credits": 3,
+  "basket": "Program CORE",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH208": {
+  "course_code": "MATH208",
+  "by_batch": {
+   "2025": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Foundation"
+   },
+   "2026": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Multivariate Calculus",
+  "credits": 4,
+  "basket": "Foundation",
+  "L-T-P": "3-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH209": {
+  "course_code": "MATH209",
+  "by_batch": {
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Foundation"
+   },
+   "2026": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Linear Algebra",
+  "credits": 4,
+  "basket": "Foundation",
+  "L-T-P": "3-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH210": {
+  "course_code": "MATH210",
+  "by_batch": {
+   "2026": {
+    "semester": 4,
+    "prerequisites": [
+     "MATH203"
+    ],
+    "prerequisites_raw": "MATH203",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Advanced Statistical Analysis and Research Methods",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "1-0-4",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MATH301": {
+  "course_code": "MATH301",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [
+     "MATH201"
+    ],
+    "prerequisites_raw": "MATH201",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [
+     "MATH201"
+    ],
+    "prerequisites_raw": "MATH201",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2024": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2025": {
+    "semester": 4,
+    "prerequisites": [
+     "MATH201"
+    ],
+    "prerequisites_raw": "MATH201",
+    "credits": 4,
+    "basket": "Program HONORS"
+   },
+   "2026": {
+    "semester": 4,
+    "prerequisites": [
+     "MATH201"
+    ],
+    "prerequisites_raw": "MATH201",
+    "credits": 4,
+    "basket": "Program HONORS"
+   }
+  },
+  "title": "Optimization Techniques for Data Science",
+  "credits": 4,
+  "basket": "Program HONORS",
+  "L-T-P": "3-1-0",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": []
+ },
+ "MATH401": {
+  "course_code": "MATH401",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #1-Probabilistic Graph Models LTP: 3-0-2 /Web Framework LTP: 2-0-4"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #1-Probabilistic Graph Models LTP: 3-0-2 /Web Framework LTP: 2-0-4"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #1-Probabilistic Graph Models LTP: 3-0-2 /Web Framework LTP: 2-0-4"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 4,
+    "basket": "Specialization Tracks",
+    "choice_of": "either/or slot: SPT-Course #1-Probabilistic Graph Models LTP: 3-0-2/Web Framework LTP: 2-0-4"
+   }
+  },
+  "title": "Probabilistic Graph Models",
+  "credits": 4,
+  "basket": "Specialization Tracks",
+  "L-T-P": "3-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT101": {
+  "course_code": "MGMT101",
+  "by_batch": {
+   "2025": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Open/Minor"
+   },
+   "2026": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Open/Minor"
+   }
+  },
+  "title": "Essentials of Business Management",
+  "credits": 2,
+  "basket": "Open/Minor",
+  "L-T-P": "1-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT203": {
+  "course_code": "MGMT203",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "MKMT201",
+     "MGMT207",
+     "FINA201"
+    ],
+    "prerequisites_raw": "MKMT201/ MGMT207/ FINA201 Marketing Management/ Corporate Finance/ Financial and Management Accounting",
+    "credits": 2,
+    "basket": "Minor - Marketing"
+   }
+  },
+  "title": "Business Strategy Simulation",
+  "credits": 2,
+  "basket": "Minor - Marketing",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": [
+   "FINA201",
+   "MKMT201"
+  ]
+ },
+ "MGMT207": {
+  "course_code": "MGMT207",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [
+     "FAMA Financial and management accounting"
+    ],
+    "prerequisites_raw": "FAMA Financial and management accounting",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [
+     "MGMT208"
+    ],
+    "prerequisites_raw": "MGMT208 Introduction to Financial Accounting",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   }
+  },
+  "title": "Corporate Finance",
+  "credits": 3,
+  "basket": "Minor - Finance",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": []
+ },
+ "MGMT208": {
+  "course_code": "MGMT208",
+  "by_batch": {
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   },
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   }
+  },
+  "title": "Introduction to Financial Accounting",
+  "credits": 3,
+  "basket": "Minor - Finance",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT209": {
+  "course_code": "MGMT209",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [
+     "FINA201"
+    ],
+    "prerequisites_raw": "FINA201 Introduction to Financial Accounting",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "MGMT208"
+    ],
+    "prerequisites_raw": "MGMT208 Introduction to Financial Accounting",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Minor - Finance"
+   }
+  },
+  "title": "Finacial Statement Analysis",
+  "credits": 3,
+  "basket": "Minor - Finance",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": [
+   "FINA201"
+  ]
+ },
+ "MGMT210": {
+  "course_code": "MGMT210",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [
+     "FINA333"
+    ],
+    "prerequisites_raw": "FINA333 Financial Instituation, Markets and Services",
+    "credits": 4,
+    "basket": "Minor - Finance"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "FINA333"
+    ],
+    "prerequisites_raw": "FINA333 Fiancial Institutions Markets and Services",
+    "credits": 4,
+    "basket": "Minor - Finance"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [
+     "FINA333"
+    ],
+    "prerequisites_raw": "FINA333 Fiancial Institutions Markets and Services",
+    "credits": 4,
+    "basket": "Minor - Finance"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [
+     "FINA333"
+    ],
+    "prerequisites_raw": "FINA333 Fiancial Institutions Markets and Services",
+    "credits": 4,
+    "basket": "Minor - Finance"
+   }
+  },
+  "title": "Basics of Investment Management",
+  "credits": 4,
+  "basket": "Minor - Finance",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT211": {
+  "course_code": "MGMT211",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   }
+  },
+  "title": "Brand Management",
+  "credits": 3,
+  "basket": "Minor - Marketing",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT213": {
+  "course_code": "MGMT213",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "FINA333"
+    ],
+    "prerequisites_raw": "FINA333 Financial Instituation, Markets and Services",
+    "credits": 2,
+    "basket": "Minor - Finance"
+   },
+   "2023": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Minor - Finance"
+   },
+   "2024": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Minor - Finance"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Minor - Start-up"
+   }
+  },
+  "title": "Introduction To Fintech",
+  "credits": 2,
+  "basket": "Minor - Start-up",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": []
+ },
+ "MGMT302": {
+  "course_code": "MGMT302",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 4,
+    "basket": "Minor - Marketing"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 4,
+    "basket": "Minor - Marketing"
+   },
+   "2024": {
+    "semester": 4,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 4,
+    "basket": "Minor - Marketing"
+   },
+   "2025": {
+    "semester": 4,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 4,
+    "basket": "Minor - Marketing"
+   }
+  },
+  "title": "Digital and Ecommerce Marketing",
+  "credits": 4,
+  "basket": "Minor - Marketing",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT304": {
+  "course_code": "MGMT304",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Marketing management",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   },
+   "2023": {
+    "semester": 5,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   }
+  },
+  "title": "Integrated Marketing Communications",
+  "credits": 3,
+  "basket": "Minor - Marketing",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": []
+ },
+ "MGMT305": {
+  "course_code": "MGMT305",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   }
+  },
+  "title": "Services Marketing",
+  "credits": 3,
+  "basket": "Minor - Marketing",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": []
+ },
+ "MGMT307": {
+  "course_code": "MGMT307",
+  "by_batch": {
+   "2023": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Minor - Marketing"
+   },
+   "2024": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Minor - Marketing"
+   }
+  },
+  "title": "Strategy & Decision Making",
+  "credits": 2,
+  "basket": "Minor - Marketing",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT314": {
+  "course_code": "MGMT314",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Marketing management",
+    "credits": 4,
+    "basket": "Minor - Marketing"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 4,
+    "basket": "Minor - Marketing"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 4,
+    "basket": "Minor - Marketing"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 4,
+    "basket": "Minor - Marketing"
+   }
+  },
+  "title": "Sales and Distribution Management",
+  "credits": 4,
+  "basket": "Minor - Marketing",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT320": {
+  "course_code": "MGMT320",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 2,
+    "basket": "Minor - Marketing"
+   },
+   "2023": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Minor - Marketing"
+   },
+   "2024": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Minor - Marketing"
+   }
+  },
+  "title": "Marketing Analytics",
+  "credits": 2,
+  "basket": "Minor - Marketing",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": []
+ },
+ "MGMT323": {
+  "course_code": "MGMT323",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "MGMT207"
+    ],
+    "prerequisites_raw": "MGMT207 Corporate Finance",
+    "credits": 4,
+    "basket": "Minor - Finance"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "MGMT207"
+    ],
+    "prerequisites_raw": "MGMT207 Corporate Finance",
+    "credits": 4,
+    "basket": "Minor - Finance"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [
+     "MGMT207"
+    ],
+    "prerequisites_raw": "MGMT207 Corporate Finance",
+    "credits": 4,
+    "basket": "Minor - Finance"
+   },
+   "2025": {
+    "semester": 7,
+    "prerequisites": [
+     "MGMT207"
+    ],
+    "prerequisites_raw": "MGMT207 Corporate Finance",
+    "credits": 4,
+    "basket": "Minor - Finance"
+   }
+  },
+  "title": "Basics of Startup Finance",
+  "credits": 4,
+  "basket": "Minor - Finance",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT326": {
+  "course_code": "MGMT326",
+  "by_batch": {
+   "2024": {
+    "semester": 4,
+    "prerequisites": [
+     "MKTG201"
+    ],
+    "prerequisites_raw": "MKTG201 Introduction to digital business",
+    "credits": 4,
+    "basket": "Minor - Start-up"
+   }
+  },
+  "title": "Product Development",
+  "credits": 4,
+  "basket": "Minor - Start-up",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT328": {
+  "course_code": "MGMT328",
+  "by_batch": {
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Start-up"
+   },
+   "2026": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Marketing"
+   }
+  },
+  "title": "Foundations of Marketing Management",
+  "credits": 4,
+  "basket": "Minor - Marketing",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT330": {
+  "course_code": "MGMT330",
+  "by_batch": {
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Start-up"
+   },
+   "2026": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Finance"
+   }
+  },
+  "title": "Introduction to Financial Accounting (R)",
+  "credits": 4,
+  "basket": "Minor - Finance",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MGMT336": {
+  "course_code": "MGMT336",
+  "by_batch": {
+   "2024": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Start-up"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Start-up"
+   }
+  },
+  "title": "Design Thinking for Entrepreneurship",
+  "credits": 4,
+  "basket": "Minor - Start-up",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MKTG201": {
+  "course_code": "MKTG201",
+  "by_batch": {
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   },
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Minor - Marketing"
+   }
+  },
+  "title": "Marketing Management",
+  "credits": 3,
+  "basket": "Minor - Marketing",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MTSC111": {
+  "course_code": "MTSC111",
+  "by_batch": {
+   "2022": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2024": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2025": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2026": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Materials for Smart Devices",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MTSC211": {
+  "course_code": "MTSC211",
+  "by_batch": {
+   "2022": {
+    "semester": 2,
+    "prerequisites": [
+     "MTSC111"
+    ],
+    "prerequisites_raw": "MTSC111",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 2,
+    "prerequisites": [
+     "MTSC111"
+    ],
+    "prerequisites_raw": "MTSC111",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2024": {
+    "semester": 2,
+    "prerequisites": [
+     "MTSC111"
+    ],
+    "prerequisites_raw": "MTSC111",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2025": {
+    "semester": 2,
+    "prerequisites": [
+     "MTSC111"
+    ],
+    "prerequisites_raw": "MTSC111",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2026": {
+    "semester": 2,
+    "prerequisites": [
+     "MTSC111"
+    ],
+    "prerequisites_raw": "MTSC111",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Sustainable Smart Materials",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "MTSC781": {
+  "course_code": "MTSC781",
+  "by_batch": {
+   "2022": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   },
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Sustainable Cities and Communities",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "0-0-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "PSCY102": {
+  "course_code": "PSCY102",
+  "by_batch": {
+   "2025": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Open/Minor",
+    "choice_of": "either/or slot: PSCY102 / ECON105"
+   }
+  },
+  "title": "Introduction to Psychology",
+  "credits": 2,
+  "basket": "Open/Minor",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "PSYC101": {
+  "course_code": "PSYC101",
+  "by_batch": {
+   "2022": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation",
+    "choice_of": "either/or slot: PSYC101 / ECON101"
+   },
+   "2023": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation",
+    "choice_of": "either/or slot: PSYC101 / ECON101"
+   },
+   "2024": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Foundation",
+    "choice_of": "either/or slot: PSYC101 / ECON101"
+   }
+  },
+  "title": "Introduction to Psychology",
+  "credits": 3,
+  "basket": "Foundation",
+  "L-T-P": "2-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "PSYC103": {
+  "course_code": "PSYC103",
+  "by_batch": {
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology",
+    "choice_of": "either/or slot: PSYC201 / PSYC103"
+   },
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology",
+    "choice_of": "either/or slot: PSYC201 / PSYC103"
+   },
+   "2026": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology",
+    "choice_of": "either/or slot: PSYC201 / PSYC103"
+   }
+  },
+  "title": "Foundations of Psychology I",
+  "credits": 4,
+  "basket": "Minor - Psychology",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "PSYC104": {
+  "course_code": "PSYC104",
+  "by_batch": {
+   "2023": {
+    "semester": 5,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2026": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   }
+  },
+  "title": "Lifespan Development I",
+  "credits": 4,
+  "basket": "Minor - Psychology",
+  "prerequisites_differ_by_batch": true,
+  "unresolved_prerequisites": []
+ },
+ "PSYC105": {
+  "course_code": "PSYC105",
+  "by_batch": {
+   "2026": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Open/Minor",
+    "choice_of": "either/or slot: PSYC105 / ECON106"
+   }
+  },
+  "title": "Introduction to Psychology",
+  "credits": 2,
+  "basket": "Open/Minor",
+  "L-T-P": "1-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "PSYC201": {
+  "course_code": "PSYC201",
+  "by_batch": {
+   "2022": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology",
+    "choice_of": "either/or slot: PSYC201 / PSYC103"
+   },
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology",
+    "choice_of": "either/or slot: PSYC201 / PSYC103"
+   },
+   "2026": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology",
+    "choice_of": "either/or slot: PSYC201 / PSYC103"
+   }
+  },
+  "title": "Biological Psychology",
+  "credits": 4,
+  "basket": "Minor - Psychology",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "PSYC202": {
+  "course_code": "PSYC202",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2024": {
+    "semester": 4,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2025": {
+    "semester": 4,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2026": {
+    "semester": 4,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   }
+  },
+  "title": "Cognitive Psychology",
+  "credits": 4,
+  "basket": "Minor - Psychology",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "PSYC204": {
+  "course_code": "PSYC204",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   }
+  },
+  "title": "Developmental Psychology",
+  "credits": 4,
+  "basket": "Minor - Psychology",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "PSYC241": {
+  "course_code": "PSYC241",
+  "by_batch": {
+   "2022": {
+    "semester": 6,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2024": {
+    "semester": 5,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2026": {
+    "semester": 5,
+    "prerequisites": [
+     "PSYC101"
+    ],
+    "prerequisites_raw": "PSYC101",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   }
+  },
+  "title": "Social Psychology",
+  "credits": 4,
+  "basket": "Minor - Psychology",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "PSYC255": {
+  "course_code": "PSYC255",
+  "by_batch": {
+   "2022": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2023": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2024": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2025": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2026": {
+    "semester": 7,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   }
+  },
+  "title": "Psychopathology",
+  "credits": 4,
+  "basket": "Minor - Psychology",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "PSYC303": {
+  "course_code": "PSYC303",
+  "by_batch": {
+   "2022": {
+    "semester": 7,
+    "prerequisites": [
+     "PSYC101",
+     "PSYC202",
+     "MATH131"
+    ],
+    "prerequisites_raw": "PSYC101, PSYC202, MATH131",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   }
+  },
+  "title": "Psychological Testing and Measurement",
+  "credits": 4,
+  "basket": "Minor - Psychology",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": [
+   "MATH131"
+  ]
+ },
+ "PSYC306": {
+  "course_code": "PSYC306",
+  "by_batch": {
+   "2023": {
+    "semester": 6,
+    "prerequisites": [
+     "PSYC101",
+     "PSYC201"
+    ],
+    "prerequisites_raw": "PSYC101, PSYC201",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2024": {
+    "semester": 6,
+    "prerequisites": [
+     "PSYC101",
+     "PSYC201"
+    ],
+    "prerequisites_raw": "PSYC101, PSYC201",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2025": {
+    "semester": 6,
+    "prerequisites": [
+     "PSYC101",
+     "PSYC201"
+    ],
+    "prerequisites_raw": "PSYC101, PSYC201",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   },
+   "2026": {
+    "semester": 6,
+    "prerequisites": [
+     "PSYC101",
+     "PSYC201"
+    ],
+    "prerequisites_raw": "PSYC101, PSYC201",
+    "credits": 4,
+    "basket": "Minor - Psychology"
+   }
+  },
+  "title": "Health Psychology",
+  "credits": 4,
+  "basket": "Minor - Psychology",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "SLAD206": {
+  "course_code": "SLAD206",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Foundation"
+   },
+   "2024": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Foundation"
+   },
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Human Values in Work and Life",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "0-0-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "SLAD207": {
+  "course_code": "SLAD207",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 1,
+    "basket": "Foundation"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 1,
+    "basket": "Foundation"
+   }
+  },
+  "title": "Foundation Seminar",
+  "credits": 1,
+  "basket": "Foundation",
+  "L-T-P": "0-0-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR102": {
+  "course_code": "UCOR102",
+  "by_batch": {
+   "2022": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2023": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2024": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Introduction to writing",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR103": {
+  "course_code": "UCOR103",
+  "by_batch": {
+   "2022": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2023": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2025": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Communication Skills",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR104": {
+  "course_code": "UCOR104",
+  "by_batch": {
+   "2022": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2023": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2024": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2026": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Problem Solving with Design Thinking",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR105": {
+  "course_code": "UCOR105",
+  "by_batch": {
+   "2024": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Communication and Leadership Skills",
+  "credits": 3,
+  "basket": "Univ Core",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR106": {
+  "course_code": "UCOR106",
+  "by_batch": {
+   "2022": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2023": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2024": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2025": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2026": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Learning to Learn",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR107": {
+  "course_code": "UCOR107",
+  "by_batch": {
+   "2026": {
+    "semester": 1,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Communication Skills",
+  "credits": 3,
+  "basket": "Univ Core",
+  "L-T-P": "2-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR111": {
+  "course_code": "UCOR111",
+  "by_batch": {
+   "2025": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2026": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Environmental Studies and Sustainability",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "0-0-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR201": {
+  "course_code": "UCOR201",
+  "by_batch": {
+   "2022": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Introduction to Epistemology",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "1-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR203": {
+  "course_code": "UCOR203",
+  "by_batch": {
+   "2022": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2023": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Leadership and Teamwork Skills",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "1-0-2",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR205": {
+  "course_code": "UCOR205",
+  "by_batch": {
+   "2022": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Univ Core"
+   },
+   "2023": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Univ Core"
+   },
+   "2024": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Univ Core"
+   },
+   "2025": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Univ Core"
+   },
+   "2026": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "Nil",
+    "credits": 3,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Socio-Cultural Perspectives on Indian Life",
+  "credits": 3,
+  "basket": "Univ Core",
+  "L-T-P": "2-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR207": {
+  "course_code": "UCOR207",
+  "by_batch": {
+   "2025": {
+    "semester": 3,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Analytical Academic Writing",
+  "credits": 3,
+  "basket": "Univ Core",
+  "L-T-P": "2-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR210": {
+  "course_code": "UCOR210",
+  "by_batch": {
+   "2022": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   },
+   "2023": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Critical Thinking",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "2-0-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR215": {
+  "course_code": "UCOR215",
+  "by_batch": {
+   "2025": {
+    "semester": 6,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 2,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Humanistic Leadership Development",
+  "credits": 2,
+  "basket": "Univ Core",
+  "L-T-P": "1-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR310": {
+  "course_code": "UCOR310",
+  "by_batch": {
+   "2024": {
+    "semester": 4,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Univ Core"
+   },
+   "2025": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Univ Core"
+   },
+   "2026": {
+    "semester": 5,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 3,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Critical Thinking",
+  "credits": 3,
+  "basket": "Univ Core",
+  "L-T-P": "2-1-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ },
+ "UCOR701": {
+  "course_code": "UCOR701",
+  "by_batch": {
+   "2022": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 1,
+    "basket": "Univ Core"
+   },
+   "2023": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 1,
+    "basket": "Univ Core"
+   },
+   "2024": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 1,
+    "basket": "Univ Core"
+   },
+   "2025": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 1,
+    "basket": "Univ Core"
+   },
+   "2026": {
+    "semester": 2,
+    "prerequisites": [],
+    "prerequisites_raw": "NIL",
+    "credits": 1,
+    "basket": "Univ Core"
+   }
+  },
+  "title": "Community Engagement & Service Experience",
+  "credits": 1,
+  "basket": "Univ Core",
+  "L-T-P": "0-0-0",
+  "prerequisites_differ_by_batch": false,
+  "unresolved_prerequisites": []
+ }
+}

@@ -42,6 +42,12 @@ RANKING_RE = re.compile(
     re.I)
 
 
+COURSE_LIST_RE = re.compile(r"\b(courses?|subjects?|papers?|basket|list|show)\b", re.I)
+SELF_CHECK_RE = re.compile(r"^\s*(can|may|should|am|do|did|have)\s+i\b", re.I)  # about the student, not the catalogue
+INFOGRAPHIC_RE = re.compile(r"\b(infographic|diagram|flow ?chart|roadmap|visual (summary|map|overview))\b|\bchart of\b",
+                            re.I)
+
+
 @contextmanager
 def _db():
     """Read-only connection per call (cheap for a local file, and safe across request threads)."""
@@ -79,8 +85,10 @@ def _chunk(text: str, source_file: str, section: str) -> dict:
     return {"text": text, "source_file": source_file, "section": section, "score": 1.0, "structured": True}
 
 
-def _batches(q: str, profile: dict | None) -> list[str]:
-    years = re.findall(r"\b(202[2-6])\b", q)
+def _batches(q: str, profile: dict | None, message: str | None = None) -> list[str]:
+    # A follow-up ("what about 2023?") is merged with the previous question for retrieval, so the year in the
+    # new message wins over the year in the old one.
+    years = re.findall(r"\b(202[2-6])\b", message or "") or re.findall(r"\b(202[2-6])\b", q)
     if years:
         return sorted(set(years))
     if profile and profile.get("batch") and re.search(r"\b(my|i|me)\b", q, re.I):
@@ -183,6 +191,39 @@ def minor_summary(minor: str, batches: list[str]) -> list[dict]:
         return chunks
 
 
+def minors_overview(batches: list[str]) -> list[dict]:
+    """Every minor per batch with its course count and credits - for questions about minors in general
+    ("how many minor courses", "which minors are offered") that name no specific minor."""
+    with _db() as con:
+        rows = con.execute("SELECT * FROM courses WHERE kind='minor' AND choice_of IS NULL "
+                           "ORDER BY batch, minor, source_row").fetchall()
+    if batches:
+        rows = [r for r in rows if r["batch"] in batches]
+    if not rows:
+        return []
+    lines = ["EXACT OVERVIEW of all minors (computed from the spreadsheet, do not recount). The student did not "
+             "name a minor, so give the per-batch overview below; answer for every batch listed unless they named "
+             "one, and offer to list the courses of a specific minor:"]
+    total = 0
+    for batch in sorted({r["batch"] for r in rows}):
+        parts = []
+        for minor in sorted({r["minor"] for r in rows if r["batch"] == batch}):
+            mr = [r for r in rows if r["batch"] == batch and r["minor"] == minor]
+            if any(r["code_status"] == "not_offered" for r in mr):
+                parts.append(f"{minor} (not offered - 'No Students')")
+                continue
+            courses = [r for r in mr if r["code_status"] not in ("placeholder", "not_offered")]
+            ph = [r for r in mr if r["code_status"] == "placeholder"]
+            total += len(courses)
+            parts.append(f"{minor}: {len(courses)} course(s), {_num(sum(r['credits'] or 0 for r in courses))} "
+                         f"credits" + (f" + {_num(sum(r['credits'] or 0 for r in ph))} credits TBA/TBD" if ph else ""))
+        offered = sum("not offered" not in p for p in parts)
+        lines.append(f"- {batch} batch: {offered} minor(s) - " + "; ".join(parts))
+    lines.append(f"Total course entries across the batches above: {total}.")
+    tabs = ", ".join(sorted({r["source_tab"] for r in rows}))
+    return [_chunk("\n".join(lines), MINOR_FILE, f"tabs {tabs}, all minors")]
+
+
 def course_lookup(codes: list[str], batches: list[str]) -> list[dict]:
     """Semester, credits, basket/minor and normalised prerequisites of specific courses, per batch."""
     chunks = []
@@ -248,18 +289,150 @@ def basket_credits(baskets: list[tuple], batches: list[str]) -> list[dict]:
     return chunks
 
 
+def _direct(chunk: dict, answer: str, conflict: bool = False, attachments: list[dict] | None = None) -> dict:
+    """The exact result IS the answer: advisor.py returns it without calling a model, so it cannot be miscounted
+    (this is also why these answers show 0 tokens)."""
+    return {**chunk, "direct_answer": answer, "conflict": conflict, "attachments": attachments or []}
+
+
+def _course_table(rows) -> str:
+    """Markdown table, one line per course: an either/or slot is shown as its alternatives."""
+    lines = ["| Course Code | Title | Semester | Credits | L-T-P | Prerequisites |", "|---|---|---|---|---|---|"]
+    for r in rows:
+        if r["code_status"] == "choice_slot":
+            continue
+        ltp = f"{r['L']}-{r['T']}-{r['P']}" if r["L"] is not None else "-"
+        prereq = (r["prerequisites_normalized"] or "none").replace("|", "/")
+        code = r["course_code"] + (" (either/or)" if r["choice_of"] else "")
+        lines.append(f"| {code} | {r['title']} | {r['semester']} | {_num(r['credits'])} | {ltp} | "
+                     f"{'NIL' if prereq == 'none' else prereq} |")
+    return "\n".join(lines)
+
+
+def _tally(rows) -> tuple[int, int, int, float]:
+    """(courses listed, courses a student takes, undecided TBA slots, credits). An either/or slot is one row with
+    choice_of NULL plus one row per alternative, and only the slot row counts towards credits."""
+    slots = [r for r in rows if r["choice_of"] is None]
+    tba = sum(r["code_status"] == "placeholder" for r in slots)
+    listed = sum(r["code_status"] not in ("choice_slot", "placeholder", "not_offered") for r in rows)
+    return listed, len(slots) - tba, tba, sum(r["credits"] or 0 for r in slots)
+
+
+def _plural(n: int, word: str = "course") -> str:
+    return f"{n} {word}" + ("" if n == 1 else "s")
+
+
+def _how_to_read(rows, listed: int, takes: int, tba: int) -> str:
+    notes = []
+    alts = [r["course_code"] for r in rows if r["code_status"] == "choice_slot"]
+    if alts:
+        notes.append(f"{', '.join(alts)} {'is an either/or choice' if len(alts) == 1 else 'are either/or choices'}, "
+                     f"so a student actually takes {_plural(takes)} from these {listed}.")
+    if tba:
+        notes.append(f"{_plural(tba, 'further slot')} {'is' if tba == 1 else 'are'} listed only as TBA in the source "
+                     f"(the student chooses later).")
+    return " ".join(notes)
+
+
 def semester_list(batch: str, sem: int) -> list[dict]:
     with _db() as con:
-        rows = con.execute("SELECT * FROM courses WHERE kind='programme' AND batch=? AND semester=? AND "
-                           "choice_of IS NULL ORDER BY source_row", (batch, sem)).fetchall()
+        rows = con.execute("SELECT * FROM courses WHERE kind='programme' AND batch=? AND semester=? "
+                           "ORDER BY source_row", (batch, sem)).fetchall()
     if not rows:
         return []
-    lines = [f"EXACT RESULT from the spreadsheet: {batch} batch, semester {sem} - {len(rows)} slot(s), "
-             f"{_num(sum(r['credits'] or 0 for r in rows))} credits:"]
-    lines += [f"- {r['course_code']} {r['title']} | {_num(r['credits'])} credits | {r['basket']} | prerequisites: "
-              f"{r['prerequisites_normalized']} | row {r['source_row']}" for r in rows]
-    return [_chunk("\n".join(lines), SPREAD_FILE, f"tab '{rows[0]['source_tab']}', semester {sem}, "
-                   f"{_rows_label(rows)}")]
+    listed, takes, tba, credits = _tally(rows)
+    head = (f"**The {batch} batch has {_plural(listed)} listed in Semester {sem}, worth {_num(credits)} credits "
+            f"in total.**")
+    answer = "\n\n".join(x for x in (head, _how_to_read(rows, listed, takes, tba), _course_table(rows)) if x)
+    return [_direct(_chunk(answer, SPREAD_FILE, f"tab '{rows[0]['source_tab']}', semester {sem}, {_rows_label(rows)}"),
+                    answer)]
+
+
+def basket_courses(baskets: list[tuple], batches: list[str], sem: int | None = None) -> list[dict]:
+    """"How many / which courses are in basket X" - every semester of the batch, from the database."""
+    names = [n for basket_names, _ in baskets for n in basket_names]
+    label = " + ".join(lbl for _, lbl in baskets)
+    marks = ",".join("?" * len(names))
+    with _db() as con:
+        all_rows = con.execute(f"SELECT * FROM courses WHERE kind='programme' AND basket IN ({marks}) "
+                               "ORDER BY batch, semester, source_row", names).fetchall()
+        req = {(r["batch"], r["basket"]): r for r in
+               con.execute(f"SELECT * FROM baskets WHERE basket IN ({marks})", names)}
+    if sem:
+        all_rows = [r for r in all_rows if r["semester"] == sem]
+    if not all_rows:
+        return []
+    if not batches:  # differs by batch: give the overview rather than guessing one
+        lines = [f"**The {label} basket differs by batch (year of admission):**", "",
+                 "| Batch | Courses listed | Courses a student takes | Credits |", "|---|---|---|---|"]
+        for batch, rows in _group(all_rows, lambda r: r["batch"]).items():
+            listed, takes, tba, credits = _tally(rows)
+            lines.append(f"| {batch} | {listed} | {takes}{f' + {tba} TBA' if tba else ''} | {_num(credits)} |")
+        lines += ["", "Tell me your batch (for example, \"for the 2022 batch\") and I'll list every course."]
+        answer = "\n".join(lines)
+        return [_direct(_chunk(answer, SPREAD_FILE, f"{label} basket, all batches (Sem Spread tabs)"), answer)]
+    chunks = []
+    for batch in batches:
+        rows = [r for r in all_rows if r["batch"] == batch]
+        if not rows:
+            continue
+        listed, takes, tba, credits = _tally(rows)
+        sems = sorted({r["semester"] for r in rows})
+        where = f"Semester {sem}" if sem else f"{'Semester' if len(sems) == 1 else 'Semesters'} " \
+            f"{', '.join(map(str, sems[:-1]))}{' and ' if len(sems) > 1 else ''}{sems[-1]}"
+        parts = [f"**The {batch} batch {label} basket lists {_plural(listed)} across {where}, worth {_num(credits)} "
+                 f"credits in total.**"]
+        note = _how_to_read(rows, listed, takes, tba)
+        if note:
+            parts.append(note)
+        parts.append(_course_table(rows))
+        conflict = False
+        for name in names:
+            r = req.get((batch, name))
+            if not sem and r and r["placed_credits"] is not None and r["placed_credits"] != r["min_credits"]:
+                conflict = True
+                parts.append(f"Inconsistency in the source: the tab requires {_num(r['min_credits'])} credits for "
+                             f"this basket, but the courses it places there add up to {_num(r['placed_credits'])}. "
+                             f"Please confirm with your Program Chair.")
+        answer = "\n\n".join(parts)
+        chunks.append(_direct(_chunk(answer, SPREAD_FILE, f"tab '{rows[0]['source_tab']}', {label} basket, "
+                                     f"{_rows_label(rows)}"), answer, conflict))
+    if len(chunks) > 1:  # several batches named: one reply holding all of them
+        answer = "\n\n---\n\n".join(c["direct_answer"] for c in chunks)
+        chunks = [{**chunks[0], "direct_answer": answer, "text": answer,
+                   "conflict": any(c["conflict"] for c in chunks)}]
+    return chunks
+
+
+def batch_overview(batch: str) -> list[dict]:
+    """"How many courses does the 2022 batch have in total" - every basket of one batch."""
+    with _db() as con:
+        rows = con.execute("SELECT * FROM courses WHERE kind='programme' AND batch=? ORDER BY semester, source_row",
+                           (batch,)).fetchall()
+    if not rows:
+        return []
+    lines = ["| Basket | Courses listed | Slots a student takes | Credits |", "|---|---|---|---|"]
+    for basket, grp in _group(rows, lambda r: r["basket"]).items():
+        listed, takes, tba, credits = _tally(grp)
+        lines.append(f"| {basket} | {listed} | {takes}{f' + {tba} TBA' if tba else ''} | {_num(credits)} |")
+    listed, takes, tba, credits = _tally(rows)
+    answer = (f"**The {batch} batch spread lists {_plural(listed)} with named codes, plus {_plural(tba, 'TBA slot')} "
+              f"the student fills later, placing {_num(credits)} credits in total.**\n\n" + "\n".join(lines)
+              + "\n\nAsk for any basket by name to see its full course table.")
+    return [_direct(_chunk(answer, SPREAD_FILE, f"tab '{rows[0]['source_tab']}', all baskets, {_rows_label(rows)}"),
+                    answer)]
+
+
+def infographic_reply(batch: str) -> list[dict]:
+    with _db() as con:
+        row = con.execute("SELECT source_tab FROM courses WHERE kind='programme' AND batch=? LIMIT 1",
+                          (batch,)).fetchone()
+    if not row:
+        return []
+    answer = (f"Here is the course-structure infographic for the **{batch} batch**: credits by basket and every course "
+              f"by semester. It is drawn directly from the semester spread, so its numbers match the source file.")
+    return [_direct(_chunk(answer, SPREAD_FILE, f"tab '{row['source_tab']}'"), answer,
+                    attachments=[{"type": "infographic", "batch": batch}])]
 
 
 def semester_stats(batches: list[str]) -> list[dict]:
@@ -382,10 +555,10 @@ def mentioned_codes(q: str) -> list[str]:
     return list(dict.fromkeys(codes))
 
 
-def route(question: str, profile: dict | None = None) -> list[dict]:
+def route(question: str, profile: dict | None = None, message: str | None = None) -> list[dict]:
     q = question.strip()
     low = q.lower()
-    batches = _batches(q, profile)
+    batches = _batches(q, profile, message)
     codes = mentioned_codes(q)
     minor = next((name for key, name in MINOR_NAMES.items() if re.search(rf"\b{re.escape(key)}\b", low)), None)
     minor_q = minor and (re.search(r"\bminor\b", low) or LIST_WORDS.search(low))
@@ -399,10 +572,24 @@ def route(question: str, profile: dict | None = None) -> list[dict]:
         return course_lookup(codes, batches)
     if minor_q and not re.search(r"credits? (needed|required)|basket", low):
         return minor_summary(minor, batches)
+    if not minor and re.search(r"\bminors?\b", low) and not re.search(r"credit|basket", low) and (
+            LIST_WORDS.search(low) or re.search(r"\b(which|what|available|offered|options?)\b", low)):
+        return minors_overview(batches)
     wanted = [(names, label) for rx, names, label in BASKET_ALIASES if re.search(rx, low)]
+    m = re.search(r"\b(?:semester|sem)\s*(\d)\b", low)
+    sem = int(m.group(1)) if m else None
+    if INFOGRAPHIC_RE.search(low) and batches:
+        return infographic_reply(batches[0])
+    if wanted and COURSE_LIST_RE.search(low) and not SELF_CHECK_RE.search(low):
+        # "minor" alone means the named minors above, not the TBA Open/Minor slots
+        listable = [w for w in wanted if w[1] != "Minor/Open" or re.search(r"basket|open", low)]
+        if listable:
+            return basket_courses(listable[:2], batches, sem)
     if wanted and re.search(r"credit", low):
         return basket_credits(wanted[:2], batches)
-    m = re.search(r"\b(?:semester|sem)\s*(\d)\b", low)
-    if m and batches and re.search(r"course|subject|offered|taught|study", low):
-        return semester_list(batches[0], int(m.group(1)))
+    if sem and batches and re.search(r"course|subject|offered|taught|study", low):
+        return semester_list(batches[0], sem)
+    if batches and re.search(r"\b(courses|subjects)\b", low) and re.search(r"how many|\blist\b|\ball\b|total", low) \
+            and not SELF_CHECK_RE.search(low):
+        return batch_overview(batches[0])
     return []

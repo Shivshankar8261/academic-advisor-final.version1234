@@ -7,10 +7,11 @@ import remarkGfm from "remark-gfm";
 
 const API = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
-type Strategy = "baseline" | "structured" | "rag" | "rag_structured";
+type Strategy = "baseline" | "structured" | "rag" | "rag_structured" | "agentic";
 
 const STRATEGIES: { value: Strategy; label: string }[] = [
   { value: "rag_structured", label: "RAG + Student Profile (final)" },
+  { value: "agentic", label: "Agentic (6-step pipeline)" },
   { value: "rag", label: "RAG" },
   { value: "structured", label: "Structured prompt (no docs)" },
   { value: "baseline", label: "Baseline LLM" },
@@ -32,7 +33,27 @@ type AdvisorReply = {
   response_time_s: number;
   retrieval_time_s: number;
   retrieved: { source_file: string; section: string; score: number }[];
+  usage: { prompt_tokens: number; completion_tokens: number; total_tokens: number; estimated_cost_usd: number | null };
+  agent_trace: { agent: string; summary: string; ms: number; tokens: number }[];
+  attachments: { type: string; batch: string }[];
+  guard: string | null;
+  privacy_notice: string | null;
+  human_review: string | null;
 };
+
+type RecordCourse = { code: string; grade: string };
+type SessionRecord = { batch: string; current_semester: number; courses: RecordCourse[] };
+type TranscriptDraft = {
+  batch: string | null;
+  current_semester: number | null;
+  courses: RecordCourse[];
+  rejected: string[];
+  unreadable_rows: number;
+};
+
+const GRADES = ["O", "A+", "A", "B+", "B", "C", "D", "F", "FA", "S", "U", "I"];
+const SILENT_MIC_RMS = 0.0005; // quieter than any real microphone's noise floor: only a dead input stays below this
+const BATCHES = ["2022", "2023", "2024", "2025", "2026"];
 
 type Message =
   | { role: "user"; content: string }
@@ -50,10 +71,28 @@ type StudentSummary = {
 
 const EXAMPLES: { icon: string; tag: string; q: string }[] = [
   { icon: "📘", tag: "Prerequisites", q: "Can I take Machine Learning next semester?" },
-  { icon: "🎯", tag: "Progression", q: "What minimum CGPA do I need to progress to the second year?" },
+  { icon: "🧮", tag: "Course lists", q: "How many courses are in the Foundation basket for the 2022 batch?" },
   { icon: "📝", tag: "Registration", q: "I missed registration because of a family function. Can I still register late?" },
-  { icon: "📅", tag: "Deadlines", q: "What is the exact date of the add/drop deadline this semester?" },
+  { icon: "🗺️", tag: "Infographic", q: "Show me an infographic of the 2024 batch course structure" },
 ];
+
+function formatCost(cost: number | null): string {
+  if (cost === null) return "free tier";
+  return cost < 0.0001 ? "<$0.0001" : `$${cost.toFixed(4)}`;
+}
+
+// Shrinks the photo before upload (Vercel caps request bodies at 4.5 MB); re-encoding also drops EXIF data.
+async function prepareImage(file: File): Promise<Blob> {
+  const bitmap = await createImageBitmap(file);
+  const scale = Math.min(1, 1800 / Math.max(bitmap.width, bitmap.height));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(bitmap.width * scale);
+  canvas.height = Math.round(bitmap.height * scale);
+  canvas.getContext("2d")?.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+  return new Promise((resolve, reject) =>
+    canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("Could not read that image."))), "image/jpeg", 0.9),
+  );
+}
 
 const CONFIDENCE_STYLE: Record<string, { pill: string; dot: string }> = {
   high: { pill: "bg-emerald-50 text-emerald-700 ring-emerald-200", dot: "bg-emerald-500" },
@@ -77,7 +116,7 @@ const MD: Components = {
   code: (props) => <code className="rounded bg-slate-100 px-1 py-0.5 font-mono text-[13px] text-brand-700" {...props} />,
   table: (props) => (
     <div className="my-3 overflow-x-auto rounded-xl ring-1 ring-slate-200">
-      <table className="w-full border-collapse text-left text-sm" {...props} />
+      <table className="w-full border-collapse text-left text-sm [&_td:nth-child(5)]:whitespace-nowrap" {...props} />
     </div>
   ),
   thead: (props) => <thead className="bg-brand-50 text-brand-900" {...props} />,
@@ -108,8 +147,115 @@ function AdvisorAvatar() {
   );
 }
 
-const AssistantMessage = memo(function AssistantMessage({ reply }: { reply: AdvisorReply }) {
+// Tables are on screen, and reading them cell by cell is useless, so only the sentences are spoken.
+function speakableSentences(text: string): string[] {
+  const plain = text
+    .split("\n")
+    .filter((l) => !l.trim().startsWith("|") && !/^-{3,}$/.test(l.trim()))
+    .join(" ")
+    .replace(/[*_`#>]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  return plain.match(/[^.!?]+[.!?]*\s*/g) ?? [plain];
+}
+
+function ReadAloud({ text }: { text: string }) {
+  const [state, setState] = useState<"idle" | "loading" | "playing">("idle");
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Stop speaking if this message leaves the screen (New chat).
+  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+
+  // The cloud voice takes up to ~30 s on a long answer, so it is only the fallback for browsers with no voices.
+  async function cloudVoice() {
+    setState("loading");
+    try {
+      const res = await fetch(`${API}/speech`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+      });
+      if (!res.ok) throw new Error(await errorText(res));
+      const audio = new Audio(URL.createObjectURL(await res.blob()));
+      audioRef.current = audio;
+      audio.onended = () => setState("idle");
+      setState("playing");
+      await audio.play();
+    } catch {
+      setState("idle");
+    }
+  }
+
+  function toggle() {
+    if (state === "playing") {
+      audioRef.current?.pause();
+      window.speechSynthesis?.cancel();
+      setState("idle");
+      return;
+    }
+    const synth = window.speechSynthesis;
+    const voices = synth?.getVoices() ?? [];
+    if (!synth) {
+      cloudVoice();
+      return;
+    }
+    const voice =
+      voices.find((v) => v.lang === "en-IN" && v.localService) ??
+      voices.find((v) => v.lang.startsWith("en") && v.localService) ??
+      voices.find((v) => v.lang.startsWith("en"));
+    synth.cancel();
+    setState("playing");
+    // One utterance per sentence: speech starts at once, and Chrome cuts off single utterances longer than ~15 s.
+    const sentences = speakableSentences(text);
+    sentences.forEach((sentence, i) => {
+      const utterance = new SpeechSynthesisUtterance(sentence);
+      if (voice) utterance.voice = voice;
+      if (i === sentences.length - 1) utterance.onend = () => setState("idle");
+      utterance.onerror = (e) => {
+        if (e.error === "canceled" || e.error === "interrupted") return;
+        synth.cancel();
+        cloudVoice();
+      };
+      synth.speak(utterance);
+    });
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      disabled={state === "loading"}
+      className="inline-flex items-center gap-1 rounded-lg px-2 py-1 font-medium text-brand-700 hover:bg-brand-50 disabled:opacity-50"
+    >
+      {state === "loading" ? "⏳ Preparing audio…" : state === "playing" ? "⏹ Stop" : "🔊 Listen"}
+    </button>
+  );
+}
+
+function CopyForAdvisor({ reply, question }: { reply: AdvisorReply; question: string }) {
+  const [copied, setCopied] = useState(false);
+  async function copy() {
+    const sources = reply.sources.map((s) => `- ${s.source_file}: ${s.section}`).join("\n") || "- none cited";
+    await navigator.clipboard.writeText(
+      `Question: ${question}\n\nAI advisor's answer (please check):\n${reply.answer}\n\nSources:\n${sources}`,
+    );
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      className="inline-flex items-center gap-1 rounded-lg px-2 py-1 font-medium text-brand-700 hover:bg-brand-50"
+    >
+      {copied ? "✓ Copied" : "📋 Copy for my advisor"}
+    </button>
+  );
+}
+
+const AssistantMessage = memo(function AssistantMessage({ reply, question }: { reply: AdvisorReply; question: string }) {
   const conf = CONFIDENCE_STYLE[reply.confidence] ?? CONFIDENCE_STYLE.low;
+  const smallTalk = reply.provider === "small-talk"; // greetings: no badges or sources
   return (
     <div className="flex max-w-full gap-3 sm:max-w-[88%]">
       <AdvisorAvatar />
@@ -130,11 +276,41 @@ const AssistantMessage = memo(function AssistantMessage({ reply }: { reply: Advi
           </div>
         )}
 
+        {reply.human_review && (
+          <div className="mb-3 flex gap-2 rounded-xl border border-violet-200 bg-violet-50 px-3 py-2.5 text-sm font-medium text-violet-900">
+            <span>🧑‍🏫</span>
+            <span>{reply.human_review}</span>
+          </div>
+        )}
+        {reply.privacy_notice && (
+          <div className="mb-3 flex gap-2 rounded-xl border border-sky-200 bg-sky-50 px-3 py-2.5 text-sm font-medium text-sky-900">
+            <span>🔒</span>
+            <span>{reply.privacy_notice}</span>
+          </div>
+        )}
+
         <div className="break-words text-[15px] leading-relaxed text-slate-800">
           <ReactMarkdown remarkPlugins={[remarkGfm]} components={MD}>
             {reply.answer}
           </ReactMarkdown>
         </div>
+
+        {reply.attachments.map((a) => (
+          <figure key={a.batch} className="mt-3 overflow-hidden rounded-xl ring-1 ring-slate-200">
+            {/* eslint-disable-next-line @next/next/no-img-element -- SVG served by the API, sized by its viewBox */}
+            <img
+              src={`${API}/infographic/${a.batch}`}
+              alt={`Course structure infographic for the ${a.batch} batch: credits by basket and courses by semester`}
+              className="w-full"
+            />
+            <figcaption className="flex items-center justify-between bg-slate-50 px-3 py-1.5 text-xs text-slate-500">
+              <span>Built from the semester spread. Not an official University document.</span>
+              <a className="font-medium text-brand-700 underline" href={`${API}/infographic/${a.batch}`} target="_blank" rel="noreferrer">
+                Open full size
+              </a>
+            </figcaption>
+          </figure>
+        ))}
 
         {reply.needs_clarification && reply.clarifying_question && (
           <div className="mt-4 rounded-xl border border-brand-100 bg-gradient-to-r from-brand-50 to-violet-50 px-4 py-3 text-[15px] text-brand-900">
@@ -143,6 +319,8 @@ const AssistantMessage = memo(function AssistantMessage({ reply }: { reply: Advi
           </div>
         )}
 
+        {!smallTalk && (
+        <>
         <div className="mt-4 flex flex-wrap items-center gap-1.5 text-xs">
           <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-medium ring-1 ${conf.pill}`}>
             <span className={`h-1.5 w-1.5 rounded-full ${conf.dot}`} />
@@ -161,12 +339,49 @@ const AssistantMessage = memo(function AssistantMessage({ reply }: { reply: Advi
               <span className="text-slate-400"> · retrieval {(reply.retrieval_time_s * 1000).toFixed(0)} ms</span>
             )}
           </span>
+          <span
+            title={`${reply.usage.prompt_tokens} input + ${reply.usage.completion_tokens} output tokens`}
+            className="inline-flex items-center gap-1 rounded-full bg-slate-50 px-2.5 py-1 text-slate-600 ring-1 ring-slate-200"
+          >
+            🔢 {reply.usage.total_tokens.toLocaleString()} tokens
+            <span className="text-slate-400">
+              {" "}
+              · {reply.usage.total_tokens ? formatCost(reply.usage.estimated_cost_usd) : "no model used"}
+            </span>
+          </span>
           <span className="rounded-full bg-slate-50 px-2.5 py-1 font-mono text-[11px] text-slate-500 ring-1 ring-slate-200">
             {reply.strategy} · {reply.provider}
           </span>
         </div>
 
-        <details className="group mt-3 text-sm">
+        <div className="mt-2 flex flex-wrap items-center gap-1 text-sm">
+          <ReadAloud text={reply.answer} />
+          <CopyForAdvisor reply={reply} question={question} />
+        </div>
+
+        {reply.agent_trace.length > 0 && (
+          <details className="group mt-2 text-sm">
+            <summary className="inline-flex cursor-pointer select-none list-none items-center gap-1.5 rounded-lg px-2 py-1 font-medium text-brand-700 hover:bg-brand-50 [&::-webkit-details-marker]:hidden">
+              🤖 How the agents worked ({reply.agent_trace.length} steps)
+            </summary>
+            <ol className="mt-2 grid gap-1.5">
+              {reply.agent_trace.map((t, i) => (
+                <li key={i} className="rounded-lg border border-slate-100 bg-slate-50/80 px-3 py-2">
+                  <span className="font-medium text-slate-800">
+                    {i + 1}. {t.agent}
+                  </span>
+                  <span className="text-xs text-slate-400">
+                    {" "}
+                    · {t.ms} ms{t.tokens ? ` · ${t.tokens.toLocaleString()} tokens` : ""}
+                  </span>
+                  <div className="text-slate-600">{t.summary}</div>
+                </li>
+              ))}
+            </ol>
+          </details>
+        )}
+
+        <details className="group mt-2 text-sm">
           <summary className="inline-flex cursor-pointer select-none list-none items-center gap-1.5 rounded-lg px-2 py-1 font-medium text-brand-700 hover:bg-brand-50 [&::-webkit-details-marker]:hidden">
             <svg
               viewBox="0 0 20 20"
@@ -199,6 +414,8 @@ const AssistantMessage = memo(function AssistantMessage({ reply }: { reply: Advi
             </ul>
           )}
         </details>
+        </>
+        )}
       </div>
     </div>
   );
@@ -245,6 +462,134 @@ export default function Home() {
   const scrollRef = useRef<HTMLElement>(null);
 
   const abortRef = useRef<AbortController | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const recorderRef = useRef<MediaRecorder | null>(null);
+  const [recording, setRecording] = useState(false);
+  const [micLevel, setMicLevel] = useState(0);
+  const [mics, setMics] = useState<MediaDeviceInfo[]>([]);
+  const [micId, setMicId] = useState("");
+  const [micHelp, setMicHelp] = useState(false);
+  const [busyNote, setBusyNote] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [draft, setDraft] = useState<TranscriptDraft | null>(null);
+  const [sessionRecord, setSessionRecord] = useState<SessionRecord | null>(null);
+
+  async function startRecording(deviceId = micId) {
+    setNotice(null);
+    setMicHelp(false);
+    try {
+      window.speechSynthesis?.cancel();
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+          ...(deviceId ? { deviceId: { exact: deviceId } } : {}),
+        },
+      });
+      const devices = await navigator.mediaDevices.enumerateDevices(); // labels are only available after permission
+      setMics(devices.filter((d) => d.kind === "audioinput" && d.deviceId !== "default" && d.deviceId !== "communications"));
+
+      // Measure the real input level: it shows the student the mic is working, and lets us tell a silent mic from
+      // a transcription problem (Whisper turns silence into "Thank you.").
+      const audioContext = new AudioContext();
+      await audioContext.resume();
+      const analyser = audioContext.createAnalyser();
+      analyser.fftSize = 1024;
+      audioContext.createMediaStreamSource(stream).connect(analyser);
+      const samples = new Float32Array(analyser.fftSize);
+      let peak = 0;
+      const meter = setInterval(() => {
+        analyser.getFloatTimeDomainData(samples);
+        const rms = Math.sqrt(samples.reduce((sum, x) => sum + x * x, 0) / samples.length);
+        peak = Math.max(peak, rms);
+        setMicLevel(rms);
+      }, 80);
+
+      const recorder = new MediaRecorder(stream);
+      const parts: Blob[] = [];
+      recorder.ondataavailable = (e) => parts.push(e.data);
+      recorder.onstop = async () => {
+        clearInterval(meter);
+        stream.getTracks().forEach((t) => t.stop());
+        audioContext.close();
+        setRecording(false);
+        setMicLevel(0);
+        if (peak < SILENT_MIC_RMS) {
+          const name = stream.getAudioTracks()[0]?.label || "the selected microphone";
+          setNotice(`No sound reached the browser from "${name}". Choose another microphone below and try again.`);
+          setMicHelp(true);
+          return;
+        }
+        setBusyNote("Transcribing your question…");
+        try {
+          const form = new FormData();
+          const type = recorder.mimeType || "audio/webm";
+          form.append("file", new Blob(parts, { type }), type.includes("mp4") ? "speech.mp4" : "speech.webm");
+          const res = await fetch(`${API}/voice/transcribe`, { method: "POST", body: form });
+          if (!res.ok) throw new Error(await errorText(res));
+          const { text } = await res.json();
+          if (!text) {
+            setNotice("I picked up sound but no clear words. Please try again in a quieter spot, or choose another microphone.");
+            setMicHelp(true);
+          }
+          // goes into the box, not straight to the advisor: the student can correct a misheard course name first
+          setInput((prev) => [prev, text].filter(Boolean).join(" "));
+          inputRef.current?.focus();
+        } catch (e) {
+          setNotice(e instanceof Error ? e.message : String(e));
+        } finally {
+          setBusyNote(null);
+        }
+      };
+      recorderRef.current = recorder;
+      recorder.start();
+      setRecording(true);
+      setTimeout(() => {
+        if (recorder.state === "recording") recorder.stop();
+      }, 60000);
+    } catch (e) {
+      setRecording(false);
+      if (e instanceof DOMException && e.name === "OverconstrainedError") {
+        setMicId(""); // the saved microphone was unplugged
+        setNotice("That microphone is no longer available. Press the mic button to use the default one.");
+      } else {
+        setNotice("I couldn't use the microphone. Please allow access in your browser, or type your question.");
+      }
+    }
+  }
+
+  async function uploadTranscript(file: File) {
+    setNotice(null);
+    setBusyNote("Reading your transcript…");
+    try {
+      const form = new FormData();
+      form.append("file", await prepareImage(file), "transcript.jpg");
+      const res = await fetch(`${API}/transcript/read`, { method: "POST", body: form });
+      if (!res.ok) throw new Error(await errorText(res));
+      const data = await res.json();
+      if (!data.readable || data.courses.length === 0) {
+        setNotice("I couldn't find courses and grades in that image. Please try a clearer photo of your transcript.");
+      } else {
+        setDraft(data);
+      }
+    } catch (e) {
+      setNotice(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusyNote(null);
+      if (fileRef.current) fileRef.current.value = "";
+    }
+  }
+
+  function confirmDraft() {
+    if (!draft?.batch || !draft.current_semester) return;
+    setSessionRecord({ batch: draft.batch, current_semester: draft.current_semester, courses: draft.courses });
+    setStudentId("");
+    setDraft(null);
+    setMessages([]);
+  }
+
+  const sessionTokens = messages.reduce((sum, m) => sum + (m.role === "assistant" ? m.reply.usage.total_tokens : 0), 0);
 
   // Poll /health until the backend is up (it may be started after the frontend), then load the profiles.
   useEffect(() => {
@@ -323,7 +668,8 @@ export default function Home() {
         body: JSON.stringify({
           message,
           strategy,
-          student_id: studentId || null,
+          student_id: sessionRecord ? null : studentId || null,
+          session_record: sessionRecord,
           conversation_history: history,
         }),
       });
@@ -356,6 +702,7 @@ export default function Home() {
     setLoading(false);
     setMessages([]);
     setInput("");
+    setNotice(null);
     inputRef.current?.focus();
   }, []);
 
@@ -411,7 +758,14 @@ export default function Home() {
 
           <label className="flex min-w-0 items-center gap-2 whitespace-nowrap text-xs font-medium text-slate-500">
             👤 Profile
-            <select className={selectClass} value={studentId} onChange={(e) => setStudentId(e.target.value)}>
+            <select
+              className={selectClass}
+              value={studentId}
+              onChange={(e) => {
+                setStudentId(e.target.value);
+                setSessionRecord(null);
+              }}
+            >
               <option value="">No profile (anonymous)</option>
               {students.map((s) => (
                 <option key={s.student_id} value={s.student_id}>
@@ -443,7 +797,17 @@ export default function Home() {
           </button>
         </div>
 
-        {selected && (
+        {sessionRecord && (
+          <div className="mx-auto mt-3 flex max-w-5xl flex-wrap items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-900">
+            🔒 Using your confirmed record: {sessionRecord.batch} batch, semester {sessionRecord.current_semester},{" "}
+            {sessionRecord.courses.length} courses. Kept in this browser tab only, never stored on the server.
+            <button type="button" className="ml-auto font-medium underline" onClick={() => setSessionRecord(null)}>
+              Remove
+            </button>
+          </div>
+        )}
+
+        {selected && !sessionRecord && (
           <div className="mx-auto mt-3 flex max-w-5xl animate-fade-up flex-wrap items-center gap-2 rounded-xl border border-brand-100 bg-gradient-to-r from-brand-50 to-violet-50 px-3 py-2">
             <div className="mr-2 flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-900 text-xs font-bold text-white">
@@ -537,7 +901,10 @@ export default function Home() {
               </div>
             ) : m.role === "assistant" ? (
               <div key={i} className="animate-fade-up self-start">
-                <AssistantMessage reply={m.reply} />
+                <AssistantMessage
+                  reply={m.reply}
+                  question={messages.slice(0, i).reduce((q, x) => (x.role === "user" ? x.content : q), "")}
+                />
               </div>
             ) : (
               <div
@@ -553,6 +920,135 @@ export default function Home() {
       </main>
 
       <footer className="shrink-0 px-4 pb-5 pt-2 sm:px-6">
+        {draft && (
+          <div className="mx-auto mb-2 max-h-[45dvh] max-w-4xl overflow-y-auto rounded-2xl border border-brand-100 bg-white p-4 shadow-xl">
+            <h2 className="font-semibold text-brand-900">Check what I read from your transcript</h2>
+            <p className="mt-1 text-sm text-slate-600">
+              AI can misread images, so please correct anything wrong. Nothing is used until you confirm, and the image
+              was not saved. Credits and CGPA are worked out from these grades and the course list.
+            </p>
+            {(draft.rejected.length > 0 || draft.unreadable_rows > 0) && (
+              <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900">
+                ⚠️ {draft.unreadable_rows > 0 && `${draft.unreadable_rows} row(s) were unreadable. `}
+                {draft.rejected.length > 0 && `Not in the university's course list, so left out: ${draft.rejected.join(", ")}.`}
+              </p>
+            )}
+            <div className="mt-3 flex flex-wrap gap-3 text-sm">
+              <label className="flex items-center gap-2 font-medium text-slate-700">
+                Batch
+                <select
+                  className="rounded-lg border border-slate-200 px-2 py-1"
+                  value={draft.batch ?? ""}
+                  onChange={(e) => setDraft({ ...draft, batch: e.target.value || null })}
+                >
+                  <option value="">Choose…</option>
+                  {BATCHES.map((b) => (
+                    <option key={b}>{b}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="flex items-center gap-2 font-medium text-slate-700">
+                Current semester
+                <select
+                  className="rounded-lg border border-slate-200 px-2 py-1"
+                  value={draft.current_semester ?? ""}
+                  onChange={(e) => setDraft({ ...draft, current_semester: Number(e.target.value) || null })}
+                >
+                  <option value="">Choose…</option>
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                    <option key={n}>{n}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <ul className="mt-3 grid gap-1.5 sm:grid-cols-3">
+              {draft.courses.map((c, i) => (
+                <li key={c.code + i} className="flex items-center gap-2 rounded-lg bg-slate-50 px-2 py-1 text-sm">
+                  <span className="font-mono text-xs">{c.code}</span>
+                  <select
+                    aria-label={`Grade for ${c.code}`}
+                    className="ml-auto rounded border border-slate-200 bg-white px-1"
+                    value={c.grade}
+                    onChange={(e) =>
+                      setDraft({
+                        ...draft,
+                        courses: draft.courses.map((x, j) => (j === i ? { ...x, grade: e.target.value } : x)),
+                      })
+                    }
+                  >
+                    {GRADES.map((g) => (
+                      <option key={g}>{g}</option>
+                    ))}
+                  </select>
+                  <button
+                    type="button"
+                    aria-label={`Remove ${c.code}`}
+                    className="text-slate-400 hover:text-rose-600"
+                    onClick={() => setDraft({ ...draft, courses: draft.courses.filter((_, j) => j !== i) })}
+                  >
+                    ✕
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-3 flex items-center gap-2">
+              <button
+                type="button"
+                disabled={!draft.batch || !draft.current_semester}
+                onClick={confirmDraft}
+                className="rounded-lg bg-brand-900 px-3.5 py-1.5 text-sm font-medium text-white disabled:opacity-40"
+              >
+                Use this record
+              </button>
+              <button type="button" onClick={() => setDraft(null)} className="rounded-lg px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100">
+                Discard
+              </button>
+              {(!draft.batch || !draft.current_semester) && (
+                <span className="text-sm text-amber-800">Please choose your batch and semester.</span>
+              )}
+            </div>
+          </div>
+        )}
+        {recording && (
+          <div className="mx-auto mb-2 flex max-w-4xl items-center gap-3 rounded-lg bg-rose-50 px-3 py-1.5 text-sm text-rose-900">
+            <span className="whitespace-nowrap">🎙️ Listening… speak, then press ⏹</span>
+            <div
+              role="meter"
+              aria-label="Microphone level"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={Math.round(Math.min(1, micLevel * 12) * 100)}
+              className="h-2 flex-1 overflow-hidden rounded-full bg-rose-100"
+            >
+              <div className="h-full bg-rose-500 transition-[width]" style={{ width: `${Math.min(1, micLevel * 12) * 100}%` }} />
+            </div>
+          </div>
+        )}
+        {(notice || busyNote) && (
+          <p className={`mx-auto mb-2 max-w-4xl rounded-lg px-3 py-1.5 text-sm ${notice ? "bg-rose-50 text-rose-800" : "bg-brand-50 text-brand-900"}`}>
+            {notice ?? busyNote}
+          </p>
+        )}
+        {micHelp && mics.length > 0 && (
+          <label className="mx-auto mb-2 flex max-w-4xl items-center gap-2 rounded-lg bg-amber-50 px-3 py-1.5 text-sm font-medium text-amber-900">
+            🎤 Microphone
+            <select
+              className="min-w-0 flex-1 rounded-lg border border-amber-200 bg-white px-2 py-1 font-normal"
+              value={micId}
+              onChange={(e) => {
+                setMicId(e.target.value);
+                startRecording(e.target.value);
+              }}
+            >
+              <option value="">System default</option>
+              {mics.map((m) => (
+                <option key={m.deviceId} value={m.deviceId}>
+                  {m.label || "Microphone"}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         <form
           className={`mx-auto flex max-w-4xl items-end gap-2 rounded-2xl border bg-white p-2 shadow-xl transition focus-within:ring-4 ${
             awaitingClarification
@@ -564,6 +1060,26 @@ export default function Home() {
             send(input);
           }}
         >
+          <input
+            ref={fileRef}
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            className="hidden"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) uploadTranscript(file);
+            }}
+          />
+          <button
+            type="button"
+            title="Upload a photo of your transcript (a person's name or ID on it is not kept)"
+            aria-label="Upload transcript image"
+            disabled={!!busyNote}
+            onClick={() => fileRef.current?.click()}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-lg text-slate-500 transition hover:bg-brand-50 disabled:opacity-40"
+          >
+            📎
+          </button>
           <textarea
             ref={inputRef}
             rows={1}
@@ -579,6 +1095,19 @@ export default function Home() {
             className="max-h-40 flex-1 resize-none bg-transparent px-3 py-2.5 text-[15px] outline-none placeholder:text-slate-400"
           />
           <button
+            type="button"
+            title={recording ? "Stop recording" : "Ask by voice. You can check the text before sending."}
+            aria-label={recording ? "Stop recording" : "Record a voice question"}
+            aria-pressed={recording}
+            disabled={!!busyNote}
+            onClick={() => (recording ? recorderRef.current?.stop() : startRecording())}
+            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-lg transition disabled:opacity-40 ${
+              recording ? "animate-pulse bg-rose-100 text-rose-700" : "text-slate-500 hover:bg-brand-50"
+            }`}
+          >
+            {recording ? "⏹" : "🎤"}
+          </button>
+          <button
             type="submit"
             disabled={loading || !input.trim()}
             aria-label="Send"
@@ -590,7 +1119,8 @@ export default function Home() {
           </button>
         </form>
         <p className="mx-auto mt-2 max-w-4xl text-center text-[11px] text-slate-400">
-          Enter to send · Shift + Enter for a new line · Always confirm important decisions with your Faculty Advisor
+          AI-generated guidance: always confirm important decisions with your Faculty Advisor · Enter to send · This
+          conversation: {sessionTokens.toLocaleString()} tokens
         </p>
       </footer>
     </div>

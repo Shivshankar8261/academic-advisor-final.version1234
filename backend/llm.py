@@ -16,7 +16,7 @@ Low-latency design:
 For the evaluation, LLM_PIN=<provider:model> forces a single model and waits out rate limits,
 so all four strategies are compared on exactly the same model.
 
-Each call returns (result, provider) so the API / eval can report which model actually answered.
+Each call returns (result, provider, usage) so the API / eval can report which model answered and what it cost.
 """
 import copy
 import re
@@ -29,8 +29,8 @@ from google.genai import types
 from groq import Groq, RateLimitError
 
 from config import (GEMINI_API_KEY, GEMINI_MODELS, GROQ_API_KEY, GROQ_MODELS, GROQ_REASONING_EFFORT, LLM_PIN,
-                    LLM_TIMEOUT_S, MAX_TOKENS)
-from schemas import AdvisorResponse
+                    LLM_TIMEOUT_S, MAX_TOKENS, PRICES_PER_M)
+from schemas import AdvisorResponse, Usage
 
 FALLBACK_RESPONSE = AdvisorResponse(
     answer="Sorry — the advisor could not reach a language model right now. Please try again in a minute.",
@@ -79,7 +79,22 @@ def _strict_schema(model) -> dict:
 ADVISOR_SCHEMA = _strict_schema(AdvisorResponse)
 
 
-def _groq_call(model: str, system: str | None, user: str, structured: bool) -> str:
+def _usage(name: str, prompt: int, completion: int) -> Usage:
+    price = PRICES_PER_M.get(name)
+    cost = round((prompt * price[0] + completion * price[1]) / 1e6, 6) if price else None
+    return Usage(prompt_tokens=prompt, completion_tokens=completion, total_tokens=prompt + completion,
+                 estimated_cost_usd=cost)
+
+
+def add_usage(a: Usage, b: Usage) -> Usage:
+    cost = None if a.estimated_cost_usd is None or b.estimated_cost_usd is None \
+        else round(a.estimated_cost_usd + b.estimated_cost_usd, 6)
+    return Usage(prompt_tokens=a.prompt_tokens + b.prompt_tokens,
+                 completion_tokens=a.completion_tokens + b.completion_tokens,
+                 total_tokens=a.total_tokens + b.total_tokens, estimated_cost_usd=cost)
+
+
+def _groq_call(model: str, system: str | None, user: str, structured: bool) -> tuple[str, Usage]:
     messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": user}]
     kwargs = {}
     if structured:
@@ -88,15 +103,18 @@ def _groq_call(model: str, system: str | None, user: str, structured: bool) -> s
     resp = _groq().chat.completions.create(
         model=model, messages=messages, temperature=0, max_completion_tokens=MAX_TOKENS,
         reasoning_effort=GROQ_REASONING_EFFORT, **kwargs)
-    return resp.choices[0].message.content or ""
+    return resp.choices[0].message.content or "", _usage(f"groq:{model}", resp.usage.prompt_tokens,
+                                                         resp.usage.completion_tokens)
 
 
-def _gemini_call(model: str, system: str | None, user: str, structured: bool) -> str:
+def _gemini_call(model: str, system: str | None, user: str, structured: bool) -> tuple[str, Usage]:
     config = types.GenerateContentConfig(
         system_instruction=system, temperature=0, max_output_tokens=MAX_TOKENS,
         automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
         **({"response_mime_type": "application/json", "response_schema": AdvisorResponse} if structured else {}))
-    return _gemini().models.generate_content(model=model, contents=user, config=config).text or ""
+    resp = _gemini().models.generate_content(model=model, contents=user, config=config)
+    meta = resp.usage_metadata
+    return resp.text or "", _usage(f"gemini:{model}", meta.prompt_token_count or 0, meta.candidates_token_count or 0)
 
 
 def _retry_after(err: Exception) -> float:
@@ -106,7 +124,7 @@ def _retry_after(err: Exception) -> float:
 
 
 def _run(system: str | None, user: str, structured: bool, parse):
-    """Try each provider in the chain; returns (parsed_result, provider) or (None, 'none')."""
+    """Try each provider in the chain; returns (parsed_result, provider, usage) or (None, 'none', zero usage)."""
     for name in CHAIN:
         if not LLM_PIN and _cooldown_until.get(name, 0) > time.time():
             continue  # this model recently hit its rate limit — skip it without waiting
@@ -114,7 +132,8 @@ def _run(system: str | None, user: str, structured: bool, parse):
         call = _groq_call if provider == "groq" else _gemini_call
         for _attempt in range(6 if LLM_PIN else 1):  # pinned (eval) mode waits out rate limits
             try:
-                return parse(call(model, system, user, structured)), name
+                raw, usage = call(model, system, user, structured)
+                return parse(raw), name, usage
             except RateLimitError as e:
                 wait = _retry_after(e)
                 if LLM_PIN:
@@ -130,19 +149,19 @@ def _run(system: str | None, user: str, structured: bool, parse):
                     time.sleep(5)
                     continue
                 break
-    return None, "none"
+    return None, "none", Usage()
 
 
-def call_text(user: str, system: str | None = None) -> tuple[str, str]:
-    """Free-text completion (baseline strategy). Returns (text, provider)."""
-    text, provider = _run(system, user, False, lambda raw: raw)
-    return (text if text is not None else FALLBACK_RESPONSE.answer), provider
+def call_text(user: str, system: str | None = None) -> tuple[str, str, Usage]:
+    """Free-text completion (baseline strategy). Returns (text, provider, usage)."""
+    text, provider, usage = _run(system, user, False, lambda raw: raw)
+    return (text if text is not None else FALLBACK_RESPONSE.answer), provider, usage
 
 
-def call_structured(system: str, user: str) -> tuple[AdvisorResponse, str]:
-    """JSON-schema-constrained completion validated with Pydantic. Returns (response, provider)."""
-    result, provider = _run(system, user, True, AdvisorResponse.model_validate_json)
-    return (result or FALLBACK_RESPONSE), provider
+def call_structured(system: str, user: str) -> tuple[AdvisorResponse, str, Usage]:
+    """JSON-schema-constrained completion validated with Pydantic. Returns (response, provider, usage)."""
+    result, provider, usage = _run(system, user, True, AdvisorResponse.model_validate_json)
+    return (result or FALLBACK_RESPONSE), provider, usage
 
 
 def warm_up():
