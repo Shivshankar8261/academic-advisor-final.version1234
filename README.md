@@ -94,7 +94,7 @@ npm run dev                         # http://localhost:3000
 | `rag` | + top-k retrieved chunks with `[source_file | section]` labels, grounding & citation rules, conflict rule. |
 | `rag_structured` | + the student's structured profile, current-term context, prerequisite-chain and own-semester lookups, and a step-by-step eligibility procedure with clarifying questions. |
 
-## Simplifications / assumptions (state these honestly in the report)
+## Simplifications / assumptions 
 
 1. **Current term is derived**, not given: the offering file is dated Sept 2026 and handbook clause 1.2 says the
    odd semester runs Jul/Aug–Dec, so the current term is taken as the odd semester (`data/processed/term_context.md`).
