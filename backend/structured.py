@@ -397,6 +397,64 @@ def _direct(chunk: dict, answer: str, conflict: bool = False, attachments: list[
     return {**chunk, "direct_answer": answer, "conflict": conflict, "attachments": attachments or []}
 
 
+def minor_direct(minor: str, batches: list[str], show_all: bool = False) -> list[dict]:
+    """"List / how many courses in the X minor": a table from the database, for the batch asked about only."""
+    with _db() as con:
+        rows = con.execute("SELECT * FROM courses WHERE kind='minor' AND minor=? AND choice_of IS NULL "
+                           "ORDER BY batch, semester, source_row", (minor,)).fetchall()
+        reqs = {r["batch"]: r["min_credits"] for r in con.execute(
+            "SELECT batch, min_credits FROM baskets WHERE basket='Open/Minor'")}
+        known = _known_codes()
+        if not rows or (batches and not any(r["batch"] in batches for r in rows)):
+            return []
+        if not batches and show_all:  # asked for the list itself: every batch, since the student named none
+            batches = sorted({r["batch"] for r in rows})
+        real = lambda rs: [r for r in rs if r["code_status"] not in ("placeholder", "not_offered")]  # noqa: E731
+        total = lambda rs: _num(sum(r["credits"] or 0 for r in rs))  # noqa: E731
+        if not batches:  # the minor differs by batch: give the overview rather than guessing one
+            lines = [f"**The {minor} minor differs by batch (year of admission):**", "",
+                     "| Batch | Courses listed | Credits | Not yet decided |", "|---|---|---|---|"]
+            for batch, br in _group(rows, lambda r: r["batch"]).items():
+                if any(r["code_status"] == "not_offered" for r in br):
+                    lines.append(f"| {batch} | Not offered | - | - |")
+                    continue
+                ph = [r for r in br if r["code_status"] == "placeholder"]
+                lines.append(f"| {batch} | {len(real(br))} | {total(real(br))} | {str(total(ph)) + ' credits' if ph else '-'} |")
+            lines += ["", "Tell me your batch (for example, \"for the 2024 batch\") and I'll list every course."]
+            answer = "\n".join(lines)
+            return [_direct(_chunk(answer, MINOR_FILE, f"{minor} minor, all batches, {_rows_label(rows)}"), answer)]
+        parts, labels = [], []
+        for batch in batches:
+            br = [r for r in rows if r["batch"] == batch]
+            if not br:
+                continue
+            labels.append(f"tab '{br[0]['source_tab']}', {minor} minor {batch} batch, {_rows_label(br)}")
+            if any(r["code_status"] == "not_offered" for r in br):
+                parts.append(f"**The {minor} minor is not offered to the {batch} batch** (the source file says "
+                             f"'No Students').")
+                continue
+            courses, ph = real(br), [r for r in br if r["code_status"] == "placeholder"]
+            lines = [f"**The {batch} batch {minor} minor lists {_plural(len(courses))}, worth {total(courses)} credits.**",
+                     "", "| Course Code | Title | Semester | Credits | Prerequisites |", "|---|---|---|---|---|"]
+            notes = []
+            for r in courses:
+                coded = r["code_status"] not in ("code_not_assigned", "code_unknown")
+                prereq = (r["prerequisites_normalized"] or "none").replace("|", "/")
+                lines.append(f"| {r['course_code'] if coded else 'No code yet'} | {r['title']} | {r['semester']} | "
+                             f"{_num(r['credits'])} | {'NIL' if prereq == 'none' else prereq} |")
+            if ph:
+                notes.append(f"{total(ph)} more credits are not decided yet (TBA/TBD in the source).")
+            missing = sorted({c for r in courses for c in (r["prerequisite_codes"] or "").split(",") if c and c not in known})
+            if missing:
+                notes.append(f"{', '.join(missing)} {'is' if len(missing) == 1 else 'are'} listed as a prerequisite but "
+                             f"not defined anywhere in the supplied files.")
+            if reqs.get(batch) is not None:
+                notes.append(f"The {batch} batch Minor/Open basket requires {_num(reqs[batch])} credits.")
+            parts.append("\n".join(lines) + ("\n\n" + " ".join(notes) if notes else ""))
+        answer = "\n\n---\n\n".join(parts)
+        return [_direct(_chunk(answer, MINOR_FILE, "; ".join(labels)), answer)]
+
+
 def _course_table(rows) -> str:
     """Markdown table, one line per course: an either/or slot is shown as its alternatives."""
     lines = ["| Course Code | Title | Semester | Credits | L-T-P | Prerequisites |", "|---|---|---|---|---|---|"]
@@ -680,6 +738,11 @@ def route(question: str, profile: dict | None = None, message: str | None = None
     if codes:  # a specific course: semester / credits / prerequisites
         return course_lookup(codes, batches)
     if minor_q and not re.search(r"credits? (needed|required)|basket", low):
+        asked = message or q  # the merged search text can hold words from an earlier question
+        if (LIST_WORDS.search(asked) or re.search(r"\b(list|show|table|those|them)\b", asked, re.I)) \
+                and not SELF_CHECK_RE.search(asked):
+            show_all = bool(re.search(r"\b(list|show|which courses|what courses)\b", asked, re.I))
+            return minor_direct(minor, batches, show_all) or minor_summary(minor, batches)
         return minor_summary(minor, batches)
     if not minor and re.search(r"\bminors?\b", low) and not re.search(r"credit|basket", low) and (
             LIST_WORDS.search(low) or re.search(r"\b(which|what|available|offered|options?)\b", low)):

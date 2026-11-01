@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "backend"))
 import advisor  # noqa: E402
 import llm  # noqa: E402
 import memory  # noqa: E402
+import structured  # noqa: E402
 from schemas import AdvisorResponse, Source, Usage  # noqa: E402
 
 CHAT = ["BTech, 2024 batch, semester 5. Can I take a minor?",
@@ -324,3 +325,23 @@ def test_details_alone_are_acknowledged_then_used(stub):
 @pytest.mark.parametrize("message", ["Is it mandatory to attend classes?", "What is the attendance rule?"])
 def test_real_first_questions_are_not_treated_as_unclear(message):
     assert memory.recall_kind(message, memory.from_history([], message), []) is None
+
+
+# "can u give me list for those courses": a table from the database, for that batch only, with no model call
+def test_minor_list_follow_up_is_a_table_without_a_model(stub):
+    calls = stub()
+    replies = play("rag_structured", ["BTech 2024 batch. Tell me about the Finance minor",
+                                      "can u give me list for those courses"])
+    r = replies[-1]
+    assert r.provider == advisor.DATABASE_PROVIDER and r.usage.total_tokens == 0
+    assert "| MGMT208 |" in r.answer and "2026" not in r.answer
+
+
+def test_minor_list_without_a_batch_asks_for_it():
+    chunks = structured.route("How many courses are in the Finance minor?")
+    assert chunks[0]["direct_answer"].count("| 202") >= 3 and "Tell me your batch" in chunks[0]["direct_answer"]
+    assert "| MGMT208 |" in structured.route("List the Finance minor courses")[0]["direct_answer"]
+
+
+def test_can_i_take_a_minor_is_not_turned_into_a_list():
+    assert not structured.route("Can I take the Law minor? how many courses", None, "Can I take the Law minor?")[0].get("direct_answer")

@@ -29,7 +29,7 @@ from google.genai import types
 from groq import Groq, RateLimitError
 
 from config import (GEMINI_API_KEY, GEMINI_MODELS, GROQ_API_KEY, GROQ_MODELS, GROQ_REASONING_EFFORT, LLM_PIN,
-                    LLM_TIMEOUT_S, MAX_TOKENS, PRICES_PER_M)
+                    LLM_DEADLINE_S, LLM_TIMEOUT_S, MAX_TOKENS, PRICES_PER_M)
 from schemas import AdvisorResponse, Usage
 
 FALLBACK_RESPONSE = AdvisorResponse(
@@ -53,6 +53,12 @@ def _groq() -> Groq:
 @lru_cache
 def _gemini() -> genai.Client:
     return genai.Client(api_key=GEMINI_API_KEY)
+
+
+@lru_cache
+def _gemini_text() -> genai.Client:
+    """Advice text only: vision and speech use _gemini(), since they legitimately take longer."""
+    return genai.Client(api_key=GEMINI_API_KEY, http_options=types.HttpOptions(timeout=int(LLM_TIMEOUT_S * 1000)))
 
 
 def _strict_schema(model) -> dict:
@@ -112,7 +118,7 @@ def _gemini_call(model: str, system: str | None, user: str, structured: bool) ->
         system_instruction=system, temperature=0, max_output_tokens=MAX_TOKENS,
         automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
         **({"response_mime_type": "application/json", "response_schema": AdvisorResponse} if structured else {}))
-    resp = _gemini().models.generate_content(model=model, contents=user, config=config)
+    resp = _gemini_text().models.generate_content(model=model, contents=user, config=config)
     meta = resp.usage_metadata
     return resp.text or "", _usage(f"gemini:{model}", meta.prompt_token_count or 0, meta.candidates_token_count or 0)
 
@@ -125,9 +131,12 @@ def _retry_after(err: Exception) -> float:
 
 def _run(system: str | None, user: str, structured: bool, parse):
     """Try each provider in the chain; returns (parsed_result, provider, usage) or (None, 'none', zero usage)."""
+    started = time.monotonic()
     for name in CHAIN:
         if not LLM_PIN and _cooldown_until.get(name, 0) > time.time():
             continue  # this model recently hit its rate limit — skip it without waiting
+        if not LLM_PIN and time.monotonic() - started > LLM_DEADLINE_S:
+            break
         provider, model = name.split(":", 1)
         call = _groq_call if provider == "groq" else _gemini_call
         for _attempt in range(6 if LLM_PIN else 1):  # pinned (eval) mode waits out rate limits

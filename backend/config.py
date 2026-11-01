@@ -35,7 +35,9 @@ GROQ_REASONING_EFFORT = os.getenv("GROQ_REASONING_EFFORT", "low")  # low = faste
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODELS = os.getenv("GEMINI_MODELS", "gemini-flash-lite-latest,gemini-3.5-flash-lite").split(",")
 LLM_PIN = os.getenv("LLM_PIN", "")      # e.g. "groq:openai/gpt-oss-120b" — used by the eval for a fair comparison
-LLM_TIMEOUT_S = float(os.getenv("LLM_TIMEOUT_S", "20"))
+# A live student should not wait on a stalled model when another can answer; a pinned eval has no other model to try.
+LLM_TIMEOUT_S = float(os.getenv("LLM_TIMEOUT_S", "20" if LLM_PIN else "8"))
+LLM_DEADLINE_S = float(os.getenv("LLM_DEADLINE_S", "18"))  # stop trying further fallback models after this long
 MAX_TOKENS = int(os.getenv("MAX_TOKENS", "1500"))  # room for full course lists
 
 # USD per 1M tokens (input, output), from console.groq.com/docs/models (checked 31 Oct 2026). Gemini is not listed
