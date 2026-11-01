@@ -85,12 +85,14 @@ def _chunk(text: str, source_file: str, section: str) -> dict:
     return {"text": text, "source_file": source_file, "section": section, "score": 1.0, "structured": True}
 
 
-def _batches(q: str, profile: dict | None, message: str | None = None) -> list[str]:
+def _batches(q: str, profile: dict | None, message: str | None = None, facts=None) -> list[str]:
     # A follow-up ("what about 2023?") is merged with the previous question for retrieval, so the year in the
     # new message wins over the year in the old one.
     years = re.findall(r"\b(202[2-6])\b", message or "") or re.findall(r"\b(202[2-6])\b", q)
     if years:
         return sorted(set(years))
+    if facts and facts.batch:  # told to us earlier in this chat
+        return [facts.batch]
     if profile and profile.get("batch") and re.search(r"\b(my|i|me)\b", q, re.I):
         return [profile["batch"]]
     return []
@@ -222,6 +224,106 @@ def minors_overview(batches: list[str]) -> list[dict]:
     lines.append(f"Total course entries across the batches above: {total}.")
     tabs = ", ".join(sorted({r["source_tab"] for r in rows}))
     return [_chunk("\n".join(lines), MINOR_FILE, f"tabs {tabs}, all minors")]
+
+
+HANDBOOK_FILE = "Student Handbook Aug 2026.pdf"
+MINOR_RULE_SOURCES = [(HANDBOOK_FILE, "Section III - Academic Regulations > 2. Registration (2.13), pp. 17-18"),
+                      (HANDBOOK_FILE, "Section III - Academic Regulations > 8. Teaching, Evaluation and Grading System, "
+                                      "pp. 26-27")]
+CAN_TAKE_MINOR_RE = re.compile(r"\b(can|could|may|should|am|allowed|eligible|possible|able)\b.{0,40}\bminors?\b"
+                               r"|\b(take|do|pursue|opt for|choose|register for|start)\s+(?:a|any|the)?\s*minor\b", re.I)
+
+
+def offered_minors(batch: str) -> dict[str, list]:
+    """Minor -> its rows, for the minors the source file doesn't mark 'No Students' for this batch."""
+    with _db() as con:
+        rows = con.execute("SELECT * FROM courses WHERE kind='minor' AND batch=? AND choice_of IS NULL "
+                           "ORDER BY minor, source_row", (batch,)).fetchall()
+    grouped = _group(rows, lambda r: r["minor"])
+    return {m: rs for m, rs in grouped.items() if not any(r["code_status"] == "not_offered" for r in rs)}
+
+
+def minor_availability(batch: str, semester: int | None) -> list[dict]:
+    """"Can I take a minor?": what the files say for this batch and semester. They set no personal entry condition,
+    so this reports availability and the stated process rather than declaring the student eligible."""
+    with _db() as con:
+        slots = con.execute("SELECT * FROM courses WHERE kind='programme' AND batch=? AND basket='Open/Minor' "
+                            "ORDER BY semester", (batch,)).fetchall()
+        req = con.execute("SELECT * FROM baskets WHERE batch=? AND basket='Open/Minor'", (batch,)).fetchone()
+        all_minors = {r[0] for r in con.execute("SELECT DISTINCT minor FROM courses WHERE kind='minor' AND batch=?",
+                                                (batch,))}
+    offered = offered_minors(batch)
+    if not offered or not slots:
+        return []
+    needed = _num(req["min_credits"]) if req else _num(sum(r["credits"] or 0 for r in slots))
+    parts = [f"**Yes, minors are open to the {batch} batch: the curriculum has a {needed}-credit Minor/Open basket and "
+             f"{_plural(len(offered), 'minor')} on offer.** The documents I have set no personal condition such as a "
+             f"minimum CGPA, but your Faculty Advisor has to be part of the choice (below)."]
+    if semester:
+        ahead = [r for r in slots if r["semester"] >= semester]
+        passed = [r for r in slots if r["semester"] < semester]
+        where = ", ".join(f"Semester {r['semester']} ({_num(r['credits'])} credits)" for r in ahead) or "none"
+        text = f"For you in **Semester {semester}**, the basket's slots from now on are: {where}."
+        if passed:
+            text += (f" {_num(sum(r['credits'] or 0 for r in passed))} credits were placed in earlier semesters "
+                     f"({', '.join(str(r['semester']) for r in passed)}). The documents don't say how late a student can "
+                     f"start a minor or how those credits are made up, so please check that with your Faculty Advisor "
+                     f"before you decide.")
+        parts.append(text)
+    lines = ["| Minor | Courses listed | Credits | Semesters |", "|---|---|---|---|"]
+    for minor, rows in offered.items():
+        named = [r for r in rows if r["code_status"] not in ("placeholder", "not_offered")]
+        tba = sum(r["credits"] or 0 for r in rows if r["code_status"] == "placeholder")
+        sems = sorted({r["semester"] for r in named if r["semester"]})
+        span = f"{sems[0]}-{sems[-1]}" if len(sems) > 1 else str(sems[0]) if sems else "-"
+        credits = f"{_num(sum(r['credits'] or 0 for r in named))}" + (f" + {_num(tba)} TBA" if tba else "")
+        lines.append(f"| {minor} | {len(named)} | {credits} | {span} |")
+    parts.append("\n".join(lines))
+    closed = sorted(all_minors - set(offered))
+    if closed:
+        parts.append(f"Not offered to this batch: {', '.join(closed)} (the source file says 'No Students').")
+    parts.append("Conditions in the Student Handbook:\n"
+                 "- You declare a minor through Pre-Registration, after consulting your Faculty Advisor (2.13).\n"
+                 "- A minor course runs only if at least 10 students register, unless the Program Chair permits it (2.13).\n"
+                 "- You can change your minor only once before completing the programme (8.13).")
+    answer = "\n\n".join(parts)
+    chunk = _direct(_chunk(answer, MINOR_FILE, f"tabs for the {batch} batch, all minors; Open/Minor basket in tab "
+                           f"'{slots[0]['source_tab']}', row {slots[0]['source_row']}"), answer)
+    chunk["extra_sources"] = [{"source_file": SPREAD_FILE, "section": f"tab '{slots[0]['source_tab']}', row "
+                               f"{slots[0]['source_row']} (Open/Minor basket)"}] + \
+        [{"source_file": f, "section": s} for f, s in MINOR_RULE_SOURCES]
+    if not semester:
+        chunk["clarify"] = "Which semester are you in? I can then show which minor slots are still ahead of you."
+    return [chunk]
+
+
+def ask_batch_for_minor() -> list[dict]:
+    answer = "Minors differ by batch, so I need your batch before I can tell you what's open to you."
+    chunk = _direct(_chunk(answer, MINOR_FILE, "minors by batch"), answer)
+    chunk["clarify"] = "Which batch are you in (your year of admission), and which semester are you in now?"
+    chunk["sources_none"] = True
+    return [chunk]
+
+
+MINOR_DENIAL_RE = re.compile(r"\bno minors?\b|\bminors?\b.{0,40}\b(not available|unavailable|not offered|isn't available)\b"
+                             r"|\b(cannot|can't|can not|not able to|not eligible to|ineligible to)\s+(?:take|do|pursue|opt for|"
+                             r"register for)\s+(?:a|any)\s+minor\b|\bnot eligible for (?:a|any) minor\b"
+                             # "the documents don't say" is also a false claim when the course store does say
+                             r"|\b(do not|don't|does not|doesn't) (contain|include|provide|list|mention|specify|state)\b"
+                             r".{0,60}\bminors?\b|\b(no|without) (information|details?|data)\b.{0,40}\bminors?\b"
+                             r"|\bminors?\b.{0,40}\b(information|details?) (is|are) (not available|unavailable|missing)\b"
+                             r"|\b(cannot|can't|unable to) confirm\b.{0,40}\bminor\b", re.I | re.S)
+
+
+def claim_conflicts(answer: str, batch: str | None) -> tuple[list[str], list[dict]]:
+    """Availability claims checked against the course store: returns (problems, chunks holding the evidence)."""
+    if not (batch and MINOR_DENIAL_RE.search(answer)):
+        return [], []
+    offered = offered_minors(batch)
+    if not offered:
+        return [], []
+    return ([f"the draft says no minor is available, but the {batch} batch has {len(offered)} minors on offer "
+             f"({', '.join(offered)})"], minors_overview([batch]))
 
 
 def course_lookup(codes: list[str], batches: list[str]) -> list[dict]:
@@ -555,10 +657,10 @@ def mentioned_codes(q: str) -> list[str]:
     return list(dict.fromkeys(codes))
 
 
-def route(question: str, profile: dict | None = None, message: str | None = None) -> list[dict]:
+def route(question: str, profile: dict | None = None, message: str | None = None, facts=None) -> list[dict]:
     q = question.strip()
     low = q.lower()
-    batches = _batches(q, profile, message)
+    batches = _batches(q, profile, message, facts)
     codes = mentioned_codes(q)
     minor = next((name for key, name in MINOR_NAMES.items() if re.search(rf"\b{re.escape(key)}\b", low)), None)
     minor_q = minor and (re.search(r"\bminor\b", low) or LIST_WORDS.search(low))
@@ -566,6 +668,13 @@ def route(question: str, profile: dict | None = None, message: str | None = None
     # "how many more credits do I need", "credits left to graduate" - a requirement, not a ranking question
     requirement_q = re.search(r"(credits?|how many|how much).{0,30}\b(need|needed|require|required|remaining|left)\b"
                               r"|\bto (graduate|complete)\b|\bmore credits\b", low)
+    if CAN_TAKE_MINOR_RE.search(low) and not minor and not codes:
+        if not batches:
+            return ask_batch_for_minor()
+        stated = re.search(r"\b(?:semester|sem)\s*(\d)\b", low)
+        semester = int(stated.group(1)) if stated else (facts.semester if facts else None) \
+            or (profile or {}).get("current_semester")
+        return minor_availability(batches[0], semester)
     if RANKING_RE.search(low) and not minor_q and not requirement_q:  # "which semester has the most credits"
         return semester_stats(batches)
     if codes:  # a specific course: semester / credits / prerequisites
@@ -587,7 +696,7 @@ def route(question: str, profile: dict | None = None, message: str | None = None
             return basket_courses(listable[:2], batches, sem)
     if wanted and re.search(r"credit", low):
         return basket_credits(wanted[:2], batches)
-    if sem and batches and re.search(r"course|subject|offered|taught|study", low):
+    if sem and batches and re.search(r"course|subject|offered|taught|study", low) and not SELF_CHECK_RE.search(low):
         return semester_list(batches[0], sem)
     if batches and re.search(r"\b(courses|subjects)\b", low) and re.search(r"how many|\blist\b|\ball\b|total", low) \
             and not SELF_CHECK_RE.search(low):

@@ -364,7 +364,11 @@ const AssistantMessage = memo(function AssistantMessage({ reply, question }: { r
               reply.grounded ? "bg-sky-50 text-sky-700 ring-sky-200" : "bg-slate-50 text-slate-500 ring-slate-200"
             }`}
           >
-            {reply.grounded ? "✓ grounded in documents" : "not grounded"}
+            {reply.grounded
+              ? "✓ grounded in documents"
+              : reply.provider.includes("conversation memory")
+                ? "from this conversation"
+                : "not grounded"}
           </span>
           <span className="inline-flex items-center gap-1 rounded-full bg-slate-50 px-2.5 py-1 text-slate-600 ring-1 ring-slate-200">
             ⚡ {reply.response_time_s.toFixed(2)}s

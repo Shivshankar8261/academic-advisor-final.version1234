@@ -12,6 +12,7 @@ import re
 import time
 
 import llm
+import memory
 import prompts
 import structured
 from schemas import AdvisorResponse, Source, Usage
@@ -106,6 +107,21 @@ def credit_agent(profile: dict) -> list[dict]:
     return [structured._chunk(text, structured.SPREAD_FILE, f"tab '{tab}', credit baskets of the {batch} batch")]
 
 
+def eligibility_checks(query: str, profile: dict | None) -> list[dict]:
+    """The decision the student's record supports, for any mode's draft to be checked against."""
+    if not (profile and profile.get("batch") and profile.get("courses_completed") is not None
+            and SELF_RE.search(query)):
+        return []
+    return eligibility_agent(structured.mentioned_codes(query), profile, query)[0]
+
+
+def verify_all(result: AdvisorResponse, evidence: str, checks: list[dict], batch: str | None,
+               ) -> tuple[list[str], list[dict]]:
+    """verify() plus availability claims. Returns (problems, chunks holding evidence the draft may not have seen)."""
+    conflicts, chunks = structured.claim_conflicts(result.answer, batch)
+    return verify(result, evidence, checks) + conflicts, chunks
+
+
 def verify(result: AdvisorResponse, evidence: str, checks: list[dict]) -> list[str]:
     """Deterministic review of the draft: facts must be in the evidence, and the decision must match the agent's."""
     import advisor
@@ -129,7 +145,7 @@ def verify(result: AdvisorResponse, evidence: str, checks: list[dict]) -> list[s
     return problems
 
 
-def run(message: str, query: str, profile: dict | None, history: list[dict],
+def run(message: str, query: str, profile: dict | None, history: list[dict], facts=None,
         ) -> tuple[AdvisorResponse, str, Usage, list[dict], list[dict], list[dict]]:
     """Returns (result, provider, usage, trace, chunks, attachments)."""
     import advisor  # advisor dispatches to this module, so the import has to wait until both are loaded
@@ -146,11 +162,13 @@ def run(message: str, query: str, profile: dict | None, history: list[dict],
                        f"{'About this student' if self_question else 'General question'}.")
 
     t = time.perf_counter()
-    exact, retrieved = advisor.gather_context(query, profile, message)
+    facts = facts or memory.Facts()
+    stated = memory.prompt_block(facts)
+    exact, retrieved = advisor.gather_context(query, profile, message, facts)
     direct = next((c for c in exact if c.get("direct_answer")), None)
     if direct:
         step("Regulation Retrieval", t, "Answered exactly from the course database; no model needed.")
-        return (advisor.direct_response(direct), advisor.DATABASE_PROVIDER, Usage(), trace, [direct],
+        return (advisor.direct_response(direct, memory.correction_note(message, facts)), advisor.DATABASE_PROVIDER, Usage(), trace, [direct],
                 direct.get("attachments") or [])
     if not exact and not advisor.has_relevant(retrieved):
         step("Regulation Retrieval", t, "Nothing relevant in the documents; stopping instead of guessing.")
@@ -162,12 +180,15 @@ def run(message: str, query: str, profile: dict | None, history: list[dict],
     checks: list[dict] = []
     has_record = profile and profile.get("courses_completed") is not None and profile.get("batch")
     if codes and self_question and not has_record and not history:
-        rows = structured.course_lookup(codes[:1], [])
+        batch = facts.batch
+        rows = structured.course_lookup(codes[:1], [batch] if batch else [])
         step("Course Eligibility", t, "No student record, so asking instead of assuming.")
         title = rows[0]["text"].split("\n", 1)[0].split(": ", 1)[-1] if rows else codes[0]
-        ask = f"Which batch are you in, and which prerequisite courses for {codes[0]} have you passed?"
+        ask = f"Which prerequisite courses for {codes[0]} have you passed?" if batch else \
+            f"Which batch are you in, and which prerequisite courses for {codes[0]} have you passed?"
         result = AdvisorResponse(
-            answer=f"I can check {title} for you, but its prerequisites depend on your batch and I don't have your "
+            answer=f"I can check {title} for you, but I don't have your record yet." if batch else
+                   f"I can check {title} for you, but its prerequisites depend on your batch and I don't have your "
                    f"record yet.", confidence="medium", grounded=bool(rows),
             sources=[Source(source_file=rows[0]["source_file"], section=rows[0]["section"])] if rows else [],
             needs_clarification=True, clarifying_question=ask, insufficient_information=False, conflict_detected=False)
@@ -191,7 +212,7 @@ def run(message: str, query: str, profile: dict | None, history: list[dict],
 
     t = time.perf_counter()
     term = advisor.term_context()
-    system, user = prompts.rag_structured_prompt(message, history, chunks, profile, term)
+    system, user = prompts.rag_structured_prompt(message, history, chunks, profile, term, stated)
     result, provider, usage = llm.call_structured(system, user)
     result = advisor.finish(result, chunks)
     step("Recommendation", t, f"Draft written by {provider}.", usage)
@@ -201,14 +222,18 @@ def run(message: str, query: str, profile: dict | None, history: list[dict],
         step("Verification", t, "Skipped: no model was reachable.")
         return result, provider, usage, trace, chunks, []
     evidence = " ".join(c["text"] for c in chunks) + prompts.format_profile(profile) + user
-    problems = verify(result, evidence, checks)
+    batch = facts.batch or (profile or {}).get("batch")
+    problems, extra = verify_all(result, evidence, checks, batch)
     if problems:
         feedback = ("<verification_failed>\nYour previous draft was rejected: " + "; ".join(problems) + ". Rewrite it using "
                     "only the context, and do not state those claims.\n</verification_failed>\n\n")
-        repaired, provider, more = llm.call_structured(system, feedback + user)
+        context = prompts.format_context(extra) + "\n\n" if extra else ""
+        repaired, provider, more = llm.call_structured(system, feedback + context + user)
         usage = llm.add_usage(usage, more)
+        chunks = chunks + extra
+        evidence += " ".join(c["text"] for c in extra)
         result = advisor.finish(repaired, chunks)
-        left = verify(result, evidence, checks)
+        left = verify_all(result, evidence, checks, batch)[0]
         if left:
             result = result.model_copy(update={"confidence": "low", "answer": result.answer.rstrip() + "\n\n**Please "
                                                "verify:** I could not fully check this answer against the documents ("

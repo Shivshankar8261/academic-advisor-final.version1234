@@ -25,6 +25,10 @@ Next.js chat UI ──► FastAPI /chat ──► advisor.py ──► retrieval
 | 11 Legal | Copyright, licensing and misuse analysis of AI outputs | `docs/` report | |
 | 12 Deliverables | Report, slides, demo script | `docs/`, `demo_script.md` | |
 
+**Conversation memory** (`backend/memory.py`): batch, semester, programme and corrections are read from the student's own
+turns, later statements win, and "what do you know about me?" is answered without retrieval or a model. Tests:
+`python -m pytest eval/test_memory.py`; same chat on real models: `python eval/run_memory_scenario.py`.
+
 Regenerate the synthetic media with `python backend/make_media.py` (macOS; needs Pillow, which is not a server dependency).
 
 ## Repository layout

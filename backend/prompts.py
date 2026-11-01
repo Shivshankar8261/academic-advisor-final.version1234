@@ -54,6 +54,8 @@ BASE_CONSTRAINTS = """<constraints>
 - If the question is ambiguous or depends on facts about the student you do not have (e.g. which courses they
   completed, their batch/year, their CGPA), do NOT assume: set needs_clarification to true and ask ONE specific
   clarifying_question.
+- Before saying a course, minor or option is unavailable or that the student is ineligible, check that the context
+  says so. If the context is silent, say the documents don't state it; silence is not a "no".
 - Do not make a recommendation that the information does not support. It is better to say "I cannot confirm
   this" than to guess.
 - Keep the answer concise (at most ~150 words) and student-friendly. Exception: when the student asks for a
@@ -88,10 +90,10 @@ def _history_block(history: list[dict]) -> str:
 # ---------------------------------------------------------------------------
 # 2. STRUCTURED — role + constraints + delimiters + output format, no documents
 # ---------------------------------------------------------------------------
-def structured_prompt(question: str, history: list[dict]) -> tuple[str, str]:
+def structured_prompt(question: str, history: list[dict], stated: str = "") -> tuple[str, str]:
     system = f"{ROLE}\n\n{BASE_CONSTRAINTS}\n\n{OUTPUT_SPEC}"
     # Technique: DELIMITERS — the student's words are fenced off from the instructions.
-    user = (f"{_history_block(history)}"
+    user = (f"{stated}{_history_block(history)}"
             f"<student_question>\n{question}\n</student_question>\n\n"
             "You have NO access to university documents in this mode, so sources must be empty and grounded "
             "must be false. Answer only what you can state with certainty; otherwise flag it.")
@@ -141,9 +143,9 @@ def format_context(chunks: list[dict]) -> str:
     return "<context>\n" + "\n\n".join(parts) + "\n</context>"
 
 
-def rag_prompt(question: str, history: list[dict], chunks: list[dict]) -> tuple[str, str]:
+def rag_prompt(question: str, history: list[dict], chunks: list[dict], stated: str = "") -> tuple[str, str]:
     system = f"{ROLE}\n\n{BASE_CONSTRAINTS}\n\n{RAG_RULES}\n\n{OUTPUT_SPEC}"
-    user = (f"{format_context(chunks)}\n\n{_history_block(history)}"
+    user = (f"{format_context(chunks)}\n\n{stated}{_history_block(history)}"
             f"<student_question>\n{question}\n</student_question>")
     return system, user
 
@@ -189,11 +191,11 @@ def format_profile(p: dict | None) -> str:
 
 
 def rag_structured_prompt(question: str, history: list[dict], chunks: list[dict],
-                          profile: dict | None, term_context: str) -> tuple[str, str]:
+                          profile: dict | None, term_context: str, stated: str = "") -> tuple[str, str]:
     system = f"{ROLE}\n\n{BASE_CONSTRAINTS}\n\n{RAG_RULES}\n\n{ELIGIBILITY_PROCEDURE}\n\n{OUTPUT_SPEC}"
     profile_block = format_profile(profile)
     user = (f"<term_context>\n{term_context}\n</term_context>\n\n"
             f"<student_profile>\n{profile_block}\n</student_profile>\n\n"
-            f"{format_context(chunks)}\n\n{_history_block(history)}"
+            f"{format_context(chunks)}\n\n{stated}{_history_block(history)}"
             f"<student_question>\n{question}\n</student_question>")
     return system, user

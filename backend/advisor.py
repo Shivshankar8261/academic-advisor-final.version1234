@@ -27,6 +27,7 @@ from functools import lru_cache
 import agents
 import guard
 import llm
+import memory
 import multimodal
 import prompts
 import structured
@@ -36,6 +37,7 @@ from schemas import AdvisorResponse, ChatResponse, Source, Usage
 
 STRATEGIES = ("baseline", "structured", "rag", "rag_structured", "agentic")
 DATABASE_PROVIDER = "none (exact database lookup)"
+MEMORY_PROVIDER = "none (conversation memory)"
 PERSONAL_RE = re.compile(r"\b(i|my|me|am|mine|we|our)\b", re.I)
 
 # question pattern -> handbook section whose thresholds decide it (added for students with a profile)
@@ -92,22 +94,9 @@ def term_context() -> str:
 
 
 def retrieval_query(message: str, history: list[dict]) -> str:
-    """Multi-turn: if the advisor just asked a clarifying question, the new message is only an answer
-    (e.g. "I'm in the 2024 batch"), so we merge it with the student's ORIGINAL question for retrieval."""
-    query = message
-    if not history or history[-1]["role"] != "assistant":
-        return query
-    # A short follow-up ("2025", "what about the 2024 batch?", "and semester 5?") refines the previous question
-    # even when the advisor did not ask anything, so it is also merged with it.
-    m = message.strip()
-    is_new_question = re.search(r"\b(what|which|how|when|where|who|why|can|could|is|are|do|does|should|list|tell)\b",
-                                m, re.I)
-    follow_up = re.match(r"(what|how) about\b|and\b|for\b|in\b|only\b", m, re.I) or \
-        (len(m.split()) <= 6 and not is_new_question)
-    if history[-1].get("needs_clarification") or follow_up:
-        previous_user = next((t["content"] for t in reversed(history) if t["role"] == "user"), "")
-        query = f"{previous_user} {message}"
-    return query
+    """Multi-turn: a follow-up ("2024", "semester 3, not 5", "does that change your advice?") only makes sense with the
+    student's earlier question, so it is searched as that question plus their current details."""
+    return memory.contextual_query(message, history, memory.from_history(history, message))
 
 
 def _check_sources(result: AdvisorResponse, chunks: list[dict]) -> AdvisorResponse:
@@ -203,10 +192,10 @@ def has_relevant(chunks: list[dict]) -> bool:
     return any(c["score"] >= MIN_RELEVANCE for c in chunks)
 
 
-def gather_context(query: str, profile: dict | None, message: str) -> tuple[list[dict], list[dict]]:
+def gather_context(query: str, profile: dict | None, message: str, facts=None) -> tuple[list[dict], list[dict]]:
     # Exact lookups (counts, lists, credits, prerequisites, semesters) come from the SQL course store,
     # never from similarity search; they go first in the context.
-    exact = structured.route(query, profile, message) + structured.conflict_notes(query)
+    exact = structured.route(query, profile, message, facts) + structured.conflict_notes(query)
     return exact, retrieve(query)
 
 
@@ -263,6 +252,33 @@ def answer(message: str, strategy: str = "rag_structured", student_id: str | Non
                                     "human_review": guard.human_review(retrieval_query(verdict.clean, history))})
 
 
+def _verify_and_repair(result: AdvisorResponse, provider: str, usage: Usage, system: str, user: str, chunks: list[dict],
+                       profile: dict | None, facts, query: str) -> tuple[AdvisorResponse, str, Usage]:
+    """Every grounded mode checks its draft before the student sees it: numbers and course codes against the evidence,
+    "no minor is available" against the course store, and yes/no decisions against the student's record. One rewrite;
+    a draft that still fails is shown with a warning instead of as a confident answer."""
+    if provider == "none":
+        return result, provider, usage
+    batch = facts.batch or (profile or {}).get("batch")
+    checks = agents.eligibility_checks(query, profile)
+    problems, evidence = agents.verify_all(result, " ".join(c["text"] for c in chunks) + user, checks, batch)
+    if not problems:
+        return result, provider, usage
+    feedback = ("<verification_failed>\nYour previous draft was rejected: " + "; ".join(problems) + ". Rewrite it using "
+                "only the context, and do not repeat those claims.\n</verification_failed>\n\n")
+    context = prompts.format_context(evidence) + "\n\n" if evidence else ""
+    repaired, provider, more = llm.call_structured(system, feedback + context + user)
+    usage = llm.add_usage(usage, more)
+    shown = chunks + evidence
+    result = finish(repaired, shown)
+    left, _ = agents.verify_all(result, " ".join(c["text"] for c in shown) + user, checks, batch)
+    if left:
+        result = result.model_copy(update={
+            "confidence": "low", "answer": result.answer.rstrip() + "\n\n**Please verify:** I could not fully check this "
+            "answer against the documents (" + "; ".join(left) + ")."})
+    return result, provider, usage
+
+
 def _refusal(category: str) -> AdvisorResponse:
     return AdvisorResponse(answer=guard.REFUSALS[category], confidence="high", grounded=False, sources=[],
                            needs_clarification=False, clarifying_question=None, insufficient_information=False,
@@ -284,6 +300,16 @@ def _answer(message: str, strategy: str, student_id: str | None, history: list[d
                                  insufficient_information=False, conflict_detected=False)
         return _response(result, strategy, "small-talk", start, retrieval_s, chunks)
 
+    # The baseline stays a plain LLM with no memory layer: it is the control every other mode is compared against.
+    facts = memory.from_history(history, message)
+    stated = memory.prompt_block(facts)
+    kind = memory.recall_kind(message) if strategy != "baseline" else None
+    if kind:  # about this conversation, not the university: no retrieval and no model needed
+        return _response(AdvisorResponse(
+            answer=memory.recall_answer(kind, facts, profile), confidence="high", grounded=False, sources=[],
+            needs_clarification=False, clarifying_question=None, insufficient_information=False,
+            conflict_detected=False), strategy, MEMORY_PROVIDER, start, 0.0, [])
+
     if strategy == "baseline":
         convo = "".join(f"{t['role']}: {t['content']}\n" for t in history[-6:])
         _, user = prompts.baseline_prompt(f"{convo}{message}" if convo else message)
@@ -293,23 +319,23 @@ def _answer(message: str, strategy: str, student_id: str | None, history: list[d
                                  needs_clarification=False, clarifying_question=None,
                                  insufficient_information=False, conflict_detected=False)
     elif strategy == "structured":
-        system, user = prompts.structured_prompt(message, history)
+        system, user = prompts.structured_prompt(message, history, stated)
         result, provider, usage = llm.call_structured(system, user)
     else:
-        query = retrieval_query(message, history)
+        query = memory.contextual_query(message, history, facts)
         # Data minimisation: a general question doesn't need the student's record, so it isn't sent to the provider.
         if profile and not PERSONAL_RE.search(query):
             profile = None
         if strategy == "agentic":
-            result, provider, usage, trace, chunks, attachments = agents.run(message, query, profile, history)
+            result, provider, usage, trace, chunks, attachments = agents.run(message, query, profile, history, facts)
             return _response(result, strategy, provider, start, sum(
                 t["ms"] for t in trace if t["agent"] == "Regulation Retrieval") / 1000, chunks, usage,
                 agent_trace=trace, attachments=attachments)
         if strategy == "rag_structured":
-            exact, retrieved = gather_context(query, profile, message)
+            exact, retrieved = gather_context(query, profile, message, facts)
             direct = next((c for c in exact if c.get("direct_answer")), None)
             if direct:  # counts and course tables: computed from the database, the model could only add errors
-                return _response(direct_response(direct), strategy, DATABASE_PROVIDER, start,
+                return _response(direct_response(direct, memory.correction_note(message, facts)), strategy, DATABASE_PROVIDER, start,
                                  time.perf_counter() - start, [direct], attachments=direct.get("attachments"))
         else:
             exact, retrieved = [], retrieve(query)
@@ -319,13 +345,14 @@ def _answer(message: str, strategy: str, student_id: str | None, history: list[d
             return _response(NOT_IN_DOCUMENTS, strategy, "none (no relevant document found)", start,
                              time.perf_counter() - start, chunks)
         if strategy == "rag":
-            system, user = prompts.rag_prompt(message, history, chunks)
+            system, user = prompts.rag_prompt(message, history, chunks, stated)
         else:
             chunks = assemble_chunks(exact, retrieved, profile, query)
-            system, user = prompts.rag_structured_prompt(message, history, chunks, profile, term_context())
+            system, user = prompts.rag_structured_prompt(message, history, chunks, profile, term_context(), stated)
         retrieval_s = time.perf_counter() - start
         result, provider, usage = llm.call_structured(system, user)
         result = finish(result, chunks)
+        result, provider, usage = _verify_and_repair(result, provider, usage, system, user, chunks, profile, facts, query)
 
     if strategy == "structured":  # no documents in this mode, whatever the model claims
         result = result.model_copy(update={"sources": [], "grounded": False})
@@ -333,10 +360,13 @@ def _answer(message: str, strategy: str, student_id: str | None, history: list[d
     return _response(result, strategy, provider, start, retrieval_s, chunks, usage)
 
 
-def direct_response(chunk: dict) -> AdvisorResponse:
-    return AdvisorResponse(answer=chunk["direct_answer"], confidence="high", grounded=True,
-                           sources=[Source(source_file=chunk["source_file"], section=chunk["section"])],
-                           needs_clarification=False, clarifying_question=None, insufficient_information=False,
+def direct_response(chunk: dict, note: str = "") -> AdvisorResponse:
+    sources = [] if chunk.get("sources_none") else \
+        [Source(source_file=chunk["source_file"], section=chunk["section"])] + \
+        [Source(**s) for s in chunk.get("extra_sources", [])]
+    return AdvisorResponse(answer=note + chunk["direct_answer"], confidence="high" if sources else "medium",
+                           grounded=bool(sources), sources=sources, needs_clarification=bool(chunk.get("clarify")),
+                           clarifying_question=chunk.get("clarify"), insufficient_information=False,
                            conflict_detected=bool(chunk.get("conflict")))
 
 
