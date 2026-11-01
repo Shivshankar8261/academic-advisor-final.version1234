@@ -354,3 +354,21 @@ def test_citation_differing_only_in_punctuation_is_kept():
                                     clarifying_question=None, insufficient_information=False, conflict_detected=False,
                                     sources=[{"source_file": "Handbook.pdf", "section": "Regulations > 7 Attendance Requirements"}])
     assert advisor._check_sources(reply, [chunk]).sources[0].section == chunk["section"]
+
+
+@pytest.mark.parametrize("message", ["What is the minimum attendance?", "attendance?", "What is the attendance rule?",
+                                     "What is the minimum attendance required to appear for the end-term exams?"])
+def test_attendance_rule_is_exact(message):
+    answer = structured.route(message)[0]["direct_answer"]
+    assert "minimum attendance is 75%" in answer and "65%" in answer
+
+
+@pytest.mark.parametrize("message", ["My attendance is 68%. Can I write the exam?", "I was hospitalised, what is the attendance rule for me?"])
+def test_a_personal_attendance_case_is_not_the_fixed_rule(message):
+    assert not any(c.get("direct_answer") for c in structured.route(message))
+
+
+def test_sick_follow_up_searches_the_medical_rule_whatever_came_before():
+    history = chat("Can I take Machine Learning next semester?")
+    query = memory.contextual_query("what if I was sick?", history, memory.from_history(history, "what if I was sick?"))
+    assert "medical" in query and "Machine Learning" not in query

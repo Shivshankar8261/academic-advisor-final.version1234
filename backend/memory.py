@@ -32,6 +32,7 @@ NEW_QUESTION_RE = re.compile(r"\b(what|which|how|when|where|who|why|can|could|is
 REFERS_BACK_RE = re.compile(r"\b(it|its|that|this|those|these|them|they)\b", re.I)
 NOT_REFERRING_RE = re.compile(r"\b(this|that) (semester|sem|term|year)\b|\bis it (possible|true|mandatory|compulsory|allowed)\b", re.I)
 LEANS_ON_TOPIC_RE = re.compile(r"^(what if|why\b|how so\b|how come\b|who (decides|approves|signs|do i|should i)\b|how long\b|how do i apply\b)", re.I)
+SICK_RE = re.compile(r"\b(sick|ill|unwell|fever|hospital\w*|medical)\b", re.I)
 OWN_SUBJECT_RE = re.compile(rf"\b[A-Z]{{3,4}}\d{{3}}\b|\b({MINOR_NAMES})\b", re.I)
 FILLER_RE = re.compile(r"\b(can|could|may|should|do|does|did|will|would|is|are|i|me|my|we|take|took|register|enrol+|for|in|on|to|the|a|an"
                        r"|what|what's|whats|how|about|tell|more|mean|means|work|works|it|its|that|this|those|these|them|they)\b", re.I)
@@ -167,6 +168,8 @@ def contextual_query(message: str, history: list[dict], facts: Facts) -> str:
     """A follow-up is searched as the original question plus the student's current details."""
     if not is_follow_up(message, history):
         return message
+    if SICK_RE.search(message):  # the handbook's words, not the student's, and whatever was discussed before
+        return f"{message} medical leave of absence attendance relaxation medical exigencies"
     # Only what carries meaning goes into the search: "does that change your advice?" would just attract noise.
     kept = [x for x in re.findall(r"[^.?!\n]+[.?!]?", message) if not FOLLOW_UP_RE.search(x)]
     withdrawn = re.sub(r"\bnot\s+(?:(?:semester|sem|batch)\s*)?\d+(?:st|nd|rd|th)?|\b(correction|actually|sorry|i meant)\b\W*",

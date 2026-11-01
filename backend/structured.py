@@ -397,6 +397,27 @@ def _direct(chunk: dict, answer: str, conflict: bool = False, attachments: list[
     return {**chunk, "direct_answer": answer, "conflict": conflict, "attachments": attachments or []}
 
 
+ATTENDANCE_RULE_RE = re.compile(r"^\W*attendance\W*$|\b(minimum|required|requirement|rules?|how much|percentage)\b.{0,40}\battendance\b"
+                                r"|\battendance\b.{0,30}\b(required|requirements?|rules?|minimum|needed)\b", re.I)
+ATTENDANCE_PERSONAL_RE = re.compile(r"\b(my|i was|i am|i'm|i have|i've|hospital\w*|sick|\d+\s?%)\b", re.I)
+
+
+def attendance_rule() -> list[dict]:
+    """The rule is fixed text, and a fallback model once reported the 65% floor as the minimum."""
+    answer = ("**The minimum attendance is 75% of the classes actually conducted, in every course you register for** "
+              "(Handbook 7.2).\n\n"
+              "| Situation | Minimum | Who decides | Clause |\n|---|---|---|---|\n"
+              "| Normal rule | 75% | Not applicable | 7.2 |\n"
+              "| Serious medical case: hospitalisation, trauma or contagious disease (yours or a family member's), "
+              "with documents | Can be relaxed, never below 65% | Faculty Advisor recommends to Program Chair; "
+              "Vice-Chancellor approves | 7.3 |\n"
+              "| Representing the State or India in an event, with certificates | Can be relaxed, never below 65% | "
+              "Director, Campus Life and Faculty Advisor recommend to Program Chair; Vice-Chancellor approves | 7.4 |\n\n"
+              "Below the applicable minimum you cannot sit the end-term exam for that course and receive an FA grade (7.6).")
+    return [_direct(_chunk(answer, HANDBOOK_FILE, "Section III - Academic Regulations > 7. Attendance Requirements (7.2), p. 21"),
+                    answer)]
+
+
 def minor_direct(minor: str, batches: list[str], show_all: bool = False) -> list[dict]:
     """"List / how many courses in the X minor": a table from the database, for the batch asked about only."""
     with _db() as con:
@@ -726,6 +747,9 @@ def route(question: str, profile: dict | None = None, message: str | None = None
     # "how many more credits do I need", "credits left to graduate" - a requirement, not a ranking question
     requirement_q = re.search(r"(credits?|how many|how much).{0,30}\b(need|needed|require|required|remaining|left)\b"
                               r"|\bto (graduate|complete)\b|\bmore credits\b", low)
+    asked_now = message or q
+    if ATTENDANCE_RULE_RE.search(asked_now) and not ATTENDANCE_PERSONAL_RE.search(asked_now):
+        return attendance_rule()
     if CAN_TAKE_MINOR_RE.search(low) and not minor and not codes:
         if not batches:
             return ask_batch_for_minor()
