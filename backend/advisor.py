@@ -107,8 +107,10 @@ def _check_sources(result: AdvisorResponse, chunks: list[dict]) -> AdvisorRespon
     for s in result.sources:
         cited = s.section.strip()
         same_file = sorted(sec for f, sec in shown if f == s.source_file)
-        match = next((sec for sec in same_file if sec == cited), None) or (next(
-            (sec for sec in same_file if sec.startswith(cited) or cited.startswith(sec)), None)
+        # Compare letters and digits only: "7 Attendance" and "7. Attendance" are the same section.
+        plain = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())  # noqa: E731
+        match = next((sec for sec in same_file if plain(sec) == plain(cited)), None) or (next(
+            (sec for sec in same_file if plain(sec).startswith(plain(cited)) or plain(cited).startswith(plain(sec))), None)
             if len(cited) >= 8 else None)
         match = (s.source_file, match) if match else None
         if match and match not in {(k.source_file, k.section) for k in kept}:

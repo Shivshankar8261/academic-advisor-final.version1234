@@ -345,3 +345,12 @@ def test_minor_list_without_a_batch_asks_for_it():
 
 def test_can_i_take_a_minor_is_not_turned_into_a_list():
     assert not structured.route("Can I take the Law minor? how many courses", None, "Can I take the Law minor?")[0].get("direct_answer")
+
+
+def test_citation_differing_only_in_punctuation_is_kept():
+    # A correct answer was thrown away because the model wrote "7 Attendance" for the section "7. Attendance".
+    chunk = {"source_file": "Handbook.pdf", "section": "Regulations > 7. Attendance Requirements", "text": "75%"}
+    reply = advisor.AdvisorResponse(answer="75%", confidence="high", grounded=True, needs_clarification=False,
+                                    clarifying_question=None, insufficient_information=False, conflict_detected=False,
+                                    sources=[{"source_file": "Handbook.pdf", "section": "Regulations > 7 Attendance Requirements"}])
+    assert advisor._check_sources(reply, [chunk]).sources[0].section == chunk["section"]

@@ -58,7 +58,7 @@ def _gemini() -> genai.Client:
 @lru_cache
 def _gemini_text() -> genai.Client:
     """Advice text only: vision and speech use _gemini(), since they legitimately take longer."""
-    return genai.Client(api_key=GEMINI_API_KEY, http_options=types.HttpOptions(timeout=int(LLM_TIMEOUT_S * 1000)))
+    return genai.Client(api_key=GEMINI_API_KEY, http_options=types.HttpOptions(timeout=int(max(LLM_TIMEOUT_S, 10) * 1000)))  # Gemini's minimum is 10 s
 
 
 def _strict_schema(model) -> dict:
