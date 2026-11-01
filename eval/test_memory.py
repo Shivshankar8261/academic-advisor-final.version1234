@@ -168,7 +168,7 @@ def test_final_summary_reflects_the_correction(stub, strategy):
 def test_model_is_told_the_stated_facts(stub, strategy):
     s = stub()
     history = [{"role": "user", "content": CHAT[0]}, {"role": "assistant", "content": "..."}]
-    advisor.answer("What is the attendance rule?", strategy, None, history, guarded=True, use_classifier=False)
+    advisor.answer("What is the rule for a medical leave of absence?", strategy, None, history, guarded=True, use_classifier=False)
     assert "batch: 2024" in s.prompts[0] and "<stated_by_student>" in s.prompts[0]
 
 
@@ -242,13 +242,13 @@ def test_eligibility_claim_is_checked_against_the_record(stub):
 
 def test_a_number_missing_from_the_evidence_is_rejected(stub):
     s = stub(reply("You need 99% attendance."), reply("The Handbook sets the minimum attendance."))
-    play("rag_structured", ["What is the minimum attendance?"])
+    play("rag_structured", ["What is the rule for a medical leave of absence?"])
     assert len(s.prompts) == 2 and "99%" in s.prompts[1]
 
 
 def test_supported_draft_costs_no_second_call(stub):
     s = stub()
-    play("rag_structured", ["What is the minimum attendance?"])
+    play("rag_structured", ["What is the rule for a medical leave of absence?"])
     assert len(s.prompts) == 1
 
 
