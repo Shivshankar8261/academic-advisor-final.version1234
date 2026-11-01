@@ -6,7 +6,7 @@ Later statements replace earlier ones, which is what makes a correction work. As
 a claim the model made must not become a "fact" the student stated.
 
     facts = memory.from_history(history, message)
-    memory.recall_kind(message)              -> "needs" | "summary" | None   (answered without retrieval or a model)
+    memory.recall_kind(message)              -> "needs" | "summary" | "unclear" | "noted" | None   (no retrieval or model)
     memory.contextual_query(message, history, facts)   -> what to retrieve for a follow-up
 """
 import re
@@ -28,6 +28,13 @@ CORRECTION_RE = re.compile(r"\b(correction|actually|sorry|i meant|i mean|mistake
 FOLLOW_UP_RE = re.compile(r"\b(does that|would that|will that|that change|your advice|your answer|what you said|in that case"
                           r"|then what|same question|still (true|apply|the case))\b", re.I)
 NEW_QUESTION_RE = re.compile(r"\b(what|which|how|when|where|who|why|can|could|is|are|do|does|should|list|tell)\b", re.I)
+# "how many credits is it?", "what if I was sick?": meaningless without the earlier turns
+REFERS_BACK_RE = re.compile(r"\b(it|its|that|this|those|these|them|they)\b", re.I)
+NOT_REFERRING_RE = re.compile(r"\b(this|that) (semester|sem|term|year)\b|\bis it (possible|true|mandatory|compulsory|allowed)\b", re.I)
+LEANS_ON_TOPIC_RE = re.compile(r"^(what if|why\b|how so\b|how come\b|who (decides|approves|signs|do i|should i)\b|how long\b|how do i apply\b)", re.I)
+OWN_SUBJECT_RE = re.compile(rf"\b[A-Z]{{3,4}}\d{{3}}\b|\b({MINOR_NAMES})\b", re.I)
+FILLER_RE = re.compile(r"\b(can|could|may|should|do|does|did|will|would|is|are|i|me|my|we|take|took|register|enrol+|for|in|on|to|the|a|an"
+                       r"|what|what's|whats|how|about|tell|more|mean|means|work|works|it|its|that|this|those|these|them|they)\b", re.I)
 
 
 @dataclass
@@ -38,6 +45,7 @@ class Facts:
     minor: str | None = None
     corrected: dict = field(default_factory=dict)  # field -> the value it replaced
     topic: str | None = None                       # the last real question, kept through corrections and recalls
+    thread: list = field(default_factory=list)     # follow-ups asked since that question ("attendance?", "what if...")
 
     def known(self) -> bool:
         return any((self.programme, self.batch, self.semester, self.minor))
@@ -83,11 +91,30 @@ def _absorb(facts: Facts, message: str, asked_batch: bool):
             _set(facts, "minor", minor.group(1).capitalize(), correcting)
 
 
-def recall_kind(message: str) -> str | None:
+def _names_nothing(message: str) -> bool:
+    """"can i take it?" has no subject of its own once the filler words are gone."""
+    return not re.sub(r"\W+", "", FILLER_RE.sub(" ", message))
+
+
+def _only_states_facts(message: str) -> bool:
+    """"I am in the 2024 batch": details and no question."""
+    probe = Facts()
+    _absorb(probe, message, False)
+    return probe.known() and "?" not in message and all(_is_statement(x) for x in re.findall(r"[^.?!\n]+", message))
+
+
+def recall_kind(message: str, facts: "Facts | None" = None, history: list[dict] | None = None) -> str | None:
     if NEEDS_RE.search(message):
         return "needs"
     if SUMMARY_RE.search(message):
         return "summary"
+    if facts is None or facts.topic or (history and history[-1].get("needs_clarification")):
+        return None
+    # Nothing earlier to lean on: ask, or acknowledge, rather than search the documents for "it".
+    if REFERS_BACK_RE.search(message) and _names_nothing(message):
+        return "unclear"
+    if _only_states_facts(message):
+        return "noted"
     return None
 
 
@@ -97,7 +124,9 @@ def is_follow_up(message: str, history: list[dict]) -> bool:
         return False
     if history[-1].get("needs_clarification") or FOLLOW_UP_RE.search(m) or CORRECTION_RE.search(m):
         return True
-    if re.match(r"(what|how) about\b|and\b|for\b|in\b|only\b", m, re.I):
+    if re.match(r"(what|how) about\b|and\b|for\b|in\b|only\b", m, re.I) or LEANS_ON_TOPIC_RE.match(m):
+        return True
+    if len(m.split()) <= 10 and REFERS_BACK_RE.search(m) and not NOT_REFERRING_RE.search(m) and not OWN_SUBJECT_RE.search(m):
         return True
     return len(m.split()) <= 6 and not NEW_QUESTION_RE.search(m)
 
@@ -114,8 +143,14 @@ def from_history(history: list[dict], message: str | None = None) -> Facts:
             continue
         text = turn["content"]
         _absorb(facts, text, bool(re.search(r"\bbatch\b", last_assistant, re.I)))
-        if not recall_kind(text) and not is_follow_up(text, seen) and not CORRECTION_RE.search(text):
-            facts.topic = text
+        if not recall_kind(text) and not CORRECTION_RE.search(text) and not _only_states_facts(text) \
+                and not (not facts.topic and _names_nothing(text)):
+            follow_up = is_follow_up(text, seen)
+            asks = "?" in text or not _is_statement(text)
+            if not follow_up or not facts.topic or (OWN_SUBJECT_RE.search(text) and asks):
+                facts.topic, facts.thread = text, []  # "what about the Law minor?" moves the conversation on
+            elif asks and turn is not turns[-1]:
+                facts.thread.append(text)
         seen.append(turn)
     return facts
 
@@ -136,7 +171,9 @@ def contextual_query(message: str, history: list[dict], facts: Facts) -> str:
     kept = [x for x in re.findall(r"[^.?!\n]+[.?!]?", message) if not FOLLOW_UP_RE.search(x)]
     withdrawn = re.sub(r"\bnot\s+(?:(?:semester|sem|batch)\s*)?\d+(?:st|nd|rd|th)?|\b(correction|actually|sorry|i meant)\b\W*",
                        " ", " ".join(kept), flags=re.I)
-    parts = [_without_stated_values(facts.topic or ""), withdrawn.strip()]
+    parts = [_without_stated_values(facts.topic or "")]
+    if facts.topic != message:
+        parts += [_without_stated_values(x) for x in facts.thread[-2:]] + [withdrawn.strip()]
     if facts.batch:
         parts.append(f"{facts.batch} batch")
     if facts.semester and not re.search(r"\b(?:semester|sem)\s*\d", withdrawn, re.I):
@@ -187,6 +224,13 @@ def recall_answer(kind: str, facts: Facts, profile: dict | None) -> str:
     batch = facts.batch or _profile_value(profile, "batch")
     semester = facts.semester or _profile_value(profile, "current_semester")
     topic = _topic_label(facts)
+    if kind == "unclear":
+        return ("I'm not sure what \"it\" refers to yet. Which course, minor or rule do you mean? "
+                "A course code or name is enough, for example DATA301 or the Law minor.")
+    if kind == "noted":
+        known = ", ".join(x for x in (facts.programme, f"{batch} batch" if batch else None,
+                                      f"semester {semester}" if semester else None) if x)
+        return f"Noted: {known}. What would you like to know about your courses, credits or regulations?"
     if kind == "needs":
         missing = []
         if not batch:

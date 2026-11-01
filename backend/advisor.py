@@ -303,12 +303,13 @@ def _answer(message: str, strategy: str, student_id: str | None, history: list[d
     # The baseline stays a plain LLM with no memory layer: it is the control every other mode is compared against.
     facts = memory.from_history(history, message)
     stated = memory.prompt_block(facts)
-    kind = memory.recall_kind(message) if strategy != "baseline" else None
+    kind = memory.recall_kind(message, facts, history) if strategy != "baseline" else None
     if kind:  # about this conversation, not the university: no retrieval and no model needed
         return _response(AdvisorResponse(
             answer=memory.recall_answer(kind, facts, profile), confidence="high", grounded=False, sources=[],
-            needs_clarification=False, clarifying_question=None, insufficient_information=False,
-            conflict_detected=False), strategy, MEMORY_PROVIDER, start, 0.0, [])
+            needs_clarification=kind == "unclear",
+            clarifying_question="Which course, minor or rule do you mean?" if kind == "unclear" else None,
+            insufficient_information=False, conflict_detected=False), strategy, MEMORY_PROVIDER, start, 0.0, [])
 
     if strategy == "baseline":
         convo = "".join(f"{t['role']}: {t['content']}\n" for t in history[-6:])

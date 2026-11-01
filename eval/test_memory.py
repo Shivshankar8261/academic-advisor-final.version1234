@@ -276,3 +276,51 @@ def test_summary_never_shows_the_student_id(stub):
 def test_another_students_record_is_still_refused(stub):
     stub()
     assert play("rag_structured", ["Summarise what you know about SYN-003."], "SYN-001")[0].guard == "other_student"
+
+
+# Vague follow-ups, found by testing the live site: each lost its topic and got a wrong or refused answer.
+def chat(*turns):
+    history = []
+    for text in turns:
+        history += [{"role": "user", "content": text}, {"role": "assistant", "content": "ok"}]
+    return history
+
+
+@pytest.mark.parametrize("earlier, message, expected", [
+    (["Tell me about DATA301"], "how many credits is it?", "DATA301"),
+    (["Tell me about DATA301", "prerequisites?"], "how many credits is it?", "DATA301"),
+    (["Tell me about DATA301", "what about the Law minor?"], "how many courses in that?", "Law minor"),
+    (["attendance?"], "what if I was sick?", "attendance"),
+    (["attendance?", "what if I was sick?"], "who decides?", "sick"),
+])
+def test_vague_follow_up_keeps_the_topic(earlier, message, expected):
+    history = chat(*earlier)
+    assert expected in memory.contextual_query(message, history, memory.from_history(history, message))
+
+
+@pytest.mark.parametrize("earlier, message", [
+    (["What is the minimum attendance?"], "How is CGPA calculated?"),
+    (["What is the minimum attendance?"], "What courses are offered this semester?"),
+    (["What is the minimum attendance?"], "Is it mandatory to submit a medical certificate?"),
+])
+def test_a_new_question_is_not_merged_with_the_old_one(earlier, message):
+    history = chat(*earlier)
+    assert memory.contextual_query(message, history, memory.from_history(history, message)) == message
+
+
+def test_it_with_nothing_earlier_asks_what_it_means(stub):
+    calls = stub()
+    r = play("rag_structured", ["can i take it?"])[0]
+    assert r.needs_clarification and r.provider == advisor.MEMORY_PROVIDER
+
+
+def test_details_alone_are_acknowledged_then_used(stub):
+    stub()
+    first, second = play("rag_structured", ["I am in the 2024 batch", "Which batch did I tell you?"])
+    assert "2024" in first.answer and first.provider == advisor.MEMORY_PROVIDER
+    assert "2024" in second.answer
+
+
+@pytest.mark.parametrize("message", ["Is it mandatory to attend classes?", "What is the attendance rule?"])
+def test_real_first_questions_are_not_treated_as_unclear(message):
+    assert memory.recall_kind(message, memory.from_history([], message), []) is None
